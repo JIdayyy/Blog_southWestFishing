@@ -2,8 +2,6 @@ import prisma from "../../prisma/client";
 import { GetStaticPropsResult } from "next";
 import getAllPostIds from "../../lib/getAllPostIds";
 import { Post } from ".prisma/client";
-
-import { Params } from "next/dist/next-server/server/router";
 type IProps = {
     post: Post;
 };
