@@ -7,10 +7,10 @@ const Home: React.FC = () => {
     return (
         <div
             style={{ backgroundColor: "black" }}
-            className="w-full min-h-full flex flex-col bg-black"
+            className="w-screen min-h-full flex flex-col bg-black"
         >
             <Header />
-            <div className="w-full flex md:flex-row flex-col my-48  justify-around">
+            <div className="w-screen flex md:flex-row flex-col my-48  justify-around">
                 <Main />
                 <Column />
             </div>

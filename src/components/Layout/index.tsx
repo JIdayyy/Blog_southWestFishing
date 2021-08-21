@@ -13,14 +13,17 @@ export function Layout({ children, page }: IProps): JSX.Element {
     return (
         <div
             style={{ backgroundColor: "black" }}
-            className="w-full min-h-screen flex flex-col"
+            className="w-screen min-h-screen flex flex-col"
         >
             <Head>
                 <title>{page}</title>
             </Head>
-            <Burger setIsMenu={setIsMenu} />
-            {isMenu && <Menu />}
-            {children}
+            <div className="w-screen min-h-screen flex flex-col">
+                {" "}
+                <Burger setIsMenu={setIsMenu} />
+                {isMenu && <Menu />}
+                {children}
+            </div>
         </div>
     );
 }

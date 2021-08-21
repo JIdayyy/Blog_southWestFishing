@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function Main(): JSX.Element {
     return (
-        <div className="w-400 flex flex-col ">
+        <div className="w-512 flex flex-col ">
             <div className="flex flex-col">
                 {" "}
-                <Title className="text-white  my-4">South west fishing</Title>
+                <Title className="text-white ">South west fishing</Title>
                 <Title className="text-white text-20 font-600 my-8">
                     Guidage, stages, et initiation à la pêche au Pays Basque/Sud
                     Landes
@@ -15,7 +15,7 @@ export default function Main(): JSX.Element {
             <Image
                 className="rounded-4 "
                 src="/images/main.jpg"
-                height={400}
+                height={512}
                 width={400}
             />
             <div>
