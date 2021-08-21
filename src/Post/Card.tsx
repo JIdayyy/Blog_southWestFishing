@@ -2,14 +2,17 @@ import Title from "@components/Assets/Title/Title";
 import { PostWithAuthorAndPictures } from "pages";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/dist/client/router";
 interface IProps {
     post: PostWithAuthorAndPictures;
 }
 
 export default function Card({ post }: IProps): JSX.Element {
+    const router = useRouter();
     console.log(post);
     return (
         <motion.div
+            onClick={() => router.push(`/post/${post.id}`)}
             whileHover={{ backgroundColor: "#2F4F4F", scale: 1.02 }}
             className="text-white items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
         >

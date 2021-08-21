@@ -11,7 +11,7 @@ generator client {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        String       @id @default(uuid())
   name      String
   email     String
   password  String
@@ -22,7 +22,7 @@ model User {
 }
 
 model Post {
-  id        Int       @id @default(autoincrement())
+  id        String       @id @default(uuid())
   title     String
   content   String
   picture   Picture[]
@@ -30,26 +30,26 @@ model Post {
   comments  Comment[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now())
-  userId    Int
+  userId    String
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(uuid())
   content   String
   author    User     @relation(fields: [userId], references: [id])
   post      Post     @relation(fields: [postId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  userId    Int
-  postId    Int
+  userId    String
+  postId    String
 }
 
 model Picture {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(uuid())
   url       String
   post      Post?    @relation(fields: [postId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   main      Boolean  @default(false)
-  postId    Int?
+  postId    String?
 }

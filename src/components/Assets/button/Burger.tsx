@@ -9,7 +9,7 @@ export function Burger({ setIsMenu }: IProps): JSX.Element {
         <button
             onClick={() => setIsMenu((c: boolean) => !c)}
             id="menuToggle"
-            className="absolute top-20 right-20 z-9999"
+            className="fixed top-20 right-20 z-9999"
         >
             <input type="checkbox" />
             <span></span>
