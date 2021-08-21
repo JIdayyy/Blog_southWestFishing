@@ -1,8 +1,3 @@
-# npm
 node_modules
-# next.js build files
-.next
-# environment variables
+# Keep environment variables out of version control
 .env
-.env.*
-!.env.example

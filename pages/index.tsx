@@ -1,15 +1,20 @@
+import Header from "@components/Header";
+import Main from "@components/Main";
+import Column from "@components/Main/Column";
 import React from "react";
-
-import { Container, Header, Main, Footer, Cards } from "@components";
 
 const Home: React.FC = () => {
     return (
-        <Container>
+        <div
+            style={{ backgroundColor: "black" }}
+            className="w-full min-h-full flex flex-col bg-black"
+        >
             <Header />
-            <Main />
-            <Cards />
-            <Footer />
-        </Container>
+            <div className="w-full flex md:flex-row flex-col my-48  justify-around">
+                <Main />
+                <Column />
+            </div>
+        </div>
     );
 };
 
