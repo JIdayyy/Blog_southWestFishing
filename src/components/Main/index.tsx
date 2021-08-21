@@ -7,7 +7,7 @@ interface IProps {
 }
 export default function Main({ posts }: IProps): JSX.Element {
     return (
-        <div className="lg:w-6/12 px-8 md:px-0 flex flex-col lg:items-start items-center align-middle justify-center">
+        <div className="lg:w-full px-8 md:px-0 flex flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
                 <Title className="text-white ">South-West Fishing</Title>
                 <Title className="text-white text-20 font-600 my-8">

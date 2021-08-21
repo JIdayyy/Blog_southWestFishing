@@ -21,12 +21,10 @@ export function Home(props: IProps): JSX.Element {
     return (
         <div
             style={{ backgroundColor: "black" }}
-            className="w-screen min-h-full flex flex-col bg-black"
+            className="w-6/12 min-h-full flex flex-col bg-black"
         >
-            <Header />
-            <div className=" flex lg:flex-row flex-col my-48 w-full items-start align-middle  justify-around">
+            <div className=" flex w-full h-full">
                 <Main posts={props.posts} />
-                <Column />
             </div>
         </div>
     );
