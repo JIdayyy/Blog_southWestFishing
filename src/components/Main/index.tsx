@@ -1,9 +1,13 @@
 import Title from "@components/Assets/Title/Title";
 import Image from "next/image";
-
-export default function Main(): JSX.Element {
+import { PostWithAuthorAndPictures } from "pages";
+import PostList from "src/Post";
+interface IProps {
+    posts: PostWithAuthorAndPictures[];
+}
+export default function Main({ posts }: IProps): JSX.Element {
     return (
-        <div className="w-512 flex flex-col ">
+        <div className="md:w-6/12 flex flex-col ">
             <div className="flex flex-col">
                 {" "}
                 <Title className="text-white ">South west fishing</Title>
@@ -15,7 +19,7 @@ export default function Main(): JSX.Element {
             <Image
                 className="rounded-4 "
                 src="/images/main.jpg"
-                height={512}
+                height={600}
                 width={400}
             />
             <div>
@@ -44,6 +48,8 @@ export default function Main(): JSX.Element {
                     Black-Bass Brochet Perches et plus encore ...
                 </div>
             </div>
+            <Title className="text-white text-4xl">Actus :</Title>
+            <PostList posts={posts} />
         </div>
     );
 }

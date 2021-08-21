@@ -28,7 +28,7 @@ model Post {
   picture   Picture[]
   author    User      @relation(fields: [userId], references: [id])
   comments  Comment[]
-  createdAt DateTime
+  createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now())
   userId    Int
 }
@@ -47,9 +47,9 @@ model Comment {
 model Picture {
   id        Int      @id @default(autoincrement())
   url       String
-  post      Post     @relation(fields: [postId], references: [id])
+  post      Post?    @relation(fields: [postId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  main      Boolean
-  postId    Int
+  main      Boolean  @default(false)
+  postId    Int?
 }

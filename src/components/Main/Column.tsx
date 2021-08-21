@@ -5,7 +5,7 @@ export default function Column(): JSX.Element {
     return (
         <FadeIn
             delay={0.3}
-            className="bg-blue-dark w-full md:w-192 md:my-0 text-white flex flex-col justify-around items-center"
+            className="bg-blue-dark w-full md:w-192 md:my-0 text-white flex flex-col justify-start items-start"
         >
             <div className="relative w-full h-200 md:h-136">
                 <Image
