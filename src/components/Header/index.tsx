@@ -4,6 +4,7 @@ import Image from "next/image";
 import ScaleWhileHover from "@components/AnimatedComponents/ScaleWhileHover";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const contactButtons = [
     { id: 1, name: "Tel", value: "06.33.45.32.34", image: "/icons/tel.png" },
@@ -52,14 +53,21 @@ export default function Header(): JSX.Element {
                 ))}
             </div>
             <Image src="/images/bg_southwestfishing.jpg" layout="fill" />
-            <FadeIn delay={0.2}>
-                <Image
-                    className="animate-pulse"
-                    src="/images/logo_southwestfishing.png"
-                    width={300}
-                    height={300}
-                />
-            </FadeIn>
+
+            <motion.div
+                animate={{ y: 0 }}
+                initial={{ y: -10 }}
+                transition={{ delay: 0.2 }}
+            >
+                <FadeIn delay={0.2}>
+                    <Image
+                        className="animate-pulse"
+                        src="/images/logo_southwestfishing.png"
+                        width={300}
+                        height={300}
+                    />
+                </FadeIn>
+            </motion.div>
         </div>
     );
 }
