@@ -17,7 +17,7 @@ export async function getStaticProps(params: {
     };
 }): Promise<GetStaticPropsResult<IProps>> {
     const { id } = params.params;
-    console.log(id);
+
     const post = await prisma.post.findUnique({
         where: {
             id: id,

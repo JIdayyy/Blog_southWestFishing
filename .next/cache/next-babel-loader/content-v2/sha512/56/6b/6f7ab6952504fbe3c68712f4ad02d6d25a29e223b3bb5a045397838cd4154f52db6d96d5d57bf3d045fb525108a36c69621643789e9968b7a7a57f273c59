@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { configureStore } from \"@reduxjs/toolkit\";\nimport { useDispatch } from \"react-redux\";\nimport rootReducer from \"./reducers\";\nconst store = configureStore({\n  reducer: rootReducer\n});\nexport const useAppDispatch = () => useDispatch();\nexport default store;","map":null,"metadata":{},"sourceType":"module"}
