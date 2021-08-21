@@ -10,17 +10,19 @@ export default function Main({ posts }: IProps): JSX.Element {
     return (
         <div className="lg:w-full px-8 md:px-0 flex flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
-                <Title className="text-white ">South-West Fishing</Title>
-                <Title className="text-white text-20 font-600 my-8">
+                <Title className="text-white text-10">South-West Fishing</Title>
+                <Title className="text-white text-13 md:text-20 font-600 my-8">
                     Guidage, stages, et initiation à la pêche au Pays Basque/Sud
                     Landes
                 </Title>
             </div>
-            <FadeIn delay={0.4} className="md:w-512 w-full relative h-320">
+            <FadeIn delay={0.4} className="w-full relative ">
                 <Image
                     className="rounded-4 "
                     src="/images/main.jpg"
-                    layout="fill"
+                    width={250}
+                    height={150}
+                    layout="responsive"
                 />
             </FadeIn>
             <div>
