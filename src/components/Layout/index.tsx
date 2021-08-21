@@ -15,16 +15,16 @@ export function Layout({ children, page }: IProps): JSX.Element {
     return (
         <div
             style={{ backgroundColor: "black" }}
-            className="w-screen h-screen overflow-y-scroll flex flex-col"
+            className="w-screen min-h-screen overflow-x-hidden  flex flex-col"
         >
             <Head>
                 <title>{page}</title>
             </Head>
-            <div className="w-screen min-h-screen flex flex-col">
+            <div className="w-screen overflow-y-auto h-full flex flex-col">
                 <Burger setIsMenu={setIsMenu} />
                 {isMenu && <Menu />}
                 <Header />
-                <div className="flex lg:flex-row flex-col mt-60 w-full items-start h-full align-middle  justify-around">
+                <div className="flex lg:flex-row  flex-col mt-60 w-full items-start h-full align-middle  justify-around">
                     {children}
                     <Column />
                 </div>

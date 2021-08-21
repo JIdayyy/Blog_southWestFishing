@@ -2,13 +2,13 @@ import FadeIn from "@components/AnimatedComponents/FadeIn";
 import Title from "@components/Assets/Title/Title";
 import Image from "next/image";
 import { PostWithAuthorAndPictures } from "pages";
-import PostList from "src/Post";
+import PostList from "@components/Post";
 interface IProps {
     posts: PostWithAuthorAndPictures[];
 }
 export default function Main({ posts }: IProps): JSX.Element {
     return (
-        <div className="lg:w-full px-8 md:px-0 flex flex-col lg:items-start items-center align-middle justify-center">
+        <div className="lg:w-full px-8 md:px-0 flex mb-200 flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
                 <Title className="text-white text-10">South-West Fishing</Title>
                 <Title className="text-white text-13 md:text-20 font-600 my-8">

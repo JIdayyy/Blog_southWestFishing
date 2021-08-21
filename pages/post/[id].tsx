@@ -13,13 +13,15 @@ export default function article(props: IProps): JSX.Element {
     return (
         <div className="w-full lg:w-6/12 mt-88 h-full flex flex-col item-center align-middle justify-center text-white">
             {props.post.picture[0].url && (
-                <Image
-                    src={props.post.picture[0].url}
-                    width={300}
-                    height={300}
-                    layout="responsive"
-                    className="rounded-6"
-                />
+                <div>
+                    <Image
+                        src={props.post.picture[0].url}
+                        width={150}
+                        height={150}
+                        layout="responsive"
+                        className="rounded-6"
+                    />
+                </div>
             )}
             <div className="w-full flex flex-col">
                 <div className="text-xl font-700">{props.post.title}</div>
