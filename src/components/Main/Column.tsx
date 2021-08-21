@@ -1,19 +1,23 @@
 import About from "./About";
 import Image from "next/image";
 import FadeIn from "@components/AnimatedComponents/FadeIn";
+import { motion } from "framer-motion";
 export default function Column(): JSX.Element {
     return (
         <FadeIn
             delay={0.3}
-            className="bg-blue-dark w-full md:w-192 md:my-0 text-white flex flex-col justify-start items-start"
+            className="bg-gray-800 px-8 lg:px-0 w-full my-92 md:w-192  text-white flex flex-col justify-start items-start"
         >
-            <div className="relative w-full h-200 md:h-136">
+            <motion.div
+                whileHover={{ scale: 1.1 }}
+                className="relative w-full h-320 md:h-160"
+            >
                 <Image
                     className="rounded-t-4"
-                    src="/images/main.jpg"
+                    src="/images/column_pic.jpeg"
                     layout="fill"
                 />
-            </div>
+            </motion.div>
             <About />
             <div className="w-full h-288 p-12 flex flex-col justify-around items-center">
                 <Image

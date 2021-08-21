@@ -7,21 +7,22 @@ interface IProps {
 }
 export default function Main({ posts }: IProps): JSX.Element {
     return (
-        <div className="md:w-6/12 flex flex-col ">
+        <div className="lg:w-6/12 px-8 md:px-0 flex flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
-                {" "}
-                <Title className="text-white ">South west fishing</Title>
+                <Title className="text-white ">South-West Fishing</Title>
                 <Title className="text-white text-20 font-600 my-8">
                     Guidage, stages, et initiation à la pêche au Pays Basque/Sud
                     Landes
                 </Title>
             </div>
-            <Image
-                className="rounded-4 "
-                src="/images/main.jpg"
-                height={600}
-                width={400}
-            />
+            <div className="md:w-512 w-full relative h-320">
+                {" "}
+                <Image
+                    className="rounded-4 "
+                    src="/images/main.jpg"
+                    layout="fill"
+                />
+            </div>
             <div>
                 <Title className="text-white text-18 font-400 mt-24">
                     Bienvenue sur South West Fishing
@@ -48,7 +49,9 @@ export default function Main({ posts }: IProps): JSX.Element {
                     Black-Bass Brochet Perches et plus encore ...
                 </div>
             </div>
-            <Title className="text-white text-4xl">Actus :</Title>
+            <Title className="text-white text-4xl w-full text-left m-20">
+                Actus :
+            </Title>
             <PostList posts={posts} />
         </div>
     );

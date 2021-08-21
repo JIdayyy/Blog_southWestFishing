@@ -24,7 +24,7 @@ export function Home(props: IProps): JSX.Element {
             className="w-screen min-h-full flex flex-col bg-black"
         >
             <Header />
-            <div className=" flex md:flex-row flex-col my-48  justify-around">
+            <div className=" flex lg:flex-row flex-col my-48 w-full items-start align-middle  justify-around">
                 <Main posts={props.posts} />
                 <Column />
             </div>
