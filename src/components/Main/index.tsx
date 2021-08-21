@@ -1,3 +1,4 @@
+import FadeIn from "@components/AnimatedComponents/FadeIn";
 import Title from "@components/Assets/Title/Title";
 import Image from "next/image";
 import { PostWithAuthorAndPictures } from "pages";
@@ -15,14 +16,13 @@ export default function Main({ posts }: IProps): JSX.Element {
                     Landes
                 </Title>
             </div>
-            <div className="md:w-512 w-full relative h-320">
-                {" "}
+            <FadeIn delay={0.4} className="md:w-512 w-full relative h-320">
                 <Image
                     className="rounded-4 "
                     src="/images/main.jpg"
                     layout="fill"
                 />
-            </div>
+            </FadeIn>
             <div>
                 <Title className="text-white text-18 font-400 mt-24">
                     Bienvenue sur South West Fishing
