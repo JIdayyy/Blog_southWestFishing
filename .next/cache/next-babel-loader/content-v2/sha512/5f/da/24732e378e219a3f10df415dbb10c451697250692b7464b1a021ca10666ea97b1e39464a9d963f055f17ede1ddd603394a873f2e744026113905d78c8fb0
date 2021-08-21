@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nexport default function Title(_ref) {\n  var children = _ref.children,\n      className = _ref.className;\n  return /*#__PURE__*/_jsx(\"div\", {\n    className: className,\n    children: children\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

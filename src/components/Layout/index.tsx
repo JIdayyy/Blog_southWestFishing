@@ -15,7 +15,7 @@ export function Layout({ children, page }: IProps): JSX.Element {
     return (
         <div
             style={{ backgroundColor: "black" }}
-            className="w-screen min-h-screen flex flex-col"
+            className="w-screen h-screen overflow-y-scroll flex flex-col"
         >
             <Head>
                 <title>{page}</title>
