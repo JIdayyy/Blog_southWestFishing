@@ -20,7 +20,7 @@ export function Layout({ children, page }: IProps): JSX.Element {
             <Head>
                 <title>{page}</title>
             </Head>
-            <div className="w-screen overflow-y-auto overflow-x-hidden h-full flex flex-col">
+            <div className="w-screen  overflow-x-hidden h-full flex flex-col">
                 <Burger setIsMenu={setIsMenu} />
                 {isMenu && <Menu />}
                 <Header />
