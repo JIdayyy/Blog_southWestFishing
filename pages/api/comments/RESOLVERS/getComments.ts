@@ -14,7 +14,7 @@ export default async function getComments(
 ): Promise<void> {
     try {
         const comments = await prisma.comment.findMany();
-        res.status(201).json(comments);
+        res.status(200).json(comments);
     } catch (error) {
         console.log(error);
         res.status(500).json({ name: "Error", message: "Comment Error" });
