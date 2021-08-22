@@ -17,7 +17,7 @@ export default function Card({ post }: IProps): JSX.Element {
             whileTap={{ scale: 1 }}
             className="text-white items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
         >
-            {post.picture[0].url && (
+            {post.picture[0] && (
                 <Image width={200} height={200} src={post.picture[0].url} />
             )}
             <div className="flex  w-full h-full flex-col items-start p-6">

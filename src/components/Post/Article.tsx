@@ -12,8 +12,8 @@ export default function Article({ article }: IProps): JSX.Element {
                 <div>
                     <Image
                         src={article.picture[0].url}
-                        width={150}
-                        height={150}
+                        width={140}
+                        height={90}
                         layout="responsive"
                         className="rounded-6"
                     />

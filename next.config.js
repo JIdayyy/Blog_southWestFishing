@@ -6,7 +6,7 @@ module.exports = withPlugins([], {
             "images.unsplash.com",
             "blog-south-west-fishing.vercel.app",
             "www.google.com",
-            "miro.medium.com",
+            "blog-south-west-fishing-q3ge3neug-jidayyy.vercel.app",
         ],
     },
 });
