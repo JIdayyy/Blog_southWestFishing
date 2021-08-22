@@ -21,6 +21,9 @@ export default function Menu(): JSX.Element {
                         SOUTH WEST FISHING
                     </button>
                 </Title>
+                <Title className="text-white">
+                    <button onClick={() => router.push("/admin")}>ADMIN</button>
+                </Title>
             </div>
         </motion.div>
     );

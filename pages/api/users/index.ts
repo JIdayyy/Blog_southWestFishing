@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import comment from "../RESOLVERS/comments/comment";
+import users from "../RESOLVERS/users/users";
 
 interface Data {
     id: string;
@@ -14,9 +14,9 @@ export default async function commentHandler(
     res: NextApiResponse<Data | Data[] | Error>,
 ): Promise<void> {
     if (req.method === "POST") {
-        return comment.create(req, res);
+        return users.create(req, res);
     }
     if (req.method === "GET") {
-        return comment.get(req, res);
+        return users.get(req, res);
     }
 }
