@@ -11,18 +11,18 @@ generator client {
 }
 
 model User {
-  id        String       @id @default(uuid())
-  name      String
-  email     String
-  password  String
-  posts     Post[]
-  comments  Comment[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @default(now())
+  id       String  @id @default(uuid())
+  name     String
+  email    String
+  password String?
+  posts    Post[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Post {
-  id        String       @id @default(uuid())
+  id        String    @id @default(uuid())
   title     String
   content   String
   picture   Picture[]
@@ -34,18 +34,18 @@ model Post {
 }
 
 model Comment {
-  id        String      @id @default(uuid())
-  content   String
-  author    User     @relation(fields: [userId], references: [id])
-  post      Post     @relation(fields: [postId], references: [id])
+  id      String @id @default(uuid())
+  content String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  userId    String
+  username  String
+  email     String
   postId    String
+  post      Post     @relation(fields: [postId], references: [id])
 }
 
 model Picture {
-  id        String      @id @default(uuid())
+  id        String   @id @default(uuid())
   url       String
   post      Post?    @relation(fields: [postId], references: [id])
   createdAt DateTime @default(now())

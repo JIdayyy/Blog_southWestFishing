@@ -121,3 +121,7 @@ body {
 .overflow-fade{
   text-overflow: fade(10px) fade(10px);
 }
+
+.outline-none{
+  outline: none !important;
+}

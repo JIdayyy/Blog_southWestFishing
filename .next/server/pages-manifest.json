@@ -1,7 +1,13 @@
 {
+  "/404": "pages/404.html",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/_error": "pages/_error.js",
+  "/admin": "pages/admin.html",
+  "/api/comments/RESOLVERS/comment": "pages/api/comments/RESOLVERS/comment.js",
+  "/api/comments/RESOLVERS/createComment": "pages/api/comments/RESOLVERS/createComment.js",
+  "/api/comments/RESOLVERS/getComments": "pages/api/comments/RESOLVERS/getComments.js",
+  "/api/comments": "pages/api/comments.js",
   "/": "pages/index.js",
-  "/post/[id]": "pages/post/[id].js"
+  "/post/[id]": "pages/post/[id].js",
+  "/_error": "pages/_error.js"
 }

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import createComment from \"./createComment\";\nimport getComments from \"./getComments\";\nconst comment = {\n  get: async (req, res) => await getComments(req, res),\n  create: async (req, res) => await createComment(req, res)\n};\nexport default comment;","map":null,"metadata":{},"sourceType":"module"}

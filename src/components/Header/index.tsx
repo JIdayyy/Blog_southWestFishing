@@ -1,6 +1,6 @@
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 import Image from "next/image";
-
+import Link from "next/link";
 import ScaleWhileHover from "@components/AnimatedComponents/ScaleWhileHover";
 
 import { useState } from "react";
@@ -59,14 +59,22 @@ export default function Header(): JSX.Element {
                 initial={{ y: -10 }}
                 transition={{ delay: 0.2 }}
             >
-                <FadeIn delay={0.2}>
-                    <Image
-                        className="animate-pulse"
-                        src="/images/logo_southwestfishing.png"
-                        width={300}
-                        height={300}
-                    />
-                </FadeIn>
+                <Link href="/">
+                    <motion.button
+                        className=" outline-none"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <FadeIn delay={0.2}>
+                            <Image
+                                className="animate-pulse"
+                                src="/images/logo_southwestfishing.png"
+                                width={300}
+                                height={300}
+                            />
+                        </FadeIn>
+                    </motion.button>
+                </Link>
             </motion.div>
         </div>
     );

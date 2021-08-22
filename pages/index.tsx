@@ -1,14 +1,13 @@
 import prisma from "../prisma/client";
-import Header from "@components/Header";
 import Main from "@components/Main";
-import Column from "@components/Main/Column";
 import { GetStaticPropsResult } from "next";
 import React from "react";
-import { Picture, Post, User } from ".prisma/client";
+import { Comment, Picture, Post, User } from ".prisma/client";
 
 export type PostWithAuthorAndPictures = Post & {
     picture: Picture[];
     author: User;
+    comments: Comment[];
 };
 
 type IProps = {

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import comment from \"./RESOLVERS/comment\";\nexport default async function commentHandler(req, res) {\n  if (req.method === \"POST\") {\n    return comment.create(req, res);\n  }\n\n  if (req.method === \"GET\") {\n    return comment.get(req, res);\n  }\n}","map":null,"metadata":{},"sourceType":"module"}

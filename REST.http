@@ -1,0 +1,14 @@
+POST http://localhost:3000/api/
+Content-Type:  application/json
+
+{
+    "postId": "b64865fa-978e-45aa-814a-4a77866a90bf",
+    "username": "test",
+    "email": "admin@admin.fr",
+    "content": "efoisehgiuqrhg"
+}
+
+###
+GET http://localhost:3000/api/comments/
+Content-Type: application/json
+
