@@ -7,14 +7,10 @@ interface FormData {
 }
 
 export default function CommentForm(postId: { postId: string }): JSX.Element {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const { register, handleSubmit } = useForm();
     const onSubmit = (data: FormData): void => {
         axios
-            .post("http://localhost:3000/api/comments", {
+            .post(`${process.env.API_URL}comments`, {
                 ...data,
                 postId: postId.postId,
             })
