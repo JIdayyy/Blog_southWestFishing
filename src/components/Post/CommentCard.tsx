@@ -6,7 +6,7 @@ interface IProps {
     index: number;
 }
 export default function CommentCard({ comment, index }: IProps): JSX.Element {
-    console.log(index);
+    console.log("test");
     return (
         <motion.div
             whileHover={{ backgroundColor: "#2F4F4F", scale: 1.02 }}
