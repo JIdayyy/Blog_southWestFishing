@@ -8,7 +8,7 @@ export default function CommentList(): JSX.Element {
         "getComments",
         async () =>
             await axios
-                .get(`${process.env.API_URL}comments`)
+                .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
                 .then((r) => r.data)
                 .catch((r) => console.log(r)),
     );
