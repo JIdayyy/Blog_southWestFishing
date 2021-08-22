@@ -1,3 +1,4 @@
+import { Comment } from ".prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../../prisma/client";
 interface Data {
@@ -9,7 +10,7 @@ interface Data {
 }
 export default async function getComments(
     req: NextApiRequest,
-    res: NextApiResponse<Data[] | Error>,
+    res: NextApiResponse<Data[] | Comment[] | Error>,
 ): Promise<void> {
     try {
         const comments = await prisma.comment.findMany();

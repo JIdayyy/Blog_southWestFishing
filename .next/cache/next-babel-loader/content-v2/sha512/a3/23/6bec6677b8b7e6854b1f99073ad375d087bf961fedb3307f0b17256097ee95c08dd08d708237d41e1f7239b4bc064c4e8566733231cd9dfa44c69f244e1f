@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nexport default function NotFound() {\n  return /*#__PURE__*/_jsx(\"div\", {\n    className: \"text-white text-48 flex items-center align-middle justify-center w-full h-screen\",\n    children: \"Not found\"\n  });\n}","map":null,"metadata":{},"sourceType":"module"}
