@@ -27,8 +27,8 @@ export default async function createComment(
             },
         });
         res.status(201).json(comment);
-    } catch (error) {
+    } catch (error: unknown) {
         console.log(error);
-        res.status(500).json({ name: "Error", message: "Comment Error" });
+        res.status(500).json({ name: "Error", message: error as string });
     }
 }
