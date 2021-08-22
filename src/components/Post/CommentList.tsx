@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import CommentCard from "./CommentCard";
 
 export default function CommentList(): JSX.Element {
+    console.log("test");
     const { data, error, isLoading } = useQuery(
         "getComments",
         async () =>
