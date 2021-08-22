@@ -10,10 +10,18 @@ export default function CommentForm(postId: { postId: string }): JSX.Element {
     const { register, handleSubmit } = useForm();
     const onSubmit = (data: FormData): void => {
         axios
-            .post(`${process.env.NEXT_PUBLIC_API_URL}comments`, {
-                ...data,
-                postId: postId.postId,
-            })
+            .post(
+                `${process.env.NEXT_PUBLIC_API_URL}comments`,
+                {
+                    ...data,
+                    postId: postId.postId,
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                },
+            )
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
     };
