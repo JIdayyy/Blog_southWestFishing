@@ -27,7 +27,7 @@ export default function Header(): JSX.Element {
     const [selected, setSelected] = useState<number | null>(null);
     return (
         <div className="w-full sm:h-320 h-full relative flex flex-col items-center align-middle justify-center">
-            <div className="absolute top-14 left-16 z-10 flex items-start align-middle justify-between h-40 flex-col">
+            <div className="absolute top-60 md:left-24 left-4 z-10 flex items-start align-middle justify-between h-52 flex-col">
                 {contactButtons.map((button) => (
                     <ScaleWhileHover className="flex" scale={1.01}>
                         <Image
@@ -41,8 +41,8 @@ export default function Header(): JSX.Element {
                             }}
                             className="my-6 cursor-pointer"
                             src={button.image}
-                            width={15}
-                            height={15}
+                            width={20}
+                            height={20}
                         />
                         {isShow && selected === button.id && (
                             <FadeIn className="text-10 mx-8 text-gray-600">
@@ -62,8 +62,8 @@ export default function Header(): JSX.Element {
                 <Link href="/">
                     <motion.button
                         className=" outline-none"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.005 }}
+                        whileTap={{ scale: 1 }}
                     >
                         <FadeIn delay={0.2}>
                             <Image

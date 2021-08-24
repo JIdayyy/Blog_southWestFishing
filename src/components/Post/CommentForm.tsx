@@ -1,29 +1,53 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useMutation } from "react-query";
+
 interface FormData {
     username: string;
     comment: string;
     email: string;
 }
-
-export default function CommentForm(postId: { postId: string }): JSX.Element {
+interface IProps {
+    postId: string;
+    refetch: () => void;
+}
+export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data: FormData): void => {
-        axios
-            .post(
+    const mutation = useMutation(
+        (newComment: FormData) =>
+            axios.post(
                 `${process.env.NEXT_PUBLIC_API_URL}comments`,
                 {
-                    ...data,
-                    postId: postId.postId,
+                    ...newComment,
+                    postId: postId,
                 },
                 {
                     headers: {
                         "Content-Type": "application/json",
                     },
                 },
-            )
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+            ),
+        {
+            onSuccess: () => refetch(),
+        },
+    );
+    const onSubmit = (data: FormData): void => {
+        mutation.mutate(data);
+        // axios
+        //     .post(
+        //         `${process.env.NEXT_PUBLIC_API_URL}comments`,
+        //         {
+        //             ...data,
+        //             postId: postId.postId,
+        //         },
+        //         {
+        //             headers: {
+        //                 "Content-Type": "application/json",
+        //             },
+        //         },
+        //     )
+        //     .then((res) => console.log(res))
+        //     .catch((err) => console.log(err));
     };
 
     return (

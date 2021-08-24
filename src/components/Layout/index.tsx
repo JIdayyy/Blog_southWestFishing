@@ -12,6 +12,8 @@ interface IProps {
 
 export function Layout({ children, page }: IProps): JSX.Element {
     const [isMenu, setIsMenu] = useState<boolean>(false);
+    console.log(isMenu);
+
     return (
         <div
             style={{ backgroundColor: "black" }}
@@ -22,7 +24,7 @@ export function Layout({ children, page }: IProps): JSX.Element {
             </Head>
             <div className="w-screen  overflow-x-hidden h-full flex flex-col">
                 <Burger setIsMenu={setIsMenu} />
-                {isMenu && <Menu />}
+                {isMenu && <Menu setIsMenu={setIsMenu} />}
                 <Header />
                 <div className="flex lg:flex-row  flex-col mt-60 w-full items-start h-full align-middle  justify-around">
                     {children}

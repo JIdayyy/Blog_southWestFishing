@@ -1,18 +1,18 @@
 import { Comment } from ".prisma/client";
-import axios from "axios";
-import { useQuery } from "react-query";
-import CommentCard from "./CommentCard";
 
-export default function CommentList(): JSX.Element {
+import CommentCard from "./CommentCard";
+interface IProps {
+    data: Comment[];
+    error: string;
+    isLoading: boolean;
+}
+export default function CommentList({
+    data,
+    error,
+    isLoading,
+}: IProps): JSX.Element {
     console.log("test");
-    const { data, error, isLoading } = useQuery(
-        "getComments",
-        async () =>
-            await axios
-                .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
-                .then((r) => r.data)
-                .catch((r) => console.log(r)),
-    );
+
     if (error) return <div>Error gettings comments</div>;
     if (isLoading) return <div>Loading comments</div>;
     return (

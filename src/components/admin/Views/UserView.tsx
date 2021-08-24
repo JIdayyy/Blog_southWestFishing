@@ -27,7 +27,7 @@ export default function UserView(): JSX.Element {
                 <li className="flex border-b text-gray-600 w-full items-center align-middle justify-between">
                     <div className="w-full ">Name</div>
                     <div className="w-full ">Email</div>
-                    <div className="w-full "></div>
+                    <div className="w-full hidden text-left">SUPPRIMER</div>
                 </li>
                 {data &&
                     data.map((user: User) => (

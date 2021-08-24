@@ -1,15 +1,23 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import axios from "axios";
 import { Post } from ".prisma/client";
 import { motion } from "framer-motion";
 export default function PostView(): JSX.Element {
-    const { data, error, isLoading } = useQuery("getPosts", () =>
+    const { data, error, isLoading, refetch } = useQuery("getPosts", () =>
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}posts`)
             .then((r) => r.data)
             .catch((err) => console.log(err)),
     );
-    console.log(data);
+
+    const mutation = useMutation(
+        (id: string) =>
+            axios.delete(`${process.env.NEXT_PUBLIC_API_URL}posts/${id}`),
+        {
+            onError: (err) => console.log(err),
+            onSuccess: () => refetch(),
+        },
+    );
     if (error) return <div>Error</div>;
     if (isLoading) return <div>Loading ...</div>;
     return (
@@ -20,6 +28,7 @@ export default function PostView(): JSX.Element {
                     <div className="w-full">Title</div>
                     <div className="w-full">Body</div>
                     <div className="w-full">Publication</div>
+                    <div className="w-full hidden">SUPPRIMER</div>
                 </li>
                 {data &&
                     data.map((post: Post) => (
@@ -32,6 +41,12 @@ export default function PostView(): JSX.Element {
                                 {post.content}
                             </div>
                             <div className="w-full">{post.createdAt}</div>
+                            <button
+                                onClick={() => mutation.mutate(post.id)}
+                                className="bg-red rounded-1"
+                            >
+                                SUPPRIMER
+                            </button>
                         </motion.li>
                     ))}
             </ul>

@@ -7,6 +7,8 @@ module.exports = withPlugins([], {
             "blog-south-west-fishing.vercel.app",
             "www.google.com",
             "blog-south-west-fishing-q3ge3neug-jidayyy.vercel.app",
+            "localhost",
+            "www.slate.fr",
         ],
     },
     async headers() {

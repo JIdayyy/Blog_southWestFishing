@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/
+GET http://localhost:3000/api/comments
 Content-Type:  application/json
 
 {
@@ -9,10 +9,10 @@ Content-Type:  application/json
 }
 
 ###
-DELETE http://localhost:3000/api/users/
+DELETE http://localhost:3000/api/comments/322e310c-0e1e-483e-b86e-f266d53c5c38
 Content-Type: application/json
 
 {
-"id":"1"
+    
 }
 

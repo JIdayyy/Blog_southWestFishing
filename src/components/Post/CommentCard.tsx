@@ -5,24 +5,27 @@ interface IProps {
     comment: Comment;
     index: number;
 }
-export default function CommentCard({ comment, index }: IProps): JSX.Element {
+export default function CommentCard({ comment }: IProps): JSX.Element {
     console.log("test");
     return (
         <motion.div
-            whileHover={{ backgroundColor: "#2F4F4F", scale: 1.02 }}
-            className={`w-full p-10 rounded-8 h-92 bg-transparent border-b my-20  flex ${
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-            }`}
+            whileHover={{ scale: 1.01 }}
+            className={`w-full p-10 bg-gray-200 relative rounded-8 h-92 bg-transparent border-b my-32  flex ${"flex-row"}`}
         >
-            <Title className="text-white text-10 w-full font-600 h-full flex items-center align-middle justify-center">
-                {comment.content}
-            </Title>
-            <div className="h-full mx-10 text-10 font-200 flex flex-col text-left items-center align-middle justify-center">
-                <Title className="text-white w-full">{comment.username}</Title>
-                <Title className="text-white w-full">
+            <div className="text-black flex flex-col justify-start items-start align-top text-10 w-9/12 break-words font-400 h-full ">
+                <Title className="text-black text-10 w-full break-words font-200  ">
+                    Commentaire :
+                </Title>
+                <Title className="text-black text-10 w-full break-words font-400 h-full ">
+                    {comment.content}
+                </Title>
+            </div>
+            <div className="h-full mx-10  w-3/12 text-10 font-600 flex flex-col text-left items-start align-top justify-start">
+                <Title className="text-black w-full">{comment.username}</Title>
+                <Title className="text-black w-full">{comment.email}</Title>
+                <Title className=" w-full absolute -bottom-12 font-200 transform translate-x-96 text-white">
                     {new Date(comment.createdAt).toLocaleDateString()}
                 </Title>
-                <Title className="text-white w-full">{comment.email}</Title>
             </div>
         </motion.div>
     );
