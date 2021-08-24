@@ -3,6 +3,7 @@ import Title from "@components/Assets/Title/Title";
 import Image from "next/image";
 import { PostWithAuthorAndPictures } from "pages";
 import PostList from "@components/Post";
+
 interface IProps {
     posts: PostWithAuthorAndPictures[];
 }

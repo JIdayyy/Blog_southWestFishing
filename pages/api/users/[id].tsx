@@ -14,8 +14,6 @@ export default async function userHandler(
     res: NextApiResponse<Data | Data[] | Error | null>,
 ): Promise<void> {
     if (req.method === "DELETE") {
-        const { slug } = req.query;
-        console.log("delete");
-        return users.deleteUser(req, res, slug);
+        return users.deleteUser(req, res);
     }
 }

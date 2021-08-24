@@ -11,8 +11,7 @@ const comment = {
     deleteUser: async (
         req: NextApiRequest,
         res: NextApiResponse,
-        slug: string | string[],
-    ): Promise<void> => await deleteUser(req, res, slug),
+    ): Promise<void> => await deleteUser(req, res),
 };
 
 export default comment;

@@ -2,6 +2,7 @@ import About from "./About";
 import Image from "next/image";
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 import { motion } from "framer-motion";
+
 export default function Column(): JSX.Element {
     return (
         <FadeIn
@@ -9,7 +10,7 @@ export default function Column(): JSX.Element {
             className="bg-gray-800 md:mt-88  w-full md:w-160  text-white flex flex-row md:flex-col justify-start items-center md:items-start align-middle"
         >
             <motion.div
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.01 }}
                 className="relative w-full  md:h-160"
             >
                 <Image

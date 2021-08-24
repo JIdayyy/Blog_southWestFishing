@@ -3,7 +3,7 @@ import Header from "@components/Header";
 import Column from "@components/Main/Column";
 import Menu from "@components/Menu";
 import Head from "next/head";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 interface IProps {
     children: React.ReactNode;
@@ -11,6 +11,7 @@ interface IProps {
 }
 
 export function Layout({ children, page }: IProps): JSX.Element {
+    const ref = useRef(null);
     const [isMenu, setIsMenu] = useState<boolean>(false);
     console.log(isMenu);
 

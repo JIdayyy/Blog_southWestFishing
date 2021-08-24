@@ -2,16 +2,28 @@ import Title from "@components/Assets/Title/Title";
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
-import onClickOutside from "react-onclickoutside";
-function Menu({ setIsMenu }): JSX.Element {
+import { useRef } from "react";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
+
+interface IProps {
+    setIsMenu: (isMenu: boolean) => void;
+}
+
+export default function Menu({ setIsMenu }: IProps): JSX.Element {
+    const ref = useRef(null);
     const variants = {
         open: { width: "25%" },
         close: { width: "0%" },
     };
     const router = useRouter();
-    Menu.handleClickOutside = () => setIsMenu(false);
+    const handleClickOutside = () => {
+        // Your custom logic here
+        setIsMenu(false);
+    };
+    useOnClickOutside(ref, handleClickOutside);
     return (
         <motion.div
+            ref={ref}
             variants={variants}
             animate="open"
             initial="close"
@@ -30,8 +42,3 @@ function Menu({ setIsMenu }): JSX.Element {
         </motion.div>
     );
 }
-const clickOutsideConfig = {
-    handleClickOutside: () => Menu.handleClickOutside,
-};
-
-export default onClickOutside(Menu, clickOutsideConfig);

@@ -3,7 +3,7 @@ import { Comment } from ".prisma/client";
 import CommentCard from "./CommentCard";
 interface IProps {
     data: Comment[];
-    error: string;
+    error: unknown;
     isLoading: boolean;
 }
 export default function CommentList({

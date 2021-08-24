@@ -13,7 +13,6 @@ export default async function userHandler(
     req: NextApiRequest,
     res: NextApiResponse<Data | Data[] | Error | null>,
 ): Promise<void> {
-    console.log("user");
     if (req.method === "POST") {
         return users.create(req, res);
     }
@@ -21,7 +20,6 @@ export default async function userHandler(
         return users.get(req, res);
     }
     if (req.method === "DELETE") {
-        console.log("delete");
         return users.deleteUser(req, res);
     }
 }
