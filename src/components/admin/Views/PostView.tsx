@@ -21,7 +21,7 @@ export default function PostView(): JSX.Element {
     if (error) return <div>Error</div>;
     if (isLoading) return <div>Loading ...</div>;
     return (
-        <div className="bg-black text-10 my-20 w-full h-1/2 flex flex-col rounded-2 p-4">
+        <div className="bg-black text-10 my-20 shadow-8 w-full h-1/2 flex flex-col rounded-2 p-4">
             <div className="text-xl">Liste des Posts :</div>
             <div className="flex border-b text-gray-600 w-full items-center align-middle justify-between">
                 <div className="w-full">Title</div>
@@ -31,24 +31,25 @@ export default function PostView(): JSX.Element {
                     SUPPRIMER
                 </div>
             </div>
-            <ul className="flex flex-col w-full overflow-y-scroll items-center align-middle justify-between">
+            <ul className="flex flex-col w-full overflow-y-scroll scrollbar  items-center align-middle justify-between">
                 {data &&
                     data.map((post: Post) => (
                         <motion.li
                             whileHover={{ backgroundColor: "#696969" }}
-                            className="flex cursor-pointer w-full items-center align-middle justify-between"
+                            className="flex my-2 cursor-pointer w-full items-center align-middle justify-between"
                         >
                             <div className="w-full">{post.title}</div>
                             <div className="w-full truncate">
                                 {post.content}
                             </div>
                             <div className="w-full">{post.createdAt}</div>
-                            <button
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
                                 onClick={() => mutation.mutate(post.id)}
-                                className="bg-red rounded-1"
+                                className="bg-red rounded-1 px-4"
                             >
                                 SUPPRIMER
-                            </button>
+                            </motion.button>
                         </motion.li>
                     ))}
             </ul>

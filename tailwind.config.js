@@ -1267,6 +1267,7 @@ module.exports = {
         backdropDropShadow: [],
         backdropFilter: [],
         backdropGrayscale: [],
+        scrollbar: ["rounded"],
         backdropHueRotate: [],
         backdropInvert: [],
         backdropSaturate: [],
@@ -1410,6 +1411,7 @@ module.exports = {
         wordBreak: ["responsive"],
         zIndex: ["responsive"],
     },
+    scrollbar: ["rounded"],
     corePlugins: {
         appearance: false,
         gradientColorStops: false,
@@ -1420,5 +1422,5 @@ module.exports = {
         placeholderOpacity: false,
         verticalAlign: false,
     },
-    plugins: [require("tailwindcss-dir")()],
+    plugins: [require("tailwindcss-dir")(), require("tailwind-scrollbar")],
 };
