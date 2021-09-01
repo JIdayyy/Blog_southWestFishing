@@ -18,7 +18,7 @@ const allowCors = (fn: any) => async (req, res: any) => {
     }
     return await fn(req, res);
 };
-async function userHandler(
+async function commentHandler(
     req: NextApiRequest,
     res: NextApiResponse<Comment | Comment[] | Error | null>,
 ): Promise<void> {
@@ -29,4 +29,4 @@ async function userHandler(
         return comment.delete(req, res, id);
     }
 }
-module.exports = allowCors(userHandler);
+module.exports = allowCors(commentHandler);
