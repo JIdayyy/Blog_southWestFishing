@@ -2,7 +2,23 @@ import { Comment } from ".prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import comment from "../RESOLVERS/comments/comment";
 
-export default async function userHandler(
+const allowCors = (fn: any) => async (req, res: any) => {
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    // another common pattern
+    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader("Access-Control-Allow-Methods", "DELETE");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+    );
+    if (req.method === "OPTIONS") {
+        res.status(200).end();
+        return;
+    }
+    return await fn(req, res);
+};
+async function userHandler(
     req: NextApiRequest,
     res: NextApiResponse<Comment | Comment[] | Error | null>,
 ): Promise<void> {
@@ -13,3 +29,4 @@ export default async function userHandler(
         return comment.delete(req, res, id);
     }
 }
+module.exports = allowCors(userHandler);

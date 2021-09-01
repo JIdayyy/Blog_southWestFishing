@@ -1,42 +1,29 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import comment from "../RESOLVERS/comments/comment";
-import Cors from "cors";
-import { resolve } from "path";
-interface Data {
-    id: string;
-    content: string;
-    postId: string;
-    createdAt: Date;
-    email: string;
-}
-const cors = Cors({
-    methods: ["GET", "POST"],
-});
+import { Comment } from ".prisma/client";
 
-function runMiddleware(
-    req: NextApiRequest,
-    res: NextApiResponse<Data | Data[] | Error>,
-    fn: (
-        req: NextApiRequest,
-        res: NextApiResponse<Data | Data[] | Error>,
-        result: (result: unknown) => void,
-    ) => void,
-) {
-    return new Promise((resolve, reject) => {
-        fn(req, res, (result: unknown) => {
-            if (result instanceof Error) {
-                return reject(result);
-            }
+const allowCors =
+    (fn: (req: Request, res: any) => void) => async (req: any, res: any) => {
+        res.setHeader("Access-Control-Allow-Credentials", true);
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        // another common pattern
+        // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+        res.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        res.setHeader(
+            "Access-Control-Allow-Headers",
+            "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+        );
+        if (req.method === "OPTIONS") {
+            res.status(200).end();
+            return;
+        }
+        return await fn(req, res);
+    };
 
-            return resolve(result);
-        });
-    });
-}
-export default async function commentHandler(
+async function commentHandler(
     req: NextApiRequest,
-    res: NextApiResponse<Data | Data[] | Error>,
+    res: NextApiResponse<Comment | Comment[] | Error>,
 ): Promise<void> {
-    await runMiddleware(req, res, cors);
     if (req.method === "POST") {
         return comment.create(req, res);
     }
@@ -44,3 +31,4 @@ export default async function commentHandler(
         return comment.get(req, res);
     }
 }
+module.exports = allowCors(commentHandler);
