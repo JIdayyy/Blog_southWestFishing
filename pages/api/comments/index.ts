@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import comment from "../RESOLVERS/comments/comment";
 import Cors from "cors";
+import { resolve } from "path";
 interface Data {
     id: string;
     content: string;
@@ -15,7 +16,11 @@ const cors = Cors({
 function runMiddleware(
     req: NextApiRequest,
     res: NextApiResponse<Data | Data[] | Error>,
-    fn,
+    fn: (
+        req: NextApiRequest,
+        res: NextApiResponse<Data | Data[] | Error>,
+        result: (result: unknown) => void,
+    ) => void,
 ) {
     return new Promise((resolve, reject) => {
         fn(req, res, (result: unknown) => {
