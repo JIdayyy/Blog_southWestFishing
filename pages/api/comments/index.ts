@@ -3,7 +3,7 @@ import comment from "../RESOLVERS/comments/comment";
 import { Comment } from ".prisma/client";
 
 const allowCors =
-    (fn: (req: Request, res: any) => void) => async (req: any, res: any) => {
+    (fn: (req: any, res: any) => void) => async (req: any, res: any) => {
         res.setHeader("Access-Control-Allow-Credentials", true);
         res.setHeader("Access-Control-Allow-Origin", "*");
         // another common pattern
