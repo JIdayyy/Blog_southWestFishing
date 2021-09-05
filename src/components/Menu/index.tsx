@@ -1,7 +1,7 @@
 import Title from "@components/Assets/Title/Title";
 
 import { motion } from "framer-motion";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 

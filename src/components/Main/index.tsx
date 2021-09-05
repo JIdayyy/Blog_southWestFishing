@@ -52,8 +52,8 @@ export default function Main({ posts }: IProps): JSX.Element {
                     Black-Bass Brochet Perches et plus encore ...
                 </div>
             </div>
-            <Title className="text-white text-2xl w-full text-left my-20">
-                South West Fishing Actus :
+            <Title className="text-white border-b border-gray-900 pb-20 text-2xl w-full text-left my-20">
+                -S W F Actus-
             </Title>
             <PostList posts={posts} />
         </div>

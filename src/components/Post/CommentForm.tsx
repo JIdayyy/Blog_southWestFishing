@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation } from "react-query";
+import { useEffect } from "react";
+import { on } from "cluster";
 
 interface FormData {
     username: string;
@@ -12,7 +14,9 @@ interface IProps {
     refetch: () => void;
 }
 export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset, formState } = useForm({
+        defaultValues: { something: "anything" },
+    });
     const mutation = useMutation(
         (newComment: FormData) =>
             axios.post(
@@ -33,22 +37,12 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
     );
     const onSubmit = (data: FormData): void => {
         mutation.mutate(data);
-        // axios
-        //     .post(
-        //         `${process.env.NEXT_PUBLIC_API_URL}comments`,
-        //         {
-        //             ...data,
-        //             postId: postId.postId,
-        //         },
-        //         {
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //             },
-        //         },
-        //     )
-        //     .then((res) => console.log(res))
-        //     .catch((err) => console.log(err));
     };
+    useEffect(() => {
+        if (formState) {
+            reset({ something: "" });
+        }
+    }, [formState, onSubmit, reset]);
 
     return (
         <form

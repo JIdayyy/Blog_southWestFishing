@@ -9,19 +9,19 @@ interface IProps {
 
 export default function Card({ post }: IProps): JSX.Element {
     const router = useRouter();
-    console.log(post);
+
     return (
         <motion.div
             onClick={() => router.push(`/post/${post.id}`)}
             whileHover={{ backgroundColor: "#2F4F4F", scale: 1.005 }}
             whileTap={{ scale: 1 }}
-            className="text-white rounded-8 items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
+            className="text-white rounded-4 items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
         >
             {post.picture[0] && (
                 <Image
                     width={200}
                     height={200}
-                    className="rounded-8"
+                    className="rounded-1"
                     src={post.picture[0].url}
                 />
             )}
