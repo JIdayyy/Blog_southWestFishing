@@ -5,8 +5,6 @@ import comment from "../RESOLVERS/comments/comment";
 const allowCors = (fn: any) => async (req, res: any) => {
     res.setHeader("Access-Control-Allow-Credentials", true);
     res.setHeader("Access-Control-Allow-Origin", "*");
-    // another common pattern
-    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
     res.setHeader("Access-Control-Allow-Methods", "DELETE");
     res.setHeader(
         "Access-Control-Allow-Headers",
@@ -18,6 +16,7 @@ const allowCors = (fn: any) => async (req, res: any) => {
     }
     return await fn(req, res);
 };
+
 async function commentHandler(
     req: NextApiRequest,
     res: NextApiResponse<Comment | Comment[] | Error | null>,
