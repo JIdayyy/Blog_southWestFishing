@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../../prisma/client";
+import prisma from "../../../prisma/client";
 interface Data {
     id: string;
     content: string;

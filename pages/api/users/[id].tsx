@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import users from "../RESOLVERS/users/users";
+import users from "../../../src/RESOLVERS/users/users";
 
 interface Data {
     id: string;

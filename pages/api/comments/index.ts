@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import comment from "../RESOLVERS/comments/comment";
+import comment from "../../../src/RESOLVERS/comments/comment";
 import { Comment } from ".prisma/client";
 
 const allowCors =

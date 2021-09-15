@@ -1,6 +1,6 @@
 import { Post } from ".prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
-import post from "../RESOLVERS/posts/posts";
+import post from "../../../src/RESOLVERS/posts/posts";
 
 export default async function userHandler(
     req: NextApiRequest,

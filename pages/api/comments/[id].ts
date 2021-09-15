@@ -1,6 +1,6 @@
 import { Comment } from ".prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
-import comment from "../RESOLVERS/comments/comment";
+import comment from "../../../src/RESOLVERS/comments/comment";
 
 const allowCors = (fn: any) => async (req, res: any) => {
     res.setHeader("Access-Control-Allow-Credentials", true);
