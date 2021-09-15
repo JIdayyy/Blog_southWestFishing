@@ -5,7 +5,7 @@ import prisma from "../../../../prisma/client";
 export default async function getComments(
     req: NextApiRequest,
     res: NextApiResponse<
-        Comment[] | { name: string; message: string; code: string }
+        Comment[] | { name: string; message: string; code: string; test?: any }
     >,
 ): Promise<void> {
     try {
@@ -18,6 +18,7 @@ export default async function getComments(
                 name: "Error",
                 message: error.message,
                 code: error.code,
+                test: error,
             });
         } else {
             console.log(error);
@@ -25,6 +26,7 @@ export default async function getComments(
                 name: "Error",
                 message: error as string,
                 code: "UNKNOWN",
+                test: error,
             });
         }
     }
