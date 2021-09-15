@@ -19,7 +19,13 @@ export default async function getComments(
         const comments = await prisma.comment.findMany();
         res.status(200).json(comments);
     } catch (error: unknown) {
-        if (error instanceof Prisma.PrismaClientValidationError) {
+        if (
+            error instanceof Prisma.PrismaClientUnknownRequestError ||
+            error instanceof Prisma.PrismaClientValidationError ||
+            error instanceof Prisma.PrismaClientKnownRequestError ||
+            error instanceof Prisma.PrismaClientInitializationError ||
+            error instanceof Prisma.PrismaClientRustPanicError
+        ) {
             console.log(error);
             return res.status(500).json({
                 name: "Error",
