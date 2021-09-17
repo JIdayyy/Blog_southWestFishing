@@ -5,6 +5,11 @@ import ScaleWhileHover from "@components/AnimatedComponents/ScaleWhileHover";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Tarrifs from "./Tarrifs";
+
+interface IProps {
+    isTarifs: boolean;
+}
 
 const contactButtons = [
     { id: 1, name: "Tel", value: "06.33.45.32.34", image: "/icons/tel.png" },
@@ -22,12 +27,15 @@ const contactButtons = [
     },
 ];
 
-export default function Header(): JSX.Element {
+export default function Header({ isTarifs }: IProps): JSX.Element {
     const [isShow, setIsShow] = useState(false);
     const [selected, setSelected] = useState<number | null>(null);
+
     return (
         <div className="w-full sm:h-320 h-full relative flex flex-col items-center align-middle justify-center">
-            <div className="absolute top-60 md:left-24 left-4 z-10 flex items-start align-middle justify-between h-52 flex-col">
+            {isTarifs && <Tarrifs />}
+
+            <div className="absolute top-20 md:left-24 left-4 z-10 flex items-start align-middle justify-between h-52 flex-col">
                 {contactButtons.map((button) => (
                     <ScaleWhileHover className="flex" scale={1.01}>
                         <Image
@@ -52,8 +60,8 @@ export default function Header(): JSX.Element {
                     </ScaleWhileHover>
                 ))}
             </div>
-            <Image src="/images/bg_southwestfishing.jpg" layout="fill" />
 
+            <Image src="/images/bg_southwestfishing.jpg" layout="fill" />
             <motion.div
                 animate={{ y: 0 }}
                 initial={{ y: -10 }}

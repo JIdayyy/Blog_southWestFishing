@@ -36,7 +36,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IProps>> {
             comments: true,
         },
     });
-    console.log(posts);
+
     return {
         props: { posts },
     };
