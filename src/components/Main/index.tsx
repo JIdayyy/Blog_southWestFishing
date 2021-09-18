@@ -11,8 +11,10 @@ export default function Main({ posts }: IProps): JSX.Element {
     return (
         <div className="lg:w-full px-8 md:px-0 flex mb-200 flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
-                <Title className="text-white text-10">South-West Fishing</Title>
-                <Title className="text-white text-13 md:text-20 font-600 my-8">
+                <Title className="text-grey-A200 text-10">
+                    South-West Fishing
+                </Title>
+                <Title className="text-grey-A200 text-13 md:text-20 font-600 my-8">
                     Guidage, stages, et initiation à la pêche au Pays Basque/Sud
                     Landes
                 </Title>
@@ -27,10 +29,10 @@ export default function Main({ posts }: IProps): JSX.Element {
                 />
             </FadeIn>
             <div>
-                <Title className="text-white text-18 font-400 mt-24">
+                <Title className="text-grey-A200 text-18 font-400 mt-24">
                     Bienvenue sur South West Fishing
                 </Title>
-                <div className="text-white text-8 font-200  border-b py-14">
+                <div className="text-grey-A200 text-8 font-200 pb-40  py-14">
                     Découvrez la pêche dans le sud ouest avec un guide diplômé
                     expérimenté.
                     <br></br>Partir en séjour <strong>guidage</strong> ou
@@ -52,8 +54,13 @@ export default function Main({ posts }: IProps): JSX.Element {
                     Black-Bass Brochet Perches et plus encore ...
                 </div>
             </div>
-            <Title className="text-white border-b border-gray-900 pb-20 text-2xl w-full text-left my-20">
-                -S W F Actus-
+            <Title className="text-grey-A200 border-b bg-gray-800 rounded-6 border-gray-900 items-center align-middle justify-between pb-20 text-2xl flex w-full text-left my-52">
+                <div>-S W F Actus-</div>
+                <img
+                    src="/images/logo_southwestfishing.png"
+                    className="w-36"
+                    alt=""
+                />
             </Title>
             <PostList posts={posts} />
         </div>

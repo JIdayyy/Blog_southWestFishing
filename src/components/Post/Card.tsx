@@ -15,7 +15,7 @@ export default function Card({ post }: IProps): JSX.Element {
             onClick={() => router.push(`/post/${post.id}`)}
             whileHover={{ backgroundColor: "#2F4F4F", scale: 1.005 }}
             whileTap={{ scale: 1 }}
-            className="text-white rounded-4 items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
+            className="text-grey-A200 rounded-4 items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
         >
             {post.picture[0] && (
                 <Image

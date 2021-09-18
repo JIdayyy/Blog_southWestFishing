@@ -38,9 +38,9 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="text-white flex flex-col my-60 "
+            className="text-grey-A200 border p-12 rounded-6 flex flex-col my-60 "
         >
-            <div className="text-2xl font-500">Commentaires : </div>
+            <div className="text-xl font-500">Commentaire : </div>
             <input
                 className="my-4 border-white border-b px-4 py-2 bg-transparent outline-none"
                 type="text"
@@ -58,7 +58,7 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 {...register("email", { required: true, maxLength: 50 })}
             />
             <textarea
-                className="my-4 border-white border-b px-4 py-2 bg-transparent outline-none"
+                className="my-4 h-96 border-white border-b px-4 py-2 bg-transparent outline-none"
                 placeholder="Ecrivez votre commentaire ici"
                 {...register("content", { maxLength: 500 })}
             />

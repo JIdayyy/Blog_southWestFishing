@@ -7,7 +7,7 @@ export default function Column(): JSX.Element {
     return (
         <FadeIn
             delay={0.3}
-            className="bg-gray-800 md:mt-88  w-full md:w-160  text-white flex flex-row md:flex-col justify-start items-center md:items-start align-middle"
+            className="bg-gray-800 md:mt-88  w-full md:w-160  text-grey-A200 flex  flex-col justify-start items-center md:items-start align-middle"
         >
             <motion.div
                 whileHover={{ scale: 1.01 }}
@@ -23,7 +23,7 @@ export default function Column(): JSX.Element {
                 />
             </motion.div>
             <About />
-            <div className="w-full md:h-288 md:p-6 flex md:flex-col justify-around items-center">
+            <div className="w-full h-320 md:h-288 md:p-6 flex md:flex-col justify-around items-center">
                 <Image
                     className="my-8"
                     src="/images/epf.png"

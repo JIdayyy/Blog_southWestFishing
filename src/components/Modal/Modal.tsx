@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 function Modal(): JSX.Element {
     const router = useRouter();
     return (
-        <div className="w-screen h-screen bg-gray-900 text-white fixed top-0 flex flex-col items-center justify-center align-middle z-9999">
+        <div className="w-screen h-screen bg-gray-900 text-grey-A200 fixed top-0 flex flex-col items-center justify-center align-middle z-9999">
             <form className="flex-col flex" action="">
                 <label htmlFor="">Login :</label>
                 <input

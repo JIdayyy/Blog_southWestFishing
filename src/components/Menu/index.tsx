@@ -30,12 +30,12 @@ export default function Menu({ setIsMenu }: IProps): JSX.Element {
             className="fixed md:w-1/4 w-full  left-0 h-screen  flex  z-20"
         >
             <div className=" w-full flex flex-col items-center align-middle justify-center h-screen bg-black">
-                <Title className="text-white">
+                <Title className="text-grey-A200">
                     <button onClick={() => router.push("/")}>
                         SOUTH WEST FISHING
                     </button>
                 </Title>
-                <Title className="text-white">
+                <Title className="text-grey-A200">
                     <button onClick={() => router.push("/admin")}>ADMIN</button>
                 </Title>
             </div>

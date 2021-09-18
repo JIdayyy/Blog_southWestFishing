@@ -18,7 +18,7 @@ export default function Article({ article }: IProps): JSX.Element {
                 .catch((r) => console.log(r)),
     );
     return (
-        <div className="w-full lg:w-6/12 mt-88 h-full mb-88 flex flex-col item-center align-middle justify-center text-white">
+        <div className="w-full lg:w-6/12 mt-88 h-full mb-88 flex flex-col item-center align-middle justify-center text-grey-A200">
             {article.picture[0] && (
                 <div>
                     <Image
