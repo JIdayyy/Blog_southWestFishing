@@ -13,6 +13,7 @@ export default async function deleteUser(
                 id: id as string,
             },
         });
+        await prisma.$disconnect();
         res.status(204).send({
             message: "user deleted",
             name: "deleted Successfully",

@@ -14,13 +14,13 @@ export default async function login(
         const user = await prisma.user.findFirst({
             where: { email: body.email },
         });
-        console.log(user.password, body.password);
         if (!user) {
             return res.status(404).send("User not found");
         }
         if (user.password !== body.password) {
             return res.status(401).send("Wrong password");
         }
+        await prisma.$disconnect();
         delete user.password;
 
         res.status(201).send(user);

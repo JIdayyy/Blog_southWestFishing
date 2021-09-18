@@ -35,7 +35,9 @@ export default function PostView(): JSX.Element {
             >
                 Ajouter
             </button>
-            {showAddPost && <CreatePost setIsOpen={setShowAddPost} />}
+            {showAddPost && (
+                <CreatePost refetch={refetch} setIsOpen={setShowAddPost} />
+            )}
             <div className="flex border-b text-gray-600 w-full items-center align-middle justify-between">
                 <div className="w-full">Title</div>
                 <div className="w-full">Body</div>
@@ -59,7 +61,7 @@ export default function PostView(): JSX.Element {
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 onClick={() => mutation.mutate(post.id)}
-                                className="bg-red rounded-1 px-4"
+                                className="bg-red rounded-1 px-4 outline-none focus:outline-none"
                             >
                                 SUPPRIMER
                             </motion.button>

@@ -36,7 +36,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IProps>> {
             comments: true,
         },
     });
-
+    await prisma.$disconnect();
     return {
         props: { posts },
     };

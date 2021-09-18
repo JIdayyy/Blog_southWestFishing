@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { style } from "@styles/TailwindClasses";
@@ -10,6 +10,7 @@ interface IProps {
     setIsAdminLogin: Dispatch<SetStateAction<boolean>>;
 }
 function Modal({ setIsAdminLogin }: IProps): JSX.Element {
+    const [invalid, setInvalid] = useState<boolean>(false);
     const router = useRouter();
     const { handleSubmit, register } = useForm();
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function Modal({ setIsAdminLogin }: IProps): JSX.Element {
                 router.push("/myadmin");
             },
             onError: (error) => {
+                setInvalid(true);
                 console.log(error);
             },
         },
@@ -38,6 +40,7 @@ function Modal({ setIsAdminLogin }: IProps): JSX.Element {
                 className="flex-col flex"
                 action=""
             >
+                {invalid && <div className="text-red">Invalid credentials</div>}
                 <label htmlFor="">Email :</label>
                 <input
                     className={style.input()}

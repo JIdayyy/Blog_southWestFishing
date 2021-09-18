@@ -9,6 +9,7 @@ module.exports = withPlugins([], {
             "blog-south-west-fishing-q3ge3neug-jidayyy.vercel.app",
             "localhost",
             "www.slate.fr",
+            "adventures.everybodyshops.com",
         ],
     },
     async headers() {

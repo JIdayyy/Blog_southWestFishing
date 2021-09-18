@@ -1,28 +1,31 @@
 import { RootState } from "@redux/reducers";
 import axios from "axios";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useSelector } from "react-redux";
 import { style } from "../../styles/TailwindClasses";
+
 interface Props {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
+    refetch: () => void;
 }
 
-export default function CreatePost({ setIsOpen }: Props): JSX.Element {
+export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
+    const [pictures, setPictures] = useState<Array<string>>([]);
+    const [pictureInput, setPictureInput] = useState<string>(null);
     const user = useSelector((state: RootState) => state.app.user);
-    const { mutate: createPost } = useMutation((newPost) =>
-        axios.post("/api/posts/", newPost),
+    const { mutate: createPost } = useMutation(
+        (newPost) => axios.post("/api/posts", newPost),
+        {
+            onSuccess: () => refetch(),
+        },
     );
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        createPost({ ...data, userId: user.id });
+        createPost({ ...data, userId: user.id, pictures });
     };
-    console.log(errors);
+    console.log(pictures);
 
     return (
         <div
@@ -49,6 +52,19 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                             maxLength: 3000,
                         })}
                     />
+
+                    <input
+                        onChange={(e) => setPictureInput(e.target.value)}
+                        className={style.input()}
+                        type="text"
+                        placeholder="Url de l'image de votre post"
+                    />
+                    <button
+                        className={style.button("green")}
+                        onClick={() => setPictures([...pictures, pictureInput])}
+                    >
+                        ADD
+                    </button>
                     <textarea
                         className={`${style.input()} h-60`}
                         placeholder="Votre texte ici 3000 caractères  max ..."
@@ -60,6 +76,12 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                     <button className={style.button("blue")}>AJOUTER</button>
                 </div>
             </form>
+            <div className="flex flex-wrap">
+                {pictures &&
+                    pictures.map((picture) => (
+                        <img className="w-60 h-60" src={picture}></img>
+                    ))}
+            </div>
         </div>
     );
 }

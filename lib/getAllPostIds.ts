@@ -4,6 +4,7 @@ export async function getAllPostIds(): Promise<
     { params: { id: Post["id"] } }[]
 > {
     const posts = await prisma.post.findMany();
+    await prisma.$disconnect();
     const paths = posts.map((post) => {
         return {
             params: {

@@ -12,6 +12,7 @@ export default async function deleteComment(
                 id: id as string,
             },
         });
+        await prisma.$disconnect();
         res.status(204).send({
             message: "Comment deleted",
             name: "deleted Successfully",

@@ -8,6 +8,7 @@ export default async function getUsers(
 ): Promise<void> {
     try {
         const posts = await prisma.post.findMany();
+        await prisma.$disconnect();
         res.status(200).json(posts);
     } catch (error: unknown) {
         res.status(500).json({

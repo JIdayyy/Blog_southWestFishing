@@ -26,6 +26,7 @@ export default async function createComment(
                 },
             },
         });
+        await prisma.$disconnect();
         res.status(201).json(comment);
     } catch (error: unknown) {
         console.log(error);

@@ -15,6 +15,7 @@ export default async function getComments(
 ): Promise<void> {
     try {
         const comments = await prisma.comment.findMany();
+        await prisma.$disconnect();
         res.status(200).json(comments);
     } catch (error: unknown) {
         if (

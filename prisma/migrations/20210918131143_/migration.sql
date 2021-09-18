@@ -1,13 +1,17 @@
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('ADMIN', 'USER');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT,
+    "role" "Role"[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -19,7 +23,7 @@ CREATE TABLE "Post" (
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "userId" TEXT NOT NULL,
 
-    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
+    PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -32,7 +36,7 @@ CREATE TABLE "Comment" (
     "email" TEXT NOT NULL,
     "postId" TEXT NOT NULL,
 
-    CONSTRAINT "Comment_pkey" PRIMARY KEY ("id")
+    PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -44,14 +48,14 @@ CREATE TABLE "Picture" (
     "main" BOOLEAN NOT NULL DEFAULT false,
     "postId" TEXT,
 
-    CONSTRAINT "Picture_pkey" PRIMARY KEY ("id")
+    PRIMARY KEY ("id")
 );
 
 -- AddForeignKey
-ALTER TABLE "Post" ADD CONSTRAINT "Post_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Picture" ADD CONSTRAINT "Picture_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Picture" ADD FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;

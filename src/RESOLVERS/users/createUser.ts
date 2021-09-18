@@ -13,6 +13,7 @@ export default async function createUser(
                 ...body,
             },
         });
+        await prisma.$disconnect();
         res.status(201).json(user);
     } catch (error: unknown) {
         console.log(error);
