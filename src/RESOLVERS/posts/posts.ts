@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import getPost from "./getPosts";
-import deletePost from "./deletepost";
-import createPost from "./createPost";
+import getPost from "./methods/getPosts";
+import deletePost from "./methods/deletepost";
+import createPost from "./methods/createPost";
 const comment = {
     get: async (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
         await getPost(req, res),

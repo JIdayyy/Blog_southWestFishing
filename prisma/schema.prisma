@@ -17,7 +17,7 @@ model User {
   email    String
   password String?
   posts    Post[]
-
+  role     Role[]
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
@@ -54,3 +54,8 @@ model Picture {
   main      Boolean  @default(false)
   postId    String?
 }
+
+enum Role {
+  ADMIN 
+  USER
+  }

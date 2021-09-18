@@ -1,21 +1,19 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../prisma/client";
+import prisma from "../../../../prisma/client";
 import { Post } from ".prisma/client";
-export default async function deletePost(
+export default async function createPosts(
     req: NextApiRequest,
     res: NextApiResponse<Post | Error>,
-    id: string | string[],
 ): Promise<void> {
+    const body = req.body;
+    console.log({ ...body });
     try {
-        await prisma.post.delete({
-            where: {
-                id: id as string,
+        const post = await prisma.post.create({
+            data: {
+                ...body,
             },
         });
-        res.status(204).send({
-            message: "post deleted",
-            name: "deleted Successfully",
-        });
+        res.status(201).json(post);
     } catch (error: unknown) {
         console.log(error);
 

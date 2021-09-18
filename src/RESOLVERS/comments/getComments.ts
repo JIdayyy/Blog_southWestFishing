@@ -10,8 +10,6 @@ export default async function getComments(
               name: string;
               message: string;
               code: string;
-              test?: any;
-              another?: any;
           }
     >,
 ): Promise<void> {
@@ -31,7 +29,6 @@ export default async function getComments(
                 name: "Error",
                 message: error.message,
                 code: error.stack,
-                test: error,
             });
         } else {
             console.log(error);
@@ -39,7 +36,6 @@ export default async function getComments(
                 name: "Error",
                 message: error as string,
                 code: "UNKNOWN",
-                test: error,
             });
         }
     }
