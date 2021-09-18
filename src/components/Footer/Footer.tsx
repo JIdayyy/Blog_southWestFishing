@@ -10,7 +10,7 @@ function Footer(): JSX.Element {
     };
 
     return (
-        <div className="w-full h-32 bg-gray-900">
+        <div className="w-full h-32  bg-gray-900">
             {isAdminLogin && <Modal setIsAdminLogin={setIsAdminLogin} />}
             <button onClick={handleClick}>CLICK</button>
         </div>

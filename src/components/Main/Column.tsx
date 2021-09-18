@@ -7,7 +7,7 @@ export default function Column(): JSX.Element {
     return (
         <FadeIn
             delay={0.3}
-            className="bg-gray-800 md:mt-88  w-full md:w-160  text-white flex flex-row md:flex-col justify-start items-center md:items-start align-middle"
+            className="sm:bg-gray-800 md:mt-88  w-full md:w-160  text-white flex flex-col sm:flex-row md:flex-col justify-start items-center md:items-start align-middle"
         >
             <motion.div
                 whileHover={{ scale: 1.01 }}
