@@ -1,3 +1,4 @@
+import TextArea from "@components/Jodit/TextArea";
 import { RootState } from "@redux/reducers";
 import axios from "axios";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
+    const [joditArea, setJoditArea] = useState();
     const [pictures, setPictures] = useState<Array<string>>([]);
     const [pictureInput, setPictureInput] = useState<string>(null);
     const user = useSelector((state: RootState) => state.app.user);
@@ -23,7 +25,7 @@ export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
     );
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        createPost({ ...data, userId: user.id, pictures });
+        createPost({ ...data, userId: user.id, pictures, content: joditArea });
     };
     console.log(pictures);
 
@@ -65,13 +67,17 @@ export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
                     >
                         ADD
                     </button>
-                    <textarea
+                    {/* <textarea
                         className={`${style.input()} h-60`}
                         placeholder="Votre texte ici 3000 caractères  max ..."
                         {...register("content", {
                             required: true,
                             maxLength: 300,
                         })}
+                    /> */}
+                    <TextArea
+                        joditArea={joditArea}
+                        setJoditArea={setJoditArea}
                     />
                     <button className={style.button("blue")}>AJOUTER</button>
                 </div>

@@ -20,7 +20,7 @@ export function Home(props: IProps): JSX.Element {
     return (
         <div
             style={{ backgroundColor: "black" }}
-            className="lg:w-6/12 w-full min-h-full flex flex-col bg-black"
+            className="lg:w-6/12 w-full scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-800 min-h-full flex   flex-col bg-black"
         >
             <div className=" flex w-full h-full">
                 <Main posts={props.posts} />

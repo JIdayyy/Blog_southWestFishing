@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-interface Props {}
 
 const prestations = [
     "Enseignement et guidage",
@@ -66,7 +65,7 @@ export default function Tarrifs(): JSX.Element {
         <motion.div
             animate={{ opacity: 1, x: 0 }}
             initial={{ opacity: 0, x: -1000 }}
-            className="w-1/2  text-white bg-black absolute rounded-4 z-9999 flex flex-col border-4 border-gray-700"
+            className="  text-white bg-black absolute rounded-4 z-9999 w-full md:w-3/5  md:flex flex-col border-4 border-gray-700"
         >
             <div className="w-full  bg-gray-600 flex items-center align-middle justify-between p-10 shadow-8 ">
                 <span className="font-semibold">Tarrifs</span>
@@ -86,7 +85,7 @@ export default function Tarrifs(): JSX.Element {
             </div>
             <div className="w-full h-full flex items-center align-middle justify-between p-10 shadow-inner">
                 <ul>
-                    <h1 className="text-sm font-bold my-4">
+                    <h1 className="text-10 font-bold my-4">
                         Compris dans les prestations :
                     </h1>
                     {prestations.map((prestation) => (
@@ -94,9 +93,24 @@ export default function Tarrifs(): JSX.Element {
                     ))}
                 </ul>
                 <ul>
-                    <li>Journée : {displayed && displayed.journee}</li>
-                    <li>Demi Journée : {displayed && displayed.demiJournee}</li>
-                    <li>Séjour : {displayed && displayed.sejour}</li>
+                    <li>
+                        Journée :
+                        <span className="text-xl">
+                            {displayed && displayed.journee}
+                        </span>
+                    </li>
+                    <li>
+                        Demi Journée :
+                        <span className="text-xl">
+                            {displayed && displayed.demiJournee}
+                        </span>
+                    </li>
+                    <li>
+                        Séjour :
+                        <span className="text-xl">
+                            {displayed && displayed.sejour}
+                        </span>
+                    </li>
                 </ul>
                 <Link href="/">
                     <motion.button

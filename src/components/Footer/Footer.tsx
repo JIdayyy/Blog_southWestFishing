@@ -10,9 +10,15 @@ function Footer(): JSX.Element {
     };
 
     return (
-        <div className="w-full h-32  bg-gray-900">
+        <div className="w-full h-32 flex items-center align-middle justify-center  bg-gray-900">
             {isAdminLogin && <Modal setIsAdminLogin={setIsAdminLogin} />}
-            <button onClick={handleClick}>CLICK</button>
+            <div>
+                <button onClick={handleClick}>
+                    <span className="w-full text-white ">
+                        J.Digital Solutions ©
+                    </span>
+                </button>
+            </div>
         </div>
     );
 }

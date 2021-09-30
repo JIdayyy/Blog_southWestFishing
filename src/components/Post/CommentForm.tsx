@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation } from "react-query";
+import TextArea from "@components/Jodit/TextArea";
+import { useState } from "react";
 
 interface FormData {
     username: string;
@@ -12,6 +14,7 @@ interface IProps {
     refetch: () => void;
 }
 export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
+    const [joditArea, setJoditArea] = useState();
     const { register, handleSubmit } = useForm();
     const mutation = useMutation(
         (newComment: FormData) =>
@@ -20,6 +23,7 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 {
                     ...newComment,
                     postId: postId,
+                    content: joditArea,
                 },
                 {
                     headers: {
@@ -38,11 +42,11 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="text-white flex flex-col my-60 "
+            className="text-white flex flex-col my-60 items-start align-middle justify-start"
         >
             <div className="text-2xl font-500">Commentaires : </div>
             <input
-                className="my-4 border-white border-b px-4 py-2 bg-transparent outline-none"
+                className="my-4 border-white w-full border-b px-4 py-2 bg-transparent outline-none"
                 type="text"
                 placeholder="Prénom"
                 {...register("username", {
@@ -52,18 +56,19 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 })}
             />
             <input
-                className="my-4 border-white border-b px-4 py-2 bg-transparent outline-none"
+                className="my-4 border-white w-full border-b px-4 py-2 bg-transparent outline-none"
                 type="email"
                 placeholder="Email"
                 {...register("email", { required: true, maxLength: 50 })}
             />
-            <textarea
-                className="my-4 border-white border-b px-4 py-2 bg-transparent outline-none"
-                placeholder="Ecrivez votre commentaire ici"
-                {...register("content", { maxLength: 500 })}
-            />
+            <TextArea joditArea={joditArea} setJoditArea={setJoditArea} />
 
-            <button type="submit">Envoyer</button>
+            <button
+                className="bg-blue-600 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"
+                type="submit"
+            >
+                Envoyer
+            </button>
         </form>
     );
 }

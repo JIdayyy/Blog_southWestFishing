@@ -14,12 +14,12 @@ export function Layout({ children, page }: IProps): JSX.Element {
     return (
         <div
             style={{ backgroundColor: "black" }}
-            className="max-w-screen min-h-screen overflow-x-hidden scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 flex flex-col"
+            className="max-w-screen min-h-screen overflow-x-hidden scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-800 flex flex-col"
         >
             <Head>
                 <title>{page}</title>
             </Head>
-            <div className="w-screen  overflow-x-hidden h-full flex flex-col">
+            <div className="w-screen  overflow-x-hidden h-full flex flex-col items-center align-middle justify-between">
                 <Header isTarifs={isTarifs} />
                 <div className="h-24 text-white flex items-center align-middle justify-end bg-gray-A400 w-full px-32">
                     <button className="mx-4 outline-none focus:outline-none">

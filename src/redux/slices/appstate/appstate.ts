@@ -8,7 +8,7 @@ interface IAppState {
     };
 }
 
-const initialState: IAppState = {
+export const initialState: IAppState = {
     user: {
         id: "",
         username: "",

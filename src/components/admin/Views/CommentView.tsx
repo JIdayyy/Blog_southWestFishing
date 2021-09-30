@@ -2,9 +2,8 @@ import { useMutation, useQuery } from "react-query";
 import axios from "axios";
 import { Comment } from ".prisma/client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+
 export default function CommentView(): JSX.Element {
-    const [isModal, setIsModal] = useState(false);
     const { data, isLoading, error, refetch } = useQuery("getComments", () =>
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
@@ -40,13 +39,16 @@ export default function CommentView(): JSX.Element {
                     data.map((comment: Comment) => (
                         <motion.li
                             whileHover={{ backgroundColor: "#696969" }}
-                            className="flex w-full items-center cursor-pointer my-2 align-middle justify-between"
+                            className="flex w-full h-24 items-center cursor-pointer my-2 align-middle justify-between"
                         >
                             <div className="w-full ">{comment.username}</div>
                             <div className="w-full ">{comment.email}</div>
-                            <div className="w-full truncate ">
-                                {comment.content}
-                            </div>
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: comment.content.toString(),
+                                }}
+                                className="w-full truncate "
+                            ></div>
                             <div className="w-full ">{comment.createdAt}</div>
                             <button
                                 onClick={() => mutation.mutate(comment.id)}

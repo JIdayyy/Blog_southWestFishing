@@ -13,9 +13,7 @@ export default function Sidebar(): JSX.Element {
                 />
             </div>
 
-            <NavLink
-                link={{ name: "Home", link: "/", image: "/icons/home.png" }}
-            />
+            <NavLink link={navLinks[0]} />
         </div>
     );
 }

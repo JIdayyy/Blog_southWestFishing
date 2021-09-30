@@ -9,7 +9,7 @@ interface IProps {
 }
 export default function Main({ posts }: IProps): JSX.Element {
     return (
-        <div className="lg:w-full px-8 md:px-0 flex mb-200 flex-col lg:items-start items-center align-middle justify-center">
+        <div className="lg:w-full px-8 md:px-0 flex mb-200 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-800 flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
                 <Title className="text-white text-10">South-West Fishing</Title>
                 <Title className="text-white text-13 md:text-20 font-600 my-8">
@@ -30,7 +30,7 @@ export default function Main({ posts }: IProps): JSX.Element {
                 <Title className="text-white text-18 font-400 mt-24">
                     Bienvenue sur South West Fishing
                 </Title>
-                <div className="text-white text-8 font-200  border-b py-14">
+                <div className="text-white text-8 font-200  border-b border-grey-A700 py-28">
                     Découvrez la pêche dans le sud ouest avec un guide diplômé
                     expérimenté.
                     <br></br>Partir en séjour <strong>guidage</strong> ou

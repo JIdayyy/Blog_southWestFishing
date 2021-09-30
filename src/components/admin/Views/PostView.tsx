@@ -51,12 +51,15 @@ export default function PostView(): JSX.Element {
                     data.map((post: Post) => (
                         <motion.li
                             whileHover={{ backgroundColor: "#696969" }}
-                            className="flex my-2 cursor-pointer w-full items-center align-middle justify-between"
+                            className="flex my-2 cursor-pointer w-full items-center h-24 overflow-y-hidden overscroll-x-none align-middle justify-between"
                         >
                             <div className="w-full">{post.title}</div>
-                            <div className="w-full truncate">
-                                {post.content}
-                            </div>
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: post.content.toString(),
+                                }}
+                                className="w-full truncate"
+                            ></div>
                             <div className="w-full">{post.createdAt}</div>
                             <motion.button
                                 whileHover={{ scale: 1.1 }}

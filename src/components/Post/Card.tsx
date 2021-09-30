@@ -27,9 +27,12 @@ export default function Card({ post }: IProps): JSX.Element {
             )}
             <div className="flex  w-full h-full flex-col items-start p-6">
                 <Title className="text-xl text-whtie">{post.title}</Title>
-                <div className="text-10 h-full w-full overflow-fade  overflow-hidden">
-                    {post.content}
-                </div>
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: post.content.toString(),
+                    }}
+                    className="text-10 h-full w-full overflow-fade  overflow-hidden"
+                ></div>
                 <div className="text-10 text-gray-500 w-full text-right">
                     {post.author.name} le {post.createdAt.toLocaleDateString()}
                 </div>
