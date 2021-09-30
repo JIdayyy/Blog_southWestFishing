@@ -42,7 +42,7 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="text-white flex flex-col my-60 items-start align-middle justify-start"
+            className="text-white w-full flex flex-col my-60 items-start align-middle justify-start"
         >
             <div className="text-2xl font-500">Commentaires : </div>
             <input
@@ -61,7 +61,7 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 placeholder="Email"
                 {...register("email", { required: true, maxLength: 50 })}
             />
-            <TextArea joditArea={joditArea} setJoditArea={setJoditArea} />
+            <TextArea setJoditArea={setJoditArea} />
 
             <button
                 className="bg-blue-600 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"
