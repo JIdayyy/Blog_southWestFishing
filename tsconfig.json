@@ -31,5 +31,9 @@
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules", "__generated__/globalTypes.ts"]
+    "exclude": [
+        "node_modules",
+        "__generated__/globalTypes.ts",
+        "src/components/Jodit/TextArea.jsx"
+    ]
 }

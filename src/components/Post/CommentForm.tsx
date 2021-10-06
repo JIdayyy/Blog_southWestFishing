@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation } from "react-query";
 import TextArea from "@components/Jodit/TextArea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface FormData {
     username: string;
@@ -14,7 +14,8 @@ interface IProps {
     refetch: () => void;
 }
 export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
-    const [joditArea, setJoditArea] = useState();
+    const [joditArea, setJoditArea] = useState("");
+    const [isRender, setIsRender] = useState(false);
     const { register, handleSubmit } = useForm();
     const mutation = useMutation(
         (newComment: FormData) =>
@@ -23,7 +24,6 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 {
                     ...newComment,
                     postId: postId,
-                    content: joditArea,
                 },
                 {
                     headers: {
@@ -61,7 +61,15 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 placeholder="Email"
                 {...register("email", { required: true, maxLength: 50 })}
             />
-            <TextArea setJoditArea={setJoditArea} />
+            <textarea
+                className={`my-4 border-white w-full border-b px-4 py-2 bg-transparent outline-none h-60`}
+                placeholder="Votre texte ici 3000 caractères  max ..."
+                {...register("content", {
+                    required: true,
+                    maxLength: 300,
+                })}
+            />
+            {/* <TextArea joditArea={joditArea} setJoditArea={setJoditArea} /> */}
 
             <button
                 className="bg-blue-600 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"
