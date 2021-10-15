@@ -9,10 +9,10 @@ interface IProps {
 }
 export default function Main({ posts }: IProps): JSX.Element {
     return (
-        <div className="lg:w-full px-8 md:px-0 flex mb-200 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-800 flex-col lg:items-start items-center align-middle justify-center">
+        <div className="w-6/12 p-8 flex mb-200 shadow-10 scrollbar scrollbar-thumb-gray-900 bg-white scrollbar-track-gray-800 flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
-                <Title className="text-white text-10">South-West Fishing</Title>
-                <Title className="text-white text-13 md:text-20 font-600 my-8">
+                <Title className="text-black text-10">South-West Fishing</Title>
+                <Title className="text-black text-13 md:text-20 font-600 my-8">
                     Guidage, stages, et initiation à la pêche au Pays Basque/Sud
                     Landes
                 </Title>
@@ -27,10 +27,10 @@ export default function Main({ posts }: IProps): JSX.Element {
                 />
             </FadeIn>
             <div>
-                <Title className="text-white text-18 font-400 mt-24">
+                <Title className="text-black text-18 font-400 mt-24">
                     Bienvenue sur South West Fishing
                 </Title>
-                <div className="text-white text-8 font-200  border-b border-grey-A700 py-28">
+                <div className="text-black text-8 font-200  border-b border-grey-A700 py-28">
                     Découvrez la pêche dans le sud ouest avec un guide diplômé
                     expérimenté.
                     <br></br>Partir en séjour <strong>guidage</strong> ou
@@ -52,7 +52,7 @@ export default function Main({ posts }: IProps): JSX.Element {
                     Black-Bass Brochet Perches et plus encore ...
                 </div>
             </div>
-            <Title className="text-white border-b border-gray-900 pb-20 text-2xl w-full text-left my-20">
+            <Title className="text-black border-b border-gray-900 pb-20 text-2xl w-full text-left my-20">
                 -S W F Actus-
             </Title>
             <PostList posts={posts} />

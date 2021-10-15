@@ -29,7 +29,7 @@ export default function Menu({ setIsMenu }: IProps): JSX.Element {
             initial="close"
             className="fixed md:w-1/4 w-full  left-0 h-screen  flex  z-20"
         >
-            <div className=" w-full flex flex-col items-center align-middle justify-center h-screen bg-black">
+            <div className=" w-full flex flex-col items-center align-middle justify-center h-screen bg-realBlack">
                 <Title className="text-white">
                     <button onClick={() => router.push("/")}>
                         SOUTH WEST FISHING

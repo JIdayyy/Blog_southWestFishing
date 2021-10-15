@@ -65,7 +65,7 @@ export default function Tarrifs(): JSX.Element {
         <motion.div
             animate={{ opacity: 1, x: 0 }}
             initial={{ opacity: 0, x: -1000 }}
-            className="  text-white bg-black absolute rounded-4 z-9999 w-full md:w-3/5  md:flex flex-col border-4 border-gray-700"
+            className="  text-white bg-realBlack  rounded-4 z-9999 w-full md:w-3/5  md:flex flex-col border-4 border-gray-700"
         >
             <div className="w-full  bg-gray-600 flex items-center align-middle justify-between p-10 shadow-8 ">
                 <span className="font-semibold">Tarrifs</span>

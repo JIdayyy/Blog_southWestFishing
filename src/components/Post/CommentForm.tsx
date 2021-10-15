@@ -61,8 +61,12 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 placeholder="Email"
                 {...register("email", { required: true, maxLength: 50 })}
             />
-            <TextArea setJoditArea={setJoditArea} />
-
+            {/* <TextArea setJoditArea={setJoditArea} /> */}
+            <textarea
+                className="my-4 border-white w-full h-208 border-b px-4 py-2 bg-transparent outline-none"
+                placeholder="Commentaire ..."
+                {...register("content", { required: true, maxLength: 50 })}
+            ></textarea>
             <button
                 className="bg-blue-600 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"
                 type="submit"

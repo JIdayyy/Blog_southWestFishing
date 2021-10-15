@@ -39,7 +39,7 @@ export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
             <form className={style.modal} onSubmit={handleSubmit(onSubmit)}>
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="bg-white text-black rounded-full absolute top-5 right-0 transform translate-x-20 px-5 py-1"
+                    className="bg-realBlack text-black rounded-full absolute top-5 right-0 transform translate-x-20 px-5 py-1"
                 >
                     X
                 </button>

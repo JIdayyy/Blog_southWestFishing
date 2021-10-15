@@ -6,6 +6,7 @@ const JoditReact = React.lazy(() => {
 });
 
 interface IProps {
+    joditArea: any;
     setJoditArea: Dispatch<SetStateAction<string>>;
 }
 
@@ -55,8 +56,6 @@ const config = {
     style: {
         background: "#27272E",
         color: "rgba(255,255,255,0.5)",
-        width: "800px",
-        height: "500px",
     },
 };
 
@@ -70,7 +69,7 @@ export default function MyEditorWrapper({ setJoditArea }: IProps): JSX.Element {
                     <JoditReact
                         config={config}
                         onChange={(content) => setJoditArea(content)}
-                        defaultValue="Hi"
+                        defaultValue="Entrez vôtre texte ici !"
                     />
                 </Suspense>
             )}

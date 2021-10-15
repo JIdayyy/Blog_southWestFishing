@@ -34,7 +34,7 @@ function Modal({ setIsAdminLogin }: IProps): JSX.Element {
         loginSubmit(data);
     };
     return (
-        <div className="w-screen h-screen bg-gray-900 text-white fixed top-0 flex flex-col items-center justify-center align-middle z-9999">
+        <div className="w-screen h-screen bg-gray-900 text-black fixed top-0 flex flex-col items-center justify-center align-middle z-9999">
             <form
                 onClick={handleSubmit(onSubmit)}
                 className="flex-col flex"

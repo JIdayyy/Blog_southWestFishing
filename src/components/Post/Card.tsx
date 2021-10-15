@@ -13,9 +13,8 @@ export default function Card({ post }: IProps): JSX.Element {
     return (
         <motion.div
             onClick={() => router.push(`/post/${post.id}`)}
-            whileHover={{ backgroundColor: "#2F4F4F", scale: 1.005 }}
             whileTap={{ scale: 1 }}
-            className="text-white rounded-4 items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
+            className="text-black rounded-4 overflow-hidden items-start align-middle cursor-pointer justify-between flex text-13 w-full h-96 my-10 "
         >
             {post.picture[0] && (
                 <Image
@@ -31,9 +30,9 @@ export default function Card({ post }: IProps): JSX.Element {
                     dangerouslySetInnerHTML={{
                         __html: post.content.toString(),
                     }}
-                    className="text-10 h-full w-full overflow-fade  overflow-hidden"
+                    className="text-10 h-full w-full truncate overflow-hidden"
                 ></div>
-                <div className="text-10 text-gray-500 w-full text-right">
+                <div className="text-10 text-black w-full text-right">
                     {post.author.name} le {post.createdAt.toLocaleDateString()}
                 </div>
             </div>

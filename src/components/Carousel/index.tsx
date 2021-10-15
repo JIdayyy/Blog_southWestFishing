@@ -23,7 +23,7 @@ function MyCarousel({ pictures }: IProps): JSX.Element {
                             arrowLeft: (
                                 <div className="absolute left-0">
                                     <Image
-                                        className="bg-white  bg-opacity-50  z-99"
+                                        className="bg-realBlack  bg-opacity-50  z-99"
                                         src="/icons/arrowL.png"
                                         width={50}
                                         height={50}
@@ -43,7 +43,7 @@ function MyCarousel({ pictures }: IProps): JSX.Element {
                             arrowRight: (
                                 <div className="absolute right-0">
                                     <Image
-                                        className="bg-white  bg-opacity-50 absolute z-99"
+                                        className="bg-realBlack  bg-opacity-50 absolute z-99"
                                         src="/icons/arrowR.png"
                                         width={50}
                                         height={50}
