@@ -2,14 +2,13 @@
 //@ts-nocheck
 import React, { Dispatch, SetStateAction, Suspense } from "react";
 import "jodit/build/jodit.min.css";
-import { JoditReactProps } from "jodit-react-ts";
 
 const JoditReact = React.lazy(() => {
     return import("jodit-react-ts");
 });
 
 interface IProps {
-    joditArea: JoditReactProps;
+    joditArea: string | undefined;
     setJoditArea: Dispatch<SetStateAction<string | undefined>>;
 }
 
