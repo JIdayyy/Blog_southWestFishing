@@ -36,6 +36,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IProps>> {
     await prisma.$disconnect();
     return {
         props: { posts },
+        revalidate: 1,
     };
 }
 export default Home;
