@@ -1,6 +1,6 @@
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 import { motion } from "framer-motion";
-import { ChangeEvent, SelectHTMLAttributes, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,8 +1,7 @@
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header";
-import Column from "@components/Main/Column";
 import Head from "next/head";
-import { useState } from "react";
+
 import Navbar from "./Navbar";
 
 interface IProps {

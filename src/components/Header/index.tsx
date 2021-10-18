@@ -1,27 +1,8 @@
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 import Image from "next/image";
 import Link from "next/link";
-import ScaleWhileHover from "@components/AnimatedComponents/ScaleWhileHover";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import Tarrifs from "./Tarrifs";
-
-const contactButtons = [
-    { id: 1, name: "Tel", value: "06.33.45.32.34", image: "/icons/tel.png" },
-    {
-        id: 2,
-        name: "Insta",
-        value: "www.instagram.com",
-        image: "/icons/insta.png",
-    },
-    {
-        id: 3,
-        name: "Mail",
-        value: "southwestfishing@gmail.com",
-        image: "/icons/mail.png",
-    },
-];
 
 export default function Header(): JSX.Element {
     return (

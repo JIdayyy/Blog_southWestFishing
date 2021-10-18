@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import TextArea from "@components/Jodit/TextArea";
 import { RootState } from "@redux/reducers";
 import axios from "axios";
