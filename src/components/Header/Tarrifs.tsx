@@ -1,6 +1,6 @@
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -44,7 +44,6 @@ export default function Tarrifs(): JSX.Element {
     const [displayed, setDisplayed] = useState<typeof tarifs[0]>();
 
     useEffect(() => {
-        console.log(selected);
         if (selected === "1p") {
             setDisplayed(tarifs[0]);
         }
@@ -59,13 +58,14 @@ export default function Tarrifs(): JSX.Element {
         }
     }, [selected]);
 
-    const handleSelect = (e) => setSelected(e.target.value);
+    const handleSelect = (e: ChangeEvent<HTMLSelectElement>) =>
+        setSelected(e.target.value);
 
     return (
         <motion.div
             animate={{ opacity: 1, x: 0 }}
             initial={{ opacity: 0, x: -1000 }}
-            className="  text-white bg-black absolute rounded-4 z-9999 w-full md:w-3/5  md:flex flex-col border-4 border-gray-700"
+            className="  text-white bg-realBlack  rounded-4 z-9999 w-full md:w-3/5  md:flex flex-col border-4 border-gray-700"
         >
             <div className="w-full  bg-gray-600 flex items-center align-middle justify-between p-10 shadow-8 ">
                 <span className="font-semibold">Tarrifs</span>

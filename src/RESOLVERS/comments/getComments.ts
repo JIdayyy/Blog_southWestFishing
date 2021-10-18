@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Comment, Prisma } from ".prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../prisma/client";
@@ -28,8 +29,8 @@ export default async function getComments(
             console.log(error);
             return res.status(500).json({
                 name: "Error",
-                message: error.message,
-                code: error.stack,
+                message: error.message!,
+                code: error.stack!,
             });
         } else {
             console.log(error);

@@ -9,7 +9,6 @@ export default async function commentHandler(
     if (req.method === "DELETE") {
         const { id } = req.query;
 
-        console.log("delete");
         return comment.delete(req, res, id);
     }
 }

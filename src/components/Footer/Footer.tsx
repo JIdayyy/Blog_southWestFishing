@@ -1,10 +1,10 @@
 import Modal from "@components/Modal/Modal";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
 function Footer(): JSX.Element {
     const [isAdminLogin, setIsAdminLogin] = useState<boolean>(false);
 
-    const handleClick = (e) => {
+    const handleClick = (e: MouseEvent) => {
         e.preventDefault();
         setIsAdminLogin(true);
     };

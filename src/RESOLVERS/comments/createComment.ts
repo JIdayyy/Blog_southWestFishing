@@ -12,7 +12,7 @@ export default async function createComment(
     res: NextApiResponse<Data | Error>,
 ): Promise<void> {
     const body = req.body;
-    console.log({ ...body });
+
     try {
         const comment = await prisma.comment.create({
             data: {

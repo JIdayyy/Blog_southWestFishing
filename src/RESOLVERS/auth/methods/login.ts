@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../../prisma/client";
 import { User } from ".prisma/client";
@@ -20,10 +21,12 @@ export default async function login(
         if (user.password !== body.password) {
             return res.status(401).send("Wrong password");
         }
-        await prisma.$disconnect();
-        delete user.password;
 
-        res.status(201).send(user);
+        const { password, ...userWithoutPassword } = user;
+
+        await prisma.$disconnect();
+
+        res.status(201).send(userWithoutPassword);
     } catch (error: unknown) {
         console.log(error);
         res.status(500).json({

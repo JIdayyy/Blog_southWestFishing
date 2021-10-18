@@ -27,7 +27,7 @@ export default function PostView(): JSX.Element {
     if (isLoading) return <div>Loading ...</div>;
 
     return (
-        <div className="bg-black text-10 my-20 shadow-8 w-full h-1/2 flex flex-col rounded-2 p-4">
+        <div className="bg-black text-10 my-20 shadow-8 w-full flex flex-col rounded-2 p-4">
             <div className="text-xl">Liste des Posts :</div>{" "}
             <button
                 onClick={() => setShowAddPost(true)}
@@ -51,7 +51,7 @@ export default function PostView(): JSX.Element {
                     data.map((post: Post) => (
                         <motion.li
                             whileHover={{ backgroundColor: "#696969" }}
-                            className="flex my-2 cursor-pointer w-full items-center h-24 overflow-y-hidden overscroll-x-none align-middle justify-between"
+                            className="flex my-2 cursor-pointer w-full items-center h-24 overflow-y-hidden overscroll-x-hidden align-middle justify-between"
                         >
                             <div className="w-full">{post.title}</div>
                             <div
@@ -61,13 +61,12 @@ export default function PostView(): JSX.Element {
                                 className="w-full truncate"
                             ></div>
                             <div className="w-full">{post.createdAt}</div>
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
+                            <button
                                 onClick={() => mutation.mutate(post.id)}
                                 className="bg-red rounded-1 px-4 outline-none focus:outline-none"
                             >
                                 SUPPRIMER
-                            </motion.button>
+                            </button>
                         </motion.li>
                     ))}
             </ul>

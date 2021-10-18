@@ -33,7 +33,7 @@ function MyCarousel({ pictures }: IProps): JSX.Element {
                             arrowLeftDisabled: (
                                 <div className="absolute left-0">
                                     <Image
-                                        className="bg-gray-900  bg-opacity-50 absolute z-99"
+                                        className="bg-black bg-opacity-50 absolute z-99"
                                         src="/icons/arrowL.png"
                                         width={50}
                                         height={50}
@@ -53,7 +53,7 @@ function MyCarousel({ pictures }: IProps): JSX.Element {
                             arrowRightDisabled: (
                                 <div className="absolute right-0">
                                     <Image
-                                        className="bg-gray-900 bg-opacity-50  absolute z-99"
+                                        className="bg-black bg-opacity-50  absolute z-99"
                                         src="/icons/arrowR.png"
                                         width={50}
                                         height={50}

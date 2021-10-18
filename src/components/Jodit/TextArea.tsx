@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import React, { Dispatch, SetStateAction, Suspense } from "react";
 import "jodit/build/jodit.min.css";
 
@@ -6,7 +8,8 @@ const JoditReact = React.lazy(() => {
 });
 
 interface IProps {
-    setJoditArea: Dispatch<SetStateAction<string>>;
+    joditArea: string | undefined;
+    setJoditArea: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const config = {
@@ -55,8 +58,6 @@ const config = {
     style: {
         background: "#27272E",
         color: "rgba(255,255,255,0.5)",
-        width: "800px",
-        height: "500px",
     },
 };
 
@@ -70,7 +71,7 @@ export default function MyEditorWrapper({ setJoditArea }: IProps): JSX.Element {
                     <JoditReact
                         config={config}
                         onChange={(content) => setJoditArea(content)}
-                        defaultValue="Hi"
+                        defaultValue="Entrez vôtre texte ici !"
                     />
                 </Suspense>
             )}

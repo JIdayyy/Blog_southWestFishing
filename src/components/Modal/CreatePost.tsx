@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import TextArea from "@components/Jodit/TextArea";
 import { RootState } from "@redux/reducers";
 import axios from "axios";
@@ -11,23 +12,27 @@ interface Props {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
     refetch: () => void;
 }
+interface FormData {
+    userId: string;
+    pictures?: any;
+    content: string | undefined;
+}
 
 export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
-    const [joditArea, setJoditArea] = useState();
-    const [pictures, setPictures] = useState<Array<string>>([]);
-    const [pictureInput, setPictureInput] = useState<string>(null);
+    const [joditArea, setJoditArea] = useState<string>();
+    const [pictures, setPictures] = useState<any>([]);
+    const [pictureInput, setPictureInput] = useState<string | null>(null);
     const user = useSelector((state: RootState) => state.app.user);
     const { mutate: createPost } = useMutation(
-        (newPost) => axios.post("/api/posts", newPost),
+        (newPost: FormData) => axios.post("/api/posts", newPost),
         {
             onSuccess: () => refetch(),
         },
     );
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = (data: FormData) => {
         createPost({ ...data, userId: user.id, pictures, content: joditArea });
     };
-    console.log(pictures);
 
     return (
         <div
@@ -39,7 +44,7 @@ export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
             <form className={style.modal} onSubmit={handleSubmit(onSubmit)}>
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="bg-white text-black rounded-full absolute top-5 right-0 transform translate-x-20 px-5 py-1"
+                    className="bg-realBlack text-black rounded-full absolute top-5 right-0 transform translate-x-20 px-5 py-1"
                 >
                     X
                 </button>
@@ -84,7 +89,7 @@ export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
             </form>
             <div className="flex flex-wrap">
                 {pictures &&
-                    pictures.map((picture) => (
+                    pictures.map((picture: any) => (
                         <img className="w-60 h-60" src={picture}></img>
                     ))}
             </div>
