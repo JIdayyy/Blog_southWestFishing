@@ -14,16 +14,17 @@ export default function Card({ post }: IProps): JSX.Element {
         <motion.div
             onClick={() => router.push(`/post/${post.id}`)}
             whileTap={{ scale: 1 }}
-            className="text-black  rounded-4 relative overflow-auto shadow-5 items-start align-middle cursor-pointer justify-between flex text-13 w-full  my-10 "
+            className="text-black h-96 rounded-2 relative overflow-auto shadow-5 items-start align-middle cursor-pointer justify-between flex text-13 w-full  my-10 "
         >
-            {post.picture[0] && (
-                <Image
-                    width={200}
-                    height={200}
-                    className="rounded-1"
-                    src={post.picture[0].url}
-                />
-            )}
+            <div className="h-full w-96 relative">
+                {post.picture[0] && (
+                    <Image
+                        layout="fill"
+                        className="rounded-1"
+                        src={post.picture[0].url}
+                    />
+                )}
+            </div>
             <div className="flex  w-full h-full  flex-col items-start p-6">
                 <Title className="text-xl text-whtie">{post.title}</Title>
                 <div
