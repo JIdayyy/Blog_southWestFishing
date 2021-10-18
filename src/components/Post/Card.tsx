@@ -9,7 +9,6 @@ interface IProps {
 
 export default function Card({ post }: IProps): JSX.Element {
     const router = useRouter();
-    console.log(post);
 
     return (
         <motion.div

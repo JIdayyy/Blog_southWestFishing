@@ -44,7 +44,6 @@ export default function Tarrifs(): JSX.Element {
     const [displayed, setDisplayed] = useState<typeof tarifs[0]>();
 
     useEffect(() => {
-        console.log(selected);
         if (selected === "1p") {
             setDisplayed(tarifs[0]);
         }

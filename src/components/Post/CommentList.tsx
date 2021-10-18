@@ -11,8 +11,6 @@ export default function CommentList({
     error,
     isLoading,
 }: IProps): JSX.Element {
-    console.log("test");
-
     if (error) return <div>Error gettings comments</div>;
     if (isLoading) return <div>Loading comments</div>;
     return (

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation } from "react-query";
-import { ErrorMessage } from "@hookform/error-message";
+
 interface FormData {
     username: string;
     comment: string;
@@ -40,32 +40,15 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
 
         mutation.mutate(data);
     };
+    console.log(errors);
 
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="text-black md:shadow-10 bg-white rounded-2 p-10 w-full flex flex-col my-60 items-start align-middle justify-start"
+            className="text-black md:shadow-10 bg-white rounded-2 p-10 w-full flex flex-col my-32 md:my-60 items-start align-middle justify-start"
         >
             <div className="text-xl font-500">Commentaire : </div>
-            <input
-                {...register("multipleErrorInput", {
-                    required: "required",
-                    maxLength: {
-                        value: 300,
-                        message: "Max 300 charactères",
-                    },
-                })}
-            />
-            <ErrorMessage
-                errors={errors}
-                name="multipleErrorInput"
-                render={({ messages }) =>
-                    messages &&
-                    Object.entries(messages).map(([type, message]) => (
-                        <p key={type}>{message}</p>
-                    ))
-                }
-            />
+
             <input
                 className="my-4 border border-gray-300  w-full border-b px-4 py-2 bg-transparent outline-none"
                 type="text"
@@ -84,7 +67,7 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
             />
 
             <textarea
-                className="my-4 border border-gray-300  w-full h-208 border-b px-4 py-2 bg-transparent outline-none"
+                className="my-4 border border-gray-300  w-full h-96 border-b px-4 py-2 bg-transparent outline-none"
                 placeholder="Commentaire ..."
                 {...register("content", { required: true, maxLength: 300 })}
             ></textarea>

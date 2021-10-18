@@ -18,8 +18,6 @@ export default async function deleteComment(
             name: "deleted Successfully",
         });
     } catch (error: unknown) {
-        console.log(error);
-
         res.status(500).json({ name: "Error", message: error as string });
     }
 }
