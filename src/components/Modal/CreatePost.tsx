@@ -68,18 +68,14 @@ export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
                     />
                     <button
                         className={style.button("green")}
-                        onClick={() => setPictures([...pictures, pictureInput])}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setPictures([...pictures, pictureInput]);
+                        }}
                     >
                         ADD
                     </button>
-                    {/* <textarea
-                        className={`${style.input()} h-60`}
-                        placeholder="Votre texte ici 3000 caractères  max ..."
-                        {...register("content", {
-                            required: true,
-                            maxLength: 300,
-                        })}
-                    /> */}
+
                     <TextArea
                         joditArea={joditArea}
                         setJoditArea={setJoditArea}
