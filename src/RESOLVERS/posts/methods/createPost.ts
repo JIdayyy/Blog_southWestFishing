@@ -19,7 +19,7 @@ export default async function createPosts(
         });
 
         await pictures.map(
-            async (picture, index: number) =>
+            async (picture: string, index: number) =>
                 await prisma.picture.create({
                     data: {
                         url: picture,

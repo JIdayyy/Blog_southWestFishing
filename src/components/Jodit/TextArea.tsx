@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { Dispatch, SetStateAction, Suspense } from "react";
 import "jodit/build/jodit.min.css";
 
@@ -7,7 +8,7 @@ const JoditReact = React.lazy(() => {
 
 interface IProps {
     joditArea: any;
-    setJoditArea: Dispatch<SetStateAction<string>>;
+    setJoditArea: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const config = {

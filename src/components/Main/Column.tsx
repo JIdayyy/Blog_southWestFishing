@@ -6,11 +6,10 @@ export default function Column(): JSX.Element {
     return (
         <FadeIn
             delay={0.3}
-            className="sm:bg-gray-800 shadow-10 hidden  w-full md:w-160 bg-white  text-black md:flex flex-col sm:flex-row md:flex-col justify-start items-center md:items-start align-middle"
+            className="sm:bg-gray-800 shadow-10 hidden rounded-2 w-full md:w-160 bg-white  text-black md:flex flex-col sm:flex-row md:flex-col justify-start items-center md:items-start align-middle"
         >
             <div className="relative w-full  md:h-160">
                 <Image
-                    className="rounded-t-4"
                     src="/images/column_pic.jpeg"
                     objectFit="cover"
                     layout="responsive"

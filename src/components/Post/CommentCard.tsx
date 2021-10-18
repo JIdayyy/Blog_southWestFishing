@@ -9,7 +9,7 @@ export default function CommentCard({ comment }: IProps): JSX.Element {
     return (
         <motion.div
             whileHover={{ scale: 1.01 }}
-            className={`w-full p-10 bg-white text-black relative overflow-hidden rounded-2 h-92 bg-transparent border-b my-32  flex ${"flex-row"}`}
+            className={`w-full p-10 bg-white text-black shadow-5 relative overflow-hidden rounded-2 h-92 bg-transparent border-b my-32  flex ${"flex-row"}`}
         >
             <div className="text-black flex flex-col justify-start items-start align-top text-10 w-9/12 break-words font-400 h-full ">
                 <div

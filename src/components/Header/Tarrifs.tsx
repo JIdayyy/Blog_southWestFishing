@@ -1,6 +1,6 @@
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { ChangeEvent, SelectHTMLAttributes, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -59,7 +59,8 @@ export default function Tarrifs(): JSX.Element {
         }
     }, [selected]);
 
-    const handleSelect = (e) => setSelected(e.target.value);
+    const handleSelect = (e: ChangeEvent<HTMLSelectElement>) =>
+        setSelected(e.target.value);
 
     return (
         <motion.div
