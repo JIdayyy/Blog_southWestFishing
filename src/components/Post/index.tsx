@@ -6,10 +6,8 @@ interface IProps {
 }
 
 export default function PostList({ posts }: IProps): JSX.Element {
-    console.log(posts);
-
     return (
-        <div className="w-full flex flex-col overflow-y-scroll     items-start align-middle ">
+        <div className="w-full flex flex-col scrollbar scrollbar-thin  px-5  items-start align-middle ">
             {posts.map((post) => (
                 <Card key={post.id} post={post} />
             ))}

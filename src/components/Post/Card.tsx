@@ -15,7 +15,7 @@ export default function Card({ post }: IProps): JSX.Element {
         <motion.div
             onClick={() => router.push(`/post/${post.id}`)}
             whileTap={{ scale: 1 }}
-            className="text-black  rounded-4 relative overflow-auto shadow-10 items-start align-middle cursor-pointer justify-between flex text-13 w-full  my-10 "
+            className="text-black  rounded-4 relative overflow-auto shadow-5 items-start align-middle cursor-pointer justify-between flex text-13 w-full  my-10 "
         >
             {post.picture[0] && (
                 <Image

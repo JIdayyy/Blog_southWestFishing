@@ -1,9 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation } from "react-query";
-import TextArea from "@components/Jodit/TextArea";
-import { useState } from "react";
-
+import { ErrorMessage } from "@hookform/error-message";
 interface FormData {
     username: string;
     comment: string;
@@ -14,7 +12,11 @@ interface IProps {
     refetch: () => void;
 }
 export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
-    const { register, handleSubmit } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ criteriaMode: "all" });
     const mutation = useMutation(
         (newComment: FormData) =>
             axios.post(
@@ -34,6 +36,8 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
         },
     );
     const onSubmit = (data: FormData): void => {
+        console.log(errors);
+
         mutation.mutate(data);
     };
 
@@ -43,6 +47,25 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
             className="text-black md:shadow-10 bg-white rounded-2 p-10 w-full flex flex-col my-60 items-start align-middle justify-start"
         >
             <div className="text-xl font-500">Commentaire : </div>
+            <input
+                {...register("multipleErrorInput", {
+                    required: "required",
+                    maxLength: {
+                        value: 300,
+                        message: "Max 300 charactères",
+                    },
+                })}
+            />
+            <ErrorMessage
+                errors={errors}
+                name="multipleErrorInput"
+                render={({ messages }) =>
+                    messages &&
+                    Object.entries(messages).map(([type, message]) => (
+                        <p key={type}>{message}</p>
+                    ))
+                }
+            />
             <input
                 className="my-4 border border-gray-300  w-full border-b px-4 py-2 bg-transparent outline-none"
                 type="text"
@@ -63,7 +86,7 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
             <textarea
                 className="my-4 border border-gray-300  w-full h-208 border-b px-4 py-2 bg-transparent outline-none"
                 placeholder="Commentaire ..."
-                {...register("content", { required: true, maxLength: 500 })}
+                {...register("content", { required: true, maxLength: 300 })}
             ></textarea>
             <button
                 className="bg-blue-600 text-white rounded-2 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"

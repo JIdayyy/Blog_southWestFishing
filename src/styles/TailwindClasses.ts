@@ -6,6 +6,6 @@ export const style = {
     button: (color: string): string =>
         `bg-${color}-400 px-4 py-2 text-white font-bold rounded-2 my-4`,
     input: (): string =>
-        `border border-black px-4 py-2 my-2 w-full rounded-2 focus-outline-none outline-none text-white font-bold`,
+        `border border-black px-4 py-2 my-2 w-full rounded-2 focus-outline-none outline-none text-black font-bold`,
     label: (): string => `text-white font-bold w-full text-left`,
 };
