@@ -6,9 +6,13 @@ import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 interface IProps {
     article: PostWithAuthorAndPictures;
+    preview?: boolean;
 }
 // CARROUSSEL //
-export default function Article({ article }: IProps): JSX.Element {
+export default function Article({
+    article,
+    preview = false,
+}: IProps): JSX.Element {
     const { data, error, isLoading, refetch } = useQuery(
         "getComments",
         async () =>
@@ -16,10 +20,13 @@ export default function Article({ article }: IProps): JSX.Element {
                 .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
                 .then((r) => r.data)
                 .catch((r) => console.log(r)),
+        {
+            enabled: !preview,
+        },
     );
     return (
         <div className="w-full lg:w-6/12 mt-40 h-full mb-88 flex flex-col shadow-10 md:p-10 item-center align-middle justify-center text-black">
-            <MyCarousel pictures={article.picture} />
+            {article.picture && <MyCarousel pictures={article.picture} />}
             <div className="w-full flex flex-col">
                 <div className="text-xl font-700">{article.title}</div>
                 <div
@@ -29,8 +36,10 @@ export default function Article({ article }: IProps): JSX.Element {
                     className="text-10 font-200"
                 ></div>
             </div>
-            <CommentList data={data} error={error} isLoading={isLoading} />
-            <CommentForm refetch={refetch} postId={article.id} />
+            {!preview && (
+                <CommentList data={data} error={error} isLoading={isLoading} />
+            )}
+            {!preview && <CommentForm refetch={refetch} postId={article.id} />}
         </div>
     );
 }

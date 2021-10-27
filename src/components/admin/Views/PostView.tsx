@@ -7,6 +7,7 @@ import { useState } from "react";
 import CreatePost from "@components/Modal/CreatePost";
 export default function PostView(): JSX.Element {
     const [showAddPost, setShowAddPost] = useState<boolean>(false);
+
     const { data, error, isLoading, refetch } = useQuery("getPosts", () =>
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}posts`)
@@ -40,9 +41,11 @@ export default function PostView(): JSX.Element {
             )}
             <div className="flex border-b text-gray-600 w-full items-center align-middle justify-between">
                 <div className="w-full">Title</div>
-                <div className="w-full">Body</div>
                 <div className="w-full">Publication</div>
-                <div className="bg-red rounded-1 px-3 rounded-2 opacity-0">
+                <div className="bg-red rounded-1 px-3 mx-1 rounded-2 opacity-0">
+                    SUPPRIMER
+                </div>
+                <div className="bg-red rounded-1 px-3 mx-1 rounded-2 opacity-0">
                     SUPPRIMER
                 </div>
             </div>
@@ -54,18 +57,17 @@ export default function PostView(): JSX.Element {
                             className="flex my-2 cursor-pointer w-full items-center h-24 overflow-y-hidden overscroll-x-hidden align-middle justify-between"
                         >
                             <div className="w-full">{post.title}</div>
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: post.content.toString(),
-                                }}
-                                className="w-full truncate"
-                            ></div>
                             <div className="w-full">{post.createdAt}</div>
                             <button
                                 onClick={() => mutation.mutate(post.id)}
-                                className="bg-red rounded-1 px-4 outline-none focus:outline-none"
+                                className="bg-red mx-1 rounded-1 px-4 outline-none focus:outline-none"
                             >
                                 SUPPRIMER
+                            </button>
+                            <button className="bg-blue mx-1 rounded-1 px-4 outline-none focus:outline-none">
+                                <a href={`/preview/${post.id}`} target="_blank">
+                                    PREVIEW
+                                </a>
                             </button>
                         </motion.li>
                     ))}

@@ -12,7 +12,7 @@ interface IProps {
 export default function Menu({ setIsMenu }: IProps): JSX.Element {
     const ref = useRef(null);
     const variants = {
-        open: { width: "25%" },
+        open: { width: "100%%" },
         close: { width: "0%" },
     };
     const router = useRouter();
@@ -27,9 +27,9 @@ export default function Menu({ setIsMenu }: IProps): JSX.Element {
             variants={variants}
             animate="open"
             initial="close"
-            className="fixed md:w-1/4 w-full  left-0 h-screen  flex  z-20"
+            className="absolute md:w-1/4 w-full bg-white left-0 top-0 h-screen  flex  z-20"
         >
-            <div className=" w-full flex flex-col items-center align-middle justify-center h-screen bg-realBlack">
+            <div className=" w-full flex flex-col items-center align-middle justify-center h-screen bg-white">
                 <Title className="text-white">
                     <button onClick={() => router.push("/")}>
                         SOUTH WEST FISHING

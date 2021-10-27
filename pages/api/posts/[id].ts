@@ -8,7 +8,10 @@ export default async function userHandler(
 ): Promise<void> {
     if (req.method === "DELETE") {
         const { id } = req.query;
-        console.log("delete");
+
         return post.deletePost(req, res, id);
+    }
+    if (req.method === "GET") {
+        return post.getOne(req, res);
     }
 }

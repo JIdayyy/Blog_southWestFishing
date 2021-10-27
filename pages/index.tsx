@@ -4,6 +4,10 @@ import { GetStaticPropsResult } from "next";
 import React from "react";
 import { Comment, Picture, Post, User } from ".prisma/client";
 import Column from "@components/Main/Column";
+import InstagramEmbed from "react-instagram-embed";
+
+//TODO LINK INSTAGRAM MODULE
+//TOTO GOOGLE COMMENTS
 
 export type PostWithAuthorAndPictures = Post & {
     picture: Picture[];
@@ -21,6 +25,19 @@ export function Home(props: IProps): JSX.Element {
             <div className="bg-gray-200 flex items-start align-middle justify-around w-full h-full">
                 <Main posts={props.posts} />
                 <Column />
+                <InstagramEmbed
+                    url="https://www.instagram.com/mathieu_bzd_fishing/"
+                    clientAccessToken="123|456"
+                    maxWidth={320}
+                    hideCaption={false}
+                    containerTagName="div"
+                    protocol=""
+                    injectScript
+                    onLoading={() => {}}
+                    onSuccess={() => {}}
+                    onAfterRender={() => {}}
+                    onFailure={() => {}}
+                />
             </div>
         </div>
     );

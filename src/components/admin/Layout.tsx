@@ -9,6 +9,7 @@ interface IProps {
 }
 export default function Layout({ children }: IProps): JSX.Element {
     const { id } = useSelector((state: RootState) => state.app.user);
+
     const router = useRouter();
     useEffect(() => {
         if (!id) {

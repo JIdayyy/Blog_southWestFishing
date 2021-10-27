@@ -35,16 +35,12 @@ export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
     };
 
     return (
-        <div
-            className={`bg-realBlack bg-opacity-70 ${style.flexContainer(
-                "col",
-            )}`}
-        >
+        <div className={`bg-black bg-opacity-70 ${style.flexContainer("col")}`}>
             <h1 className="font-bold text-2xl">Créer un Post</h1>
             <form className={style.modal} onSubmit={handleSubmit(onSubmit)}>
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="bg-realBlack text-black rounded-full absolute top-5 right-0 transform translate-x-20 px-5 py-1"
+                    className="bg-black  text-white rounded-full absolute top-5 right-0 transform translate-x-20 px-5 py-1"
                 >
                     X
                 </button>

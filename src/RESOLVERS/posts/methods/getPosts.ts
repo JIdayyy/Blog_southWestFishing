@@ -2,7 +2,7 @@ import { Post } from ".prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../../prisma/client";
 
-export default async function getUsers(
+export default async function getPosts(
     req: NextApiRequest,
     res: NextApiResponse<Post[] | Error>,
 ): Promise<void> {

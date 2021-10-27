@@ -11,13 +11,13 @@ export default function Main({ posts }: IProps): JSX.Element {
     return (
         <div className="md:w-6/12 w-full p-8 flex mb-200 shadow-10 rounded-2 scrollbar scrollbar-thumb-gray-900 bg-white scrollbar-track-gray-800 flex-col lg:items-start items-center align-middle justify-center">
             <div className="flex flex-col">
-                <Title className="text-black font-bold text-xl">
+                {/* <Title className="text-black font-bold text-xl">
                     South-West Fishing
                 </Title>
                 <Title className="text-black text-10 font-600 my-8">
                     Guidage, stages, et initiation à la pêche au Pays Basque/Sud
                     Landes
-                </Title>
+                </Title> */}
             </div>
             <FadeIn delay={0.4} className="w-full relative ">
                 <Image
