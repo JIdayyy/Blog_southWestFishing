@@ -8,7 +8,7 @@ const URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Preview(): ReactElement {
     const { query } = useRouter();
-    console.log("render");
+
     const { data, isLoading, error } = useQuery(
         "getArticlePreview",
         () => axios.get(`${URL}posts/${query.id}`).then((r) => r.data),
@@ -16,7 +16,6 @@ export default function Preview(): ReactElement {
             enabled: !!query.id,
         },
     );
-    console.log(data);
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error</div>;

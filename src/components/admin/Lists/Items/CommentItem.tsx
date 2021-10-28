@@ -2,19 +2,25 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import React, { ReactElement } from "react";
 import { useMutation, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 
 interface IProps {
     comment: IComment;
 }
 
 export default function CommentItem({ comment }: IProps): ReactElement {
+    const deleteNotification = () => toast("Commentaire supprimé !");
     const queryClient = useQueryClient();
+
     const { mutate: deleteComment, isLoading } = useMutation(
         (id: string) =>
             axios.delete(`${process.env.NEXT_PUBLIC_API_URL}comments/${id}`),
         {
             onError: (err) => console.log(err),
-            onSuccess: () => queryClient.refetchQueries(["getComments"]),
+            onSuccess: () => {
+                deleteNotification();
+                queryClient.refetchQueries(["getComments"]);
+            },
         },
     );
 

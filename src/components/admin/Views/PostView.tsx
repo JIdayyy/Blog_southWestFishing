@@ -7,7 +7,7 @@ import PostItem from "../Lists/Items/PostItem";
 export default function PostView(): JSX.Element {
     const [showAddPost, setShowAddPost] = useState<boolean>(false);
 
-    const { data, error, isLoading, refetch } = useQuery("getPosts", () =>
+    const { data, error, isLoading } = useQuery("getPosts", () =>
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}posts`)
             .then((r) => r.data)
@@ -27,9 +27,7 @@ export default function PostView(): JSX.Element {
             >
                 Ajouter
             </button>
-            {showAddPost && (
-                <CreatePost refetch={refetch} setIsOpen={setShowAddPost} />
-            )}
+            {showAddPost && <CreatePost setIsOpen={setShowAddPost} />}
             <div className="flex border-b text-gray-600 w-full items-center align-middle justify-between">
                 <div className="w-full">Title</div>
                 <div className="w-full">Publication</div>

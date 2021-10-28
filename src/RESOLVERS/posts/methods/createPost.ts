@@ -6,7 +6,6 @@ export default async function createPosts(
     res: NextApiResponse<Post | Error>,
 ): Promise<void> {
     const body = req.body;
-    console.log(body);
 
     const { title, content, pictures, userId } = body;
     try {

@@ -13,8 +13,8 @@ export default function Article({
     article,
     preview = false,
 }: IProps): JSX.Element {
-    const { data, error, isLoading, refetch } = useQuery(
-        "getComments",
+    const { data, error, isLoading } = useQuery(
+        "getPostComments",
         async () =>
             await axios
                 .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
@@ -24,6 +24,11 @@ export default function Article({
             enabled: !preview,
         },
     );
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error...</p>;
+    if (data) {
+        data.reverse();
+    }
     return (
         <div className="w-full lg:w-6/12 mt-40 h-full mb-88 flex flex-col shadow-10 md:p-10 item-center align-middle justify-center text-black">
             {article.picture.length !== 0 && (
@@ -41,7 +46,7 @@ export default function Article({
             {!preview && (
                 <CommentList data={data} error={error} isLoading={isLoading} />
             )}
-            {!preview && <CommentForm refetch={refetch} postId={article.id} />}
+            {!preview && <CommentForm postId={article.id} />}
         </div>
     );
 }

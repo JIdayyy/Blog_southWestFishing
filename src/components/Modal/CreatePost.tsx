@@ -4,13 +4,13 @@ import { RootState } from "@redux/reducers";
 import axios from "axios";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { style } from "../../styles/TailwindClasses";
 
 interface Props {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
-    refetch: () => void;
 }
 interface FormData {
     userId: string;
@@ -18,17 +18,24 @@ interface FormData {
     content: string | undefined;
 }
 
-export default function CreatePost({ setIsOpen, refetch }: Props): JSX.Element {
+export default function CreatePost({ setIsOpen }: Props): JSX.Element {
+    const queryClient = useQueryClient();
     const [joditArea, setJoditArea] = useState<string>();
     const [pictures, setPictures] = useState<any>([]);
     const [pictureInput, setPictureInput] = useState<string | null>(null);
     const user = useSelector((state: RootState) => state.app.user);
+    const notify = () => toast("Post créé avec succès !");
+
     const { mutate: createPost } = useMutation(
         (newPost: FormData) => axios.post("/api/posts", newPost),
         {
-            onSuccess: () => refetch(),
+            onSuccess: () => {
+                notify();
+                queryClient.refetchQueries(["getPosts"]);
+            },
         },
     );
+
     const { register, handleSubmit } = useForm();
     const onSubmit = (data: FormData) => {
         createPost({ ...data, userId: user.id, pictures, content: joditArea });

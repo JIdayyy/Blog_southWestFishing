@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 
-console.log("test");
 export default function Header(): JSX.Element {
     return (
         <div className="w-full sm:h-320 h-full relative flex flex-col items-center align-middle justify-center">

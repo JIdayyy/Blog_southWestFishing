@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 
 interface FormData {
     username: string;
@@ -9,15 +10,17 @@ interface FormData {
 }
 interface IProps {
     postId: string;
-    refetch: () => void;
 }
-export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
+export default function CommentForm({ postId }: IProps): JSX.Element {
+    const commentNotification = () => toast("Merci pour votre commentaire !");
+    const queryClient = useQueryClient();
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm({ criteriaMode: "all" });
-    const mutation = useMutation(
+    const { mutate: createComment, isLoading } = useMutation(
         (newComment: FormData) =>
             axios.post(
                 `${process.env.NEXT_PUBLIC_API_URL}comments`,
@@ -32,15 +35,18 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 },
             ),
         {
-            onSuccess: () => refetch(),
+            onSuccess: () => {
+                queryClient.refetchQueries(["getPostComments"]);
+                commentNotification();
+                setValue("username", "");
+                setValue("content", "");
+                setValue("email", "");
+            },
         },
     );
     const onSubmit = (data: FormData): void => {
-        console.log(errors);
-
-        mutation.mutate(data);
+        createComment(data);
     };
-    console.log(errors);
 
     return (
         <form
@@ -71,12 +77,21 @@ export default function CommentForm({ postId, refetch }: IProps): JSX.Element {
                 placeholder="Commentaire ..."
                 {...register("content", { required: true, maxLength: 300 })}
             ></textarea>
-            <button
-                className="bg-blue-600 text-white rounded-2 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"
-                type="submit"
-            >
-                Envoyer
-            </button>
+            {!isLoading ? (
+                <button
+                    className="bg-blue-600 text-white rounded-2 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"
+                    type="submit"
+                >
+                    Envoyer
+                </button>
+            ) : (
+                <button
+                    className="bg-blue-600 text-white rounded-2 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"
+                    type="button"
+                >
+                    Envoi en cours ...
+                </button>
+            )}
         </form>
     );
 }

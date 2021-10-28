@@ -20,7 +20,7 @@ export default function Layout({ children }: IProps): JSX.Element {
     return (
         <div>
             {user.role.includes("ADMIN") && (
-                <div className="w-full flex fixed top-0 left-0 z-9999   h-screen">
+                <div className="w-full flex fixed top-0 left-0 z-999   h-screen">
                     <Sidebar />
                     {children}
                 </div>

@@ -7,10 +7,12 @@ import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
 import { login } from "@redux/actions";
 import { Button } from "@components/Assets/button";
+import { toast } from "react-toastify";
 interface IProps {
     setIsAdminLogin: Dispatch<SetStateAction<boolean>>;
 }
 function Modal({ setIsAdminLogin }: IProps): JSX.Element {
+    const notify = () => toast("Authentification réussie !");
     const [invalid, setInvalid] = useState<boolean>(false);
     const router = useRouter();
     const { handleSubmit, register } = useForm();
@@ -20,6 +22,7 @@ function Modal({ setIsAdminLogin }: IProps): JSX.Element {
             axios.post("/api/auth/login", credentials).then((r) => r.data),
         {
             onSuccess: (data) => {
+                notify();
                 dispatch(login(data));
                 setIsAdminLogin(false);
                 router.push("/myadmin");

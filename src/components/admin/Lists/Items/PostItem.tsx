@@ -2,19 +2,24 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import React, { ReactElement } from "react";
 import { useMutation, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 
 interface IProps {
     post: IPost;
 }
 
 export default function PostItem({ post }: IProps): ReactElement {
+    const deleteNotification = () => toast("Post supprimé !");
     const queryClient = useQueryClient();
     const { mutate: deletePost, isLoading } = useMutation(
         (id: string) =>
             axios.delete(`${process.env.NEXT_PUBLIC_API_URL}posts/${id}`),
         {
             onError: (err) => console.log(err),
-            onSuccess: () => queryClient.refetchQueries(["getPosts"]),
+            onSuccess: () => {
+                deleteNotification();
+                queryClient.refetchQueries(["getPosts"]);
+            },
         },
     );
 

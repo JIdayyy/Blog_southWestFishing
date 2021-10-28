@@ -10,6 +10,8 @@ import { Layout } from "@components/Layout";
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
 import Router from "next/router";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -17,12 +19,14 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const queryClient = new QueryClient();
+
     return (
         <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
                 <Provider store={store}>
                     <Layout page="South West Fishing">
                         <Component {...pageProps} />
+                        <ToastContainer autoClose={3000} />
                     </Layout>
                 </Provider>
             </Hydrate>

@@ -6,7 +6,7 @@ export default async function createUser(
     res: NextApiResponse<User | Error>,
 ): Promise<void> {
     const body = req.body;
-    console.log({ ...body });
+
     try {
         const user = await prisma.user.create({
             data: {

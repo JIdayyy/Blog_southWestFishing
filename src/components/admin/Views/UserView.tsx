@@ -1,10 +1,11 @@
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { User } from ".prisma/client";
 import { motion } from "framer-motion";
 
 export default function UserView(): JSX.Element {
-    const { data, isLoading, error, refetch } = useQuery("getUsers", () =>
+    const queryClient = useQueryClient();
+    const { data, isLoading, error } = useQuery("getUsers", () =>
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}users`)
             .then((r) => r.data)
@@ -15,7 +16,7 @@ export default function UserView(): JSX.Element {
             axios.delete(`${process.env.NEXT_PUBLIC_API_URL}users/${id}`),
         {
             onError: (err) => console.log(err),
-            onSuccess: () => refetch(),
+            onSuccess: () => queryClient.refetchQueries(["getUsers"]),
         },
     );
     if (error) return <div>Error ...</div>;

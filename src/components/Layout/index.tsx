@@ -19,7 +19,7 @@ export function Layout({ children, page }: IProps): JSX.Element {
             <div className="w-screen  overflow-x-hidden h-full flex flex-col items-center align-middle justify-between">
                 <Header />
 
-                <div className="flex lg:flex-row  flex-col  w-full items-start h-full align-middle  justify-around">
+                <div className="flex   flex-col  w-full items-center h-full  min-h-400 justify-around">
                     {children}
                 </div>
                 <Footer />
