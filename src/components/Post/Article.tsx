@@ -26,7 +26,9 @@ export default function Article({
     );
     return (
         <div className="w-full lg:w-6/12 mt-40 h-full mb-88 flex flex-col shadow-10 md:p-10 item-center align-middle justify-center text-black">
-            {article.picture && <MyCarousel pictures={article.picture} />}
+            {article.picture.length !== 0 && (
+                <MyCarousel pictures={article.picture} />
+            )}
             <div className="w-full flex flex-col">
                 <div className="text-xl font-700">{article.title}</div>
                 <div

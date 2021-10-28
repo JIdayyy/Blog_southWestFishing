@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar(): ReactElement {
     return (
-        <div className="w-full h-36 hidden md:flex bg-white z-9999 fixed  items-start justify-start align-middle shadow-10">
+        <div className="w-full h-36 hidden md:flex bg-white z-999 fixed  items-start justify-start align-middle shadow-10">
             <div className="whitespace-nowrap h-full font-bold flex items-center mx-20 justify-center align-middle">
                 South West Fishing
             </div>

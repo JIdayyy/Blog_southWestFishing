@@ -8,7 +8,7 @@ type IProps = {
     post: PostWithAuthorAndPictures;
 };
 
-export default function article(props: IProps): JSX.Element {
+export default function ArticlePage(props: IProps): JSX.Element {
     return <Article article={props.post} />;
 }
 
