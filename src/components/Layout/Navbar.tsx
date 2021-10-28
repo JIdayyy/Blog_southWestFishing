@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import Link from "next/link";
 
 export default function Navbar(): ReactElement {

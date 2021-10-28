@@ -1,10 +1,9 @@
-import { useMutation, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import axios from "axios";
-import { Post } from ".prisma/client";
-import { motion } from "framer-motion";
-import { style } from "@styles/TailwindClasses";
 import { useState } from "react";
 import CreatePost from "@components/Modal/CreatePost";
+import PostItem from "../Lists/Items/PostItem";
+
 export default function PostView(): JSX.Element {
     const [showAddPost, setShowAddPost] = useState<boolean>(false);
 
@@ -15,24 +14,16 @@ export default function PostView(): JSX.Element {
             .catch((err) => console.log(err)),
     );
 
-    const mutation = useMutation(
-        (id: string) =>
-            axios.delete(`${process.env.NEXT_PUBLIC_API_URL}posts/${id}`),
-        {
-            onError: (err) => console.log(err),
-            onSuccess: () => refetch(),
-        },
-    );
-
     if (error) return <div>Error</div>;
     if (isLoading) return <div>Loading ...</div>;
+    if (!data) return <div>No data</div>;
 
     return (
         <div className="bg-black text-10 my-20 shadow-8 w-full flex flex-col rounded-2 p-4">
             <div className="text-xl">Liste des Posts :</div>{" "}
             <button
                 onClick={() => setShowAddPost(true)}
-                className={style.button("blue")}
+                className="bg-blue-400 px-4 py-2 text-white font-bold rounded-2 my-4"
             >
                 Ajouter
             </button>
@@ -50,27 +41,9 @@ export default function PostView(): JSX.Element {
                 </div>
             </div>
             <ul className="flex flex-col w-full overflow-y-scroll scrollbar  items-center align-middle justify-between">
-                {data &&
-                    data.map((post: Post) => (
-                        <motion.li
-                            whileHover={{ backgroundColor: "#696969" }}
-                            className="flex my-2 cursor-pointer w-full items-center h-24 overflow-y-hidden overscroll-x-hidden align-middle justify-between"
-                        >
-                            <div className="w-full">{post.title}</div>
-                            <div className="w-full">{post.createdAt}</div>
-                            <button
-                                onClick={() => mutation.mutate(post.id)}
-                                className="bg-red mx-1 rounded-1 px-4 outline-none focus:outline-none"
-                            >
-                                SUPPRIMER
-                            </button>
-                            <button className="bg-blue mx-1 rounded-1 px-4 outline-none focus:outline-none">
-                                <a href={`/preview/${post.id}`} target="_blank">
-                                    PREVIEW
-                                </a>
-                            </button>
-                        </motion.li>
-                    ))}
+                {data.map((post: IPost) => (
+                    <PostItem post={post} key={post.id} />
+                ))}
             </ul>
         </div>
     );

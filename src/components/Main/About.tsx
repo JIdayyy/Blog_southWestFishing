@@ -1,7 +1,7 @@
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 export default function About(): JSX.Element {
     return (
-        <FadeIn className="w-full p-10 text-10 font-300 ">
+        <FadeIn className="w-full text-justify p-10 text-10 font-300 ">
             Qui suis-je? Je m'appelle{" "}
             <strong className="font-600">M Bazard Mathieu</strong> J'ai 33 ans.
             <br></br>

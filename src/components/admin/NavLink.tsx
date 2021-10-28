@@ -11,7 +11,7 @@ export default function NavLink({ link }: IProps): JSX.Element {
                 whileHover={{ backgroundColor: "#2F4F4F" }}
                 className="cursor-pointer"
             >
-                <button className="text-white border-b border-gray-900 text-center flex items-center align-middle justify-center w-full text-13 z-40">
+                <button className="text-white border-b border-gray-900 text-center focus:outline-none outline-none flex items-center align-middle justify-center w-full text-13 z-40">
                     <Image src={link.image} width={30} height={30} />{" "}
                     {link.name}
                 </button>

@@ -4,40 +4,11 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 
+console.log("test");
 export default function Header(): JSX.Element {
     return (
         <div className="w-full sm:h-320 h-full relative flex flex-col items-center align-middle justify-center">
-            {/* <div className="absolute top-20 md:left-24 left-4 z-10 flex items-start align-middle justify-between h-52 flex-col">
-                {contactButtons.map((button) => (
-                    <ScaleWhileHover className="flex" scale={1.01}>
-                        <Image
-                            onMouseEnter={() => {
-                                setSelected(button.id);
-                                setIsShow(true);
-                            }}
-                            onMouseLeave={() => {
-                                setSelected(null);
-                                setIsShow(false);
-                            }}
-                            className="my-6 cursor-pointer"
-                            src={button.image}
-                            width={20}
-                            height={20}
-                        />
-                        {isShow && selected === button.id && (
-                            <FadeIn className="text-10 mx-8 text-gray-600">
-                                {button.value}
-                            </FadeIn>
-                        )}
-                    </ScaleWhileHover>
-                ))}
-            </div> */}
-
-            <Image
-                src="/images/bg_southwestfishing.jpg"
-                layout="fill"
-                placeholder="blur"
-            />
+            <Image src="/images/bg_southwestfishing.jpg" layout="fill" />
             <motion.div
                 animate={{ y: 0 }}
                 initial={{ y: -10 }}

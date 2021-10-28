@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IAppState {
+export interface IAppState {
     user: {
         id: string;
         username: string;

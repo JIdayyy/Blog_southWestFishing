@@ -8,19 +8,23 @@ interface IProps {
     children: React.ReactNode;
 }
 export default function Layout({ children }: IProps): JSX.Element {
-    const { id } = useSelector((state: RootState) => state.app.user);
+    const user = useSelector((state: RootState) => state.app.user);
 
     const router = useRouter();
     useEffect(() => {
-        if (!id) {
+        if (!user.role) {
             router.push("/");
         }
     }, []);
 
     return (
-        <div className="w-full flex fixed top-0 left-0 z-20   h-screen">
-            <Sidebar />
-            {children}
+        <div>
+            {user.role.includes("ADMIN") && (
+                <div className="w-full flex fixed top-0 left-0 z-9999   h-screen">
+                    <Sidebar />
+                    {children}
+                </div>
+            )}
         </div>
     );
 }

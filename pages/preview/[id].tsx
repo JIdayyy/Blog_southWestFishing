@@ -19,10 +19,10 @@ export default function Preview(): ReactElement {
     console.log(data);
 
     if (isLoading) return <div>Loading...</div>;
-
+    if (error) return <div>Error</div>;
     if (!data) return <div>No data</div>;
     return (
-        <div className="w-full min-h-400 flex flex-col items-center justify-center">
+        <div className="w-full min-h-screen h-screen flex flex-col items-center justify-center">
             <Article article={data} preview={true} />
         </div>
     );

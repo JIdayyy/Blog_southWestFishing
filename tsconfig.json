@@ -12,6 +12,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
+        "declaration": true,
         "isolatedModules": true,
         "jsx": "preserve",
         "baseUrl": ".",
@@ -28,7 +29,8 @@
             "@graphqlTypes": ["__generated__"],
             "@redux/*": ["src/redux/*"],
             "@redux": ["src/redux"]
-        }
+        },
+        "incremental": true
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules", "__generated__/globalTypes.ts"]
