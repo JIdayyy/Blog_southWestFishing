@@ -24,7 +24,12 @@ export default function Article({
             enabled: !preview,
         },
     );
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading)
+        return (
+            <p className="w-full h-full flex items-center flex-col justify-start">
+                Loading...
+            </p>
+        );
     if (error) return <p>Error...</p>;
     if (data) {
         data.reverse();
