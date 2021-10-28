@@ -14,12 +14,9 @@ interface IProps {
 export default function CommentForm({ postId }: IProps): JSX.Element {
     const commentNotification = () => toast("Merci pour votre commentaire !");
     const queryClient = useQueryClient();
-    const {
-        register,
-        handleSubmit,
-        setValue,
-        formState: { errors },
-    } = useForm({ criteriaMode: "all" });
+    const { register, handleSubmit, setValue } = useForm({
+        criteriaMode: "all",
+    });
     const { mutate: createComment, isLoading } = useMutation(
         (newComment: FormData) =>
             axios.post(
