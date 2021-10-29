@@ -1,11 +1,11 @@
-GET http://localhost:3000/api/comments
+POST http://localhost:3000/api/auth/register
 Content-Type:  application/json
 
 {
-    "postId": "b64865fa-978e-45aa-814a-4a77866a90bf",
-    "username": "test",
-    "email": "admin@admin.fr",
-    "content": "efoisehgiuqrhg"
+   
+    "name": "Mathieu Bazard",
+    "email": "southwestfishing@gmail.com",
+    "password":"admin1337"
 }
 
 ###
