@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { style } from "../../styles/TailwindClasses";
+import style from "../../styles/TailwindClasses";
 
 interface Props {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -86,10 +86,7 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                         ADD
                     </button>
 
-                    <TextArea
-                        joditArea={joditArea}
-                        setJoditArea={setJoditArea}
-                    />
+                    <TextArea setJoditArea={setJoditArea} />
                     <button type="submit" className={style.button("blue")}>
                         AJOUTER
                     </button>

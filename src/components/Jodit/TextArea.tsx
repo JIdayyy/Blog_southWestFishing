@@ -69,7 +69,7 @@ export default function MyEditorWrapper({ setJoditArea }: IProps): JSX.Element {
                     <JoditReact
                         config={config}
                         onChange={(content) => setJoditArea(content)}
-                        defaultValue="Entrez vôtre texte ici !"
+                        defaultValue="Entrez votre texte ici !"
                     />
                 </Suspense>
             )}

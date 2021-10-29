@@ -4,7 +4,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { style } from "@styles/TailwindClasses";
+import style from "@styles/TailwindClasses";
 import axios from "axios";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
