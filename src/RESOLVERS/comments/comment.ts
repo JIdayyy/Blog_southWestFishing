@@ -5,15 +5,15 @@ import getComments from "./getComments";
 
 const comment = {
     get: async (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
-        await getComments(req, res),
+        getComments(req, res),
 
     create: async (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
-        await createComment(req, res),
+        createComment(req, res),
     delete: async (
         req: NextApiRequest,
         res: NextApiResponse,
         id: string | string[],
-    ): Promise<void> => await deleteComment(req, res, id),
+    ): Promise<void> => deleteComment(req, res, id),
 };
 
 export default comment;

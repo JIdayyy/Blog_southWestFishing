@@ -20,16 +20,16 @@ const appState = createSlice({
     name: "counter",
     initialState,
     reducers: {
-        login: (state, action) => {
-            state.user = action.payload;
-        },
-        logout: (state) => {
-            state.user = {
+        login: (state, action) => ({
+            user: action.payload,
+        }),
+        logout: () => ({
+            user: {
                 id: "",
                 username: "",
                 role: "",
-            };
-        },
+            },
+        }),
     },
 });
 

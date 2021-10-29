@@ -10,17 +10,26 @@ export default function Navbar(): ReactElement {
 
             <div className=" h-full text-black flex items-center align-middle justify-end  w-full px-32">
                 <Link href="/">
-                    <button className="mx-4 font-bold text-black  outline-none focus:outline-none">
+                    <button
+                        type="button"
+                        className="mx-4 font-bold text-black  outline-none focus:outline-none"
+                    >
                         Accueil
                     </button>
                 </Link>
                 <Link href="/contact">
-                    <button className="mx-4 font-bold text-black  outline-none focus:outline-none">
+                    <button
+                        type="button"
+                        className="mx-4 font-bold text-black  outline-none focus:outline-none"
+                    >
                         Contact
                     </button>
                 </Link>
                 <Link href="/tarifs">
-                    <button className="mx-4 font-bold text-black  outline-none focus:outline-none">
+                    <button
+                        type="button"
+                        className="mx-4 font-bold text-black  outline-none focus:outline-none"
+                    >
                         Tarifs
                     </button>
                 </Link>

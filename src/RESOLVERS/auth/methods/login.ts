@@ -9,7 +9,7 @@ export default async function login(
     req: NextApiRequest,
     res: NextApiResponse<userWithoutPassword | Error | string>,
 ): Promise<void> {
-    const body = req.body;
+    const { body } = req;
 
     try {
         const user = await prisma.user.findFirst({

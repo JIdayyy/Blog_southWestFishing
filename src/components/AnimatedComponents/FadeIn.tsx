@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
+
 interface IProps {
     children: React.ReactNode;
     className?: string;
     delay?: number;
 }
+
 export default function FadeIn({
     children,
-    className,
-
+    className = "",
     delay = 0,
 }: IProps): JSX.Element {
     return (

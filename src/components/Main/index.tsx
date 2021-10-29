@@ -15,6 +15,7 @@ export default function Main({ posts }: IProps): JSX.Element {
                 <Image
                     className="rounded-4 "
                     src="/images/main.jpg"
+                    priority={true}
                     width={250}
                     height={150}
                     layout="responsive"

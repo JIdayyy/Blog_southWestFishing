@@ -32,7 +32,7 @@ model Post {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now())
   userId    String
-
+  category Category[] 
 }
 
 model Comment {
@@ -54,6 +54,14 @@ model Picture {
   updatedAt DateTime @default(now())
   main      Boolean  @default(false)
   postId    String?
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 enum Role {

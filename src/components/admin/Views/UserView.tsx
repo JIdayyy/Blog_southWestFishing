@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
+import { motion } from "framer-motion";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { User } from ".prisma/client";
-import { motion } from "framer-motion";
 
 export default function UserView(): JSX.Element {
     const queryClient = useQueryClient();
@@ -41,6 +42,7 @@ export default function UserView(): JSX.Element {
                             <div className="w-full ">{user.name}</div>
                             <div className="w-full ">{user.email}</div>
                             <button
+                                type="button"
                                 onClick={() => mutation.mutate(user.id)}
                                 className="bg-red rounded-1"
                             >

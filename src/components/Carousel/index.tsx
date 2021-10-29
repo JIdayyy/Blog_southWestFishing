@@ -1,9 +1,10 @@
-import React from "react";
-import "@brainhubeu/react-carousel/lib/style.css";
-import dynamic from "next/dynamic";
-import { Picture } from ".prisma/client";
-import { arrowsPlugin } from "@brainhubeu/react-carousel";
 import Image from "next/image";
+import "@brainhubeu/react-carousel/lib/style.css";
+import React from "react";
+import dynamic from "next/dynamic";
+import { arrowsPlugin } from "@brainhubeu/react-carousel";
+import { Picture } from ".prisma/client";
+
 const Carousel = dynamic(import("@brainhubeu/react-carousel"), {
     ssr: false,
 });

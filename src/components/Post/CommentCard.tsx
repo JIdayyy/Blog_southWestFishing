@@ -1,9 +1,9 @@
+import { motion } from "framer-motion";
 import { Comment } from ".prisma/client";
 import Title from "@components/Assets/Title/Title";
-import { motion } from "framer-motion";
+
 interface IProps {
     comment: Comment;
-    index: number;
 }
 export default function CommentCard({ comment }: IProps): JSX.Element {
     return (
