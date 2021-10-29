@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Comment, Prisma } from ".prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
+import { Comment } from ".prisma/client";
 import prisma from "../../../prisma/client";
 
 export default async function getComments(
@@ -19,26 +20,11 @@ export default async function getComments(
         await prisma.$disconnect();
         res.status(200).json(comments);
     } catch (error: unknown) {
-        if (
-            error instanceof Prisma.PrismaClientUnknownRequestError ||
-            error instanceof Prisma.PrismaClientValidationError ||
-            error instanceof Prisma.PrismaClientKnownRequestError ||
-            error instanceof Prisma.PrismaClientInitializationError ||
-            error instanceof Prisma.PrismaClientRustPanicError
-        ) {
-            console.log(error);
-            return res.status(500).json({
-                name: "Error",
-                message: error.message!,
-                code: error.stack!,
-            });
-        } else {
-            console.log(error);
-            return res.status(500).json({
-                name: "Error",
-                message: error as string,
-                code: "UNKNOWN",
-            });
-        }
+        console.error(error);
+        res.status(500).json({
+            name: "Internal Server Error",
+            message: "Something went wrong",
+            code: "INTERNAL_SERVER_ERROR",
+        });
     }
 }

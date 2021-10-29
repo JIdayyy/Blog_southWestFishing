@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { motion } from "framer-motion";
 
 interface IProps {
@@ -15,7 +16,7 @@ export default function FadeIn({
         <motion.div
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
-            transition={{ delay: delay }}
+            transition={{ delay }}
             className={className}
         >
             {children}

@@ -1,11 +1,12 @@
 import { Comment } from ".prisma/client";
-
 import CommentCard from "./CommentCard";
+
 interface IProps {
     data: Comment[];
     error: unknown;
     isLoading: boolean;
 }
+
 export default function CommentList({
     data,
     error,
@@ -16,8 +17,8 @@ export default function CommentList({
     return (
         <div>
             {data &&
-                data.map((comment: Comment, index: number) => (
-                    <CommentCard key={index} index={index} comment={comment} />
+                data.map((comment) => (
+                    <CommentCard key={comment.id} comment={comment} />
                 ))}
         </div>
     );

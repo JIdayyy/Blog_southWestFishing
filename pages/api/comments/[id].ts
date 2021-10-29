@@ -1,5 +1,5 @@
-import { Comment } from ".prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Comment } from ".prisma/client";
 import comment from "../../../src/RESOLVERS/comments/comment";
 
 export default async function commentHandler(
@@ -11,4 +11,5 @@ export default async function commentHandler(
 
         return comment.delete(req, res, id);
     }
+    throw new Error("Method not allowed");
 }

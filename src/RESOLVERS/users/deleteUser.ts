@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../prisma/client";
 import { User } from ".prisma/client";
+
 export default async function deleteUser(
     req: NextApiRequest,
     res: NextApiResponse<User | Error>,

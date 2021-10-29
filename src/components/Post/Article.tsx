@@ -1,22 +1,26 @@
+/* eslint-disable react/no-danger */
+/* eslint-disable react/require-default-props */
+/* eslint-disable no-console */
 import axios from "axios";
 import MyCarousel from "@components/Carousel/index";
 import { PostWithAuthorAndPictures } from "pages";
 import { useQuery } from "react-query";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
+
 interface IProps {
     article: PostWithAuthorAndPictures;
     preview?: boolean;
 }
-// CARROUSSEL //
+
 export default function Article({
     article,
     preview = false,
 }: IProps): JSX.Element {
     const { data, error, isLoading } = useQuery(
         "getPostComments",
-        async () =>
-            await axios
+        () =>
+            axios
                 .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
                 .then((r) => r.data)
                 .catch((r) => console.log(r)),
@@ -46,7 +50,7 @@ export default function Article({
                         __html: article.content.toString(),
                     }}
                     className="text-10 font-200"
-                ></div>
+                />
             </div>
             {!preview && (
                 <CommentList data={data} error={error} isLoading={isLoading} />

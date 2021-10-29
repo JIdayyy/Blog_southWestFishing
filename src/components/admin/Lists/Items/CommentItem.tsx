@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { motion } from "framer-motion";
 import axios from "axios";
 import React, { ReactElement } from "react";
@@ -36,6 +37,7 @@ export default function CommentItem({ comment }: IProps): ReactElement {
 
             {!isLoading ? (
                 <button
+                    type="button"
                     onClick={() => deleteComment(comment.id)}
                     className="bg-red  px-3 rounded-1"
                 >

@@ -12,12 +12,10 @@ const appState = createSlice({
     name: "admin",
     initialState,
     reducers: {
-        setPreview: (state, action) => {
-            return {
-                ...state,
-                preview: action.payload,
-            };
-        },
+        setPreview: (state, action) => ({
+            ...state,
+            preview: action.payload,
+        }),
     },
 });
 

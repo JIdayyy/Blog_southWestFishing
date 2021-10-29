@@ -1,6 +1,6 @@
+import Title from "@components/Assets/Title/Title";
 import { motion } from "framer-motion";
 import { Comment } from ".prisma/client";
-import Title from "@components/Assets/Title/Title";
 
 interface IProps {
     comment: Comment;

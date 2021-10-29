@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { ReactElement } from "react";
@@ -32,6 +33,7 @@ export default function PostItem({ post }: IProps): ReactElement {
             <div className="w-full">{post.createdAt}</div>
             {!isLoading ? (
                 <button
+                    type="button"
                     onClick={() => deletePost(post.id)}
                     className="bg-red  px-3 rounded-1"
                 >
@@ -42,8 +44,15 @@ export default function PostItem({ post }: IProps): ReactElement {
                     Loading..
                 </div>
             )}
-            <button className="bg-blue mx-1 rounded-1 px-4 outline-none focus:outline-none">
-                <a href={`/preview/${post.id}`} target="_blank">
+            <button
+                type="button"
+                className="bg-blue mx-1 rounded-1 px-4 outline-none focus:outline-none"
+            >
+                <a
+                    href={`/preview/${post.id}`}
+                    rel="noreferrer"
+                    target="_blank"
+                >
                     PREVIEW
                 </a>
             </button>

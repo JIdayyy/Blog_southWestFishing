@@ -5,13 +5,13 @@ import deleteUser from "./deleteUser";
 
 const comment = {
     get: async (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
-        await getUser(req, res),
+        getUser(req, res),
     create: async (req: NextApiRequest, res: NextApiResponse): Promise<void> =>
-        await createUser(req, res),
+        createUser(req, res),
     deleteUser: async (
         req: NextApiRequest,
         res: NextApiResponse,
-    ): Promise<void> => await deleteUser(req, res),
+    ): Promise<void> => deleteUser(req, res),
 };
 
 export default comment;

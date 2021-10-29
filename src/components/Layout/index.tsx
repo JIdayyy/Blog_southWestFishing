@@ -9,7 +9,7 @@ interface IProps {
     page: string;
 }
 
-export function Layout({ children, page }: IProps): JSX.Element {
+export default function Layout({ children, page }: IProps): JSX.Element {
     return (
         <div className="max-w-screen bg-gray-200 min-h-screen overflow-x-hidden scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-800 flex flex-col">
             <Head>

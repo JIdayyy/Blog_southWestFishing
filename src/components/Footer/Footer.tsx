@@ -13,7 +13,7 @@ function Footer(): JSX.Element {
         <div className="w-full h-32 flex items-center align-middle justify-center  bg-gray-900">
             {isAdminLogin && <Modal setIsAdminLogin={setIsAdminLogin} />}
             <div>
-                <button onClick={handleClick}>
+                <button type="button" onClick={handleClick}>
                     <span className="w-full text-white ">
                         J.Digital Solutions ©
                     </span>

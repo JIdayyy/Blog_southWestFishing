@@ -12,4 +12,5 @@ export default async function commentHandler(
     if (req.method === "GET") {
         return comment.get(req, res);
     }
+    throw new Error("Method not allowed");
 }

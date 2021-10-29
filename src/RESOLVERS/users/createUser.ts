@@ -1,11 +1,13 @@
+/* eslint-disable no-console */
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../prisma/client";
 import { User } from ".prisma/client";
+
 export default async function createUser(
     req: NextApiRequest,
     res: NextApiResponse<User | Error>,
 ): Promise<void> {
-    const body = req.body;
+    const { body } = req;
 
     try {
         const user = await prisma.user.create({

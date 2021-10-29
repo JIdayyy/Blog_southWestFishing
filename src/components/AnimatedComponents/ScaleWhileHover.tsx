@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 interface IProps {
     scale: number;
     children: React.ReactNode;
@@ -11,7 +12,7 @@ export default function ScaleWhileHover({
     className,
 }: IProps): JSX.Element {
     return (
-        <motion.div className={className} whileHover={{ scale: scale }}>
+        <motion.div className={className} whileHover={{ scale }}>
             {children}
         </motion.div>
     );

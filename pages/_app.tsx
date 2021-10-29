@@ -1,14 +1,16 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-extraneous-dependencies */
+import "tailwindcss/tailwind.css";
 import React from "react";
 import { AppProps } from "next/app";
-import "tailwindcss/tailwind.css";
 import "@styles/global.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { Provider } from "react-redux";
 import store from "@redux/store";
-import { Layout } from "@components/Layout";
-import NProgress from "nprogress"; //nprogress module
-import "nprogress/nprogress.css"; //styles of nprogress
+import Layout from "@components/Layout";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 import Router from "next/router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

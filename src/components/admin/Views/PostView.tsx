@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useState } from "react";
@@ -22,6 +23,7 @@ export default function PostView(): JSX.Element {
         <div className="bg-black text-10 my-20 shadow-8 w-full flex flex-col rounded-2 p-4">
             <div className="text-xl">Liste des Posts :</div>{" "}
             <button
+                type="button"
                 onClick={() => setShowAddPost(true)}
                 className="bg-blue-400 px-4 py-2 text-white font-bold rounded-2 my-4"
             >

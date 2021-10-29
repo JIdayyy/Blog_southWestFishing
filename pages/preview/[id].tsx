@@ -22,7 +22,7 @@ export default function Preview(): ReactElement {
     if (!data) return <div>No data</div>;
     return (
         <div className="w-full min-h-screen h-screen flex flex-col items-center justify-center">
-            <Article article={data} preview={true} />
+            <Article article={data} preview />
         </div>
     );
 }

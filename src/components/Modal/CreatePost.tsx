@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import TextArea from "@components/Jodit/TextArea";
 import { RootState } from "@redux/reducers";
@@ -46,14 +48,18 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
             <h1 className="font-bold text-2xl">Créer un Post</h1>
             <form className={style.modal} onSubmit={handleSubmit(onSubmit)}>
                 <button
+                    type="button"
                     onClick={() => setIsOpen(false)}
                     className="bg-black  text-white rounded-full absolute top-5 right-0 transform translate-x-20 px-5 py-1"
                 >
                     X
                 </button>
                 <div>
-                    <label className={style.label()}>Titre :</label>
+                    <label htmlFor="title" className={style.label()}>
+                        Titre :
+                    </label>
                     <input
+                        id="title"
                         className={style.input()}
                         type="text"
                         placeholder="Titre du post 300 caractères max..."
@@ -70,6 +76,7 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                         placeholder="Url de l'image de votre post"
                     />
                     <button
+                        type="button"
                         className={style.button("green")}
                         onClick={(e) => {
                             e.preventDefault();
@@ -83,13 +90,19 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                         joditArea={joditArea}
                         setJoditArea={setJoditArea}
                     />
-                    <button className={style.button("blue")}>AJOUTER</button>
+                    <button type="submit" className={style.button("blue")}>
+                        AJOUTER
+                    </button>
                 </div>
             </form>
             <div className="flex flex-wrap">
                 {pictures &&
                     pictures.map((picture: any) => (
-                        <img className="w-60 h-60" src={picture}></img>
+                        <img
+                            alt="post_picture"
+                            className="w-60 h-60"
+                            src={picture}
+                        />
                     ))}
             </div>
         </div>

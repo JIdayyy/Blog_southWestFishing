@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
@@ -23,7 +24,7 @@ export default function CommentForm({ postId }: IProps): JSX.Element {
                 `${process.env.NEXT_PUBLIC_API_URL}comments`,
                 {
                     ...newComment,
-                    postId: postId,
+                    postId,
                 },
                 {
                     headers: {
@@ -73,7 +74,7 @@ export default function CommentForm({ postId }: IProps): JSX.Element {
                 className="my-4 border border-gray-300  w-full h-96 border-b px-4 py-2 bg-transparent outline-none"
                 placeholder="Commentaire ..."
                 {...register("content", { required: true, maxLength: 300 })}
-            ></textarea>
+            />
             {!isLoading ? (
                 <button
                     className="bg-blue-600 text-white rounded-2 hover:bg-blue-400 rounded-1 my-4 px-4 py-2 font-white font-bold"

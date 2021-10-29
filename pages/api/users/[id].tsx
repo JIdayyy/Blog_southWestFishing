@@ -16,4 +16,5 @@ export default async function userHandler(
     if (req.method === "DELETE") {
         return users.deleteUser(req, res);
     }
+    throw new Error("Method not allowed");
 }

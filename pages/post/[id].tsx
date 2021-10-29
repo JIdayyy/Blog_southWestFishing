@@ -1,15 +1,16 @@
-import prisma from "../../prisma/client";
 import { GetStaticPropsResult } from "next";
-import getAllPostIds from "../../lib/getAllPostIds";
 import { PostWithAuthorAndPictures } from "pages";
 import Article from "@components/Post/Article";
+import getAllPostIds from "../../lib/getAllPostIds";
+import prisma from "../../prisma/client";
 
 type IProps = {
     post: PostWithAuthorAndPictures;
 };
 
 export default function ArticlePage(props: IProps): JSX.Element {
-    return <Article article={props.post} />;
+    const { post } = props;
+    return <Article article={post} />;
 }
 
 export async function getStaticProps(params: {
@@ -21,7 +22,7 @@ export async function getStaticProps(params: {
 
     const post = await prisma.post.findUnique({
         where: {
-            id: id,
+            id,
         },
         include: {
             picture: true,

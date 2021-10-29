@@ -1,13 +1,14 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../../prisma/client";
 import { User } from ".prisma/client";
 
-type userWithoutPassword = Omit<User, "password">;
+type UserWithoutPassword = Omit<User, "password">;
 
 export default async function login(
     req: NextApiRequest,
-    res: NextApiResponse<userWithoutPassword | Error | string>,
+    res: NextApiResponse<UserWithoutPassword | Error | string>,
 ): Promise<void> {
     const { body } = req;
 
@@ -34,4 +35,5 @@ export default async function login(
             message: error as string,
         });
     }
+    throw new Error("Unreachable");
 }

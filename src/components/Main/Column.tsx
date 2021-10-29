@@ -1,6 +1,6 @@
-import About from "./About";
 import Image from "next/image";
 import FadeIn from "@components/AnimatedComponents/FadeIn";
+import About from "./About";
 
 export default function Column(): JSX.Element {
     return (

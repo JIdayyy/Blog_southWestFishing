@@ -1,5 +1,5 @@
-import { Post } from ".prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Post } from ".prisma/client";
 import post from "../../../src/RESOLVERS/posts/posts";
 
 export default async function postHandler(
@@ -12,4 +12,5 @@ export default async function postHandler(
     if (req.method === "GET") {
         return post.get(req, res);
     }
+    throw new Error("Method not allowed");
 }

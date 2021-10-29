@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-console */
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -8,9 +11,11 @@ import { useDispatch } from "react-redux";
 import { login } from "@redux/actions";
 import { Button } from "@components/Assets/button";
 import { toast } from "react-toastify";
+
 interface IProps {
     setIsAdminLogin: Dispatch<SetStateAction<boolean>>;
 }
+
 function Modal({ setIsAdminLogin }: IProps): JSX.Element {
     const notify = () => toast("Authentification réussie !");
     const [invalid, setInvalid] = useState<boolean>(false);
@@ -40,12 +45,12 @@ function Modal({ setIsAdminLogin }: IProps): JSX.Element {
     return (
         <div className="w-screen h-screen bg-gray-900 bg-opacity-50 text-black fixed top-0 flex flex-col items-center justify-center align-middle z-9999">
             <form
-                onClick={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onSubmit)}
                 className="flex-col flex bg-black rounded-2 p-10 items-center justify-center"
                 action=""
             >
                 {invalid && <div className="text-red">Invalid credentials</div>}
-                <label htmlFor="">Email :</label>
+                <label htmlFor="email">Email :</label>
                 <input
                     className={style.input()}
                     type="text"

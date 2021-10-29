@@ -1,11 +1,11 @@
-import { Post } from ".prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Post } from ".prisma/client";
 import post from "../../../src/RESOLVERS/posts/posts";
 
-export default async function userHandler(
+const userHandler = (
     req: NextApiRequest,
     res: NextApiResponse<Post | Post[] | Error | null>,
-): Promise<void> {
+): Promise<void> => {
     if (req.method === "DELETE") {
         const { id } = req.query;
 
@@ -14,4 +14,6 @@ export default async function userHandler(
     if (req.method === "GET") {
         return post.getOne(req, res);
     }
-}
+    throw new Error("Method not allowed");
+};
+export default userHandler;

@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../prisma/client";
+
 interface Data {
     id: string;
     content: string;
@@ -11,7 +13,7 @@ export default async function createComment(
     req: NextApiRequest,
     res: NextApiResponse<Data | Error>,
 ): Promise<void> {
-    const body = req.body;
+    const { body } = req;
 
     try {
         const comment = await prisma.comment.create({

@@ -16,7 +16,7 @@ function MyCarousel({ pictures }: IProps): JSX.Element {
     return (
         <div className="relative">
             <Carousel
-                draggable={true}
+                draggable
                 plugins={[
                     {
                         resolve: arrowsPlugin,
@@ -67,7 +67,9 @@ function MyCarousel({ pictures }: IProps): JSX.Element {
                 ]}
             >
                 {pictures &&
-                    pictures.map((picture) => <img src={picture.url} />)}
+                    pictures.map((picture) => (
+                        <img alt="picture_alt" src={picture.url} />
+                    ))}
             </Carousel>
         </div>
     );

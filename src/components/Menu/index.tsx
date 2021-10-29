@@ -31,12 +31,14 @@ export default function Menu({ setIsMenu }: IProps): JSX.Element {
         >
             <div className=" w-full flex flex-col items-center align-middle justify-center h-screen bg-white">
                 <Title className="text-white">
-                    <button onClick={() => router.push("/")}>
+                    <button type="button" onClick={() => router.push("/")}>
                         SOUTH WEST FISHING
                     </button>
                 </Title>
                 <Title className="text-white">
-                    <button onClick={() => router.push("/admin")}>ADMIN</button>
+                    <button type="button" onClick={() => router.push("/admin")}>
+                        ADMIN
+                    </button>
                 </Title>
             </div>
         </motion.div>
