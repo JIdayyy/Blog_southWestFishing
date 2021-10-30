@@ -112,7 +112,7 @@ export default function Tarrifs(): JSX.Element {
                         </span>
                     </li>
                 </ul>
-                <Link href="/">
+                <Link passHref href="/">
                     <motion.button
                         className=" outline-none"
                         whileHover={{ scale: 1.005 }}

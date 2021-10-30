@@ -30,7 +30,10 @@ export default function PostItem({ post }: IProps): ReactElement {
             className="flex my-2 cursor-pointer w-full relative items-center h-24 overflow-y-hidden overscroll-x-hidden align-middle justify-between"
         >
             <div className="w-full">{post.title}</div>
-            <div className="w-full">{post.createdAt}</div>
+            <div className="w-full">
+                {new Date(post.createdAt).toLocaleDateString()}-
+                {new Date(post.createdAt).toLocaleTimeString()}
+            </div>
             <div className="absolute right-0">
                 {!isLoading ? (
                     <button

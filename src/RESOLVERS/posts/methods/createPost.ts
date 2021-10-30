@@ -8,8 +8,11 @@ export default async function createPosts(
     res: NextApiResponse<Post | Error>,
 ): Promise<void> {
     const { body } = req;
+    console.log(body);
 
     const { title, content, pictures, userId } = body;
+    console.log(pictures);
+
     try {
         const post = await prisma.post.create({
             data: {
@@ -18,16 +21,14 @@ export default async function createPosts(
                 userId,
             },
         });
-
-        await pictures.map((picture: string, index: number) =>
-            prisma.picture.create({
-                data: {
-                    url: picture,
-                    postId: post.id,
-                    main: !!index,
-                },
-            }),
-        );
+        await prisma.picture.createMany({
+            data: pictures.map((picture: string, index: number) => ({
+                url: picture,
+                postId: post.id,
+                main: !!index,
+            })),
+            skipDuplicates: true,
+        });
         await prisma.$disconnect();
         res.status(201).json(post);
     } catch (error: unknown) {

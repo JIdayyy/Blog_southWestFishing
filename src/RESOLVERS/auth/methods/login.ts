@@ -23,7 +23,7 @@ export default async function login(
         if (!user) {
             return res.status(404).send({ message: "User not found" });
         }
-        if (!bcrypt.compareSync(body.password, user.password)) {
+        if (!bcrypt.compareSync(body.password, user.password as string)) {
             return res.status(401).json({
                 message: "wrong password",
             });

@@ -42,3 +42,4 @@ interface IUser {
 }
 
 type Role = "ADMIN" | "USER";
+declare module "react-dynamics";

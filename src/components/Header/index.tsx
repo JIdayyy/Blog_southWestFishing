@@ -13,7 +13,7 @@ export default function Header(): JSX.Element {
                 initial={{ y: -10 }}
                 transition={{ delay: 0.2 }}
             >
-                <Link href="/">
+                <Link passHref href="/">
                     <motion.button
                         className=" outline-none"
                         whileHover={{ scale: 1.005 }}
