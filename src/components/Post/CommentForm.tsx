@@ -1,17 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
+import AXIOS from "src/utils/AXIOS";
 
 interface FormData {
     username: string;
     comment: string;
     email: string;
 }
+
 interface IProps {
     postId: string;
 }
+
 export default function CommentForm({ postId }: IProps): JSX.Element {
     const commentNotification = () => toast("Merci pour votre commentaire !");
     const queryClient = useQueryClient();
@@ -20,7 +22,7 @@ export default function CommentForm({ postId }: IProps): JSX.Element {
     });
     const { mutate: createComment, isLoading } = useMutation(
         (newComment: FormData) =>
-            axios.post(
+            AXIOS.post(
                 `${process.env.NEXT_PUBLIC_API_URL}comments`,
                 {
                     ...newComment,

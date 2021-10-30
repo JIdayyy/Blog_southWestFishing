@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { motion } from "framer-motion";
-import axios from "axios";
 import React, { ReactElement } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
+import AXIOS from "src/utils/AXIOS";
 
 interface IProps {
     comment: IComment;
@@ -15,7 +15,7 @@ export default function CommentItem({ comment }: IProps): ReactElement {
 
     const { mutate: deleteComment, isLoading } = useMutation(
         (id: string) =>
-            axios.delete(`${process.env.NEXT_PUBLIC_API_URL}comments/${id}`),
+            AXIOS.delete(`${process.env.NEXT_PUBLIC_API_URL}comments/${id}`),
         {
             onError: (err) => console.log(err),
             onSuccess: () => {

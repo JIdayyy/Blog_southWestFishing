@@ -4,7 +4,7 @@ export interface IAppState {
     user: {
         id: string;
         username: string;
-        role: string;
+        role: Role[];
     };
 }
 
@@ -12,7 +12,7 @@ export const initialState: IAppState = {
     user: {
         id: "",
         username: "",
-        role: "",
+        role: [],
     },
 };
 
@@ -21,13 +21,17 @@ const appState = createSlice({
     initialState,
     reducers: {
         login: (state, action) => ({
-            user: action.payload,
+            user: {
+                id: action.payload.id,
+                username: action.payload.username,
+                role: action.payload.role,
+            },
         }),
         logout: () => ({
             user: {
                 id: "",
                 username: "",
-                role: "",
+                role: [],
             },
         }),
     },

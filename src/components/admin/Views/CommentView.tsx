@@ -1,13 +1,11 @@
 /* eslint-disable no-console */
 import { useQuery } from "react-query";
-import axios from "axios";
-
+import AXIOS from "src/utils/AXIOS";
 import AdminCommentList from "../Lists/AdminCommentList";
 
 export default function CommentView(): JSX.Element {
     const { data, isLoading, error } = useQuery("getComments", () =>
-        axios
-            .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
+        AXIOS.get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
             .then((r) => r.data)
             .catch((err) => console.log(err)),
     );

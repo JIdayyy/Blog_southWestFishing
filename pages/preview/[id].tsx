@@ -1,8 +1,8 @@
 import Article from "@components/Post/Article";
-import axios from "axios";
 import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
 import { useQuery } from "react-query";
+import AXIOS from "src/utils/AXIOS";
 
 const URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -11,7 +11,7 @@ export default function Preview(): ReactElement {
 
     const { data, isLoading, error } = useQuery(
         "getArticlePreview",
-        () => axios.get(`${URL}posts/${query.id}`).then((r) => r.data),
+        () => AXIOS.get(`${URL}posts/${query.id}`).then((r) => r.data),
         {
             enabled: !!query.id,
         },

@@ -5,12 +5,12 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import style from "@styles/TailwindClasses";
-import axios from "axios";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
 import { login } from "@redux/actions";
 import { Button } from "@components/Assets/button";
 import { toast } from "react-toastify";
+import AXIOS from "src/utils/AXIOS";
 
 interface IProps {
     setIsAdminLogin: Dispatch<SetStateAction<boolean>>;
@@ -24,7 +24,7 @@ function Modal({ setIsAdminLogin }: IProps): JSX.Element {
     const dispatch = useDispatch();
     const { mutate: loginSubmit } = useMutation(
         (credentials: { username: string; password: string }) =>
-            axios.post("/api/auth/login", credentials).then((r) => r.data),
+            AXIOS.post("/api/auth/login", credentials).then((r) => r.data),
         {
             onSuccess: (data) => {
                 notify();

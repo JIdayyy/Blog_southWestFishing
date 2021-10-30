@@ -1,16 +1,15 @@
 /* eslint-disable no-console */
 import { useQuery } from "react-query";
-import axios from "axios";
 import { useState } from "react";
 import CreatePost from "@components/Modal/CreatePost";
+import AXIOS from "src/utils/AXIOS";
 import PostItem from "../Lists/Items/PostItem";
 
 export default function PostView(): JSX.Element {
     const [showAddPost, setShowAddPost] = useState<boolean>(false);
 
     const { data, error, isLoading } = useQuery("getPosts", () =>
-        axios
-            .get(`${process.env.NEXT_PUBLIC_API_URL}posts`)
+        AXIOS.get(`${process.env.NEXT_PUBLIC_API_URL}posts`)
             .then((r) => r.data)
             .catch((err) => console.log(err)),
     );

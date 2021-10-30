@@ -1,10 +1,10 @@
 /* eslint-disable react/no-danger */
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-console */
-import axios from "axios";
 import MyCarousel from "@components/Carousel/index";
 import { PostWithAuthorAndPictures } from "pages";
 import { useQuery } from "react-query";
+import AXIOS from "src/utils/AXIOS";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 
@@ -20,8 +20,7 @@ export default function Article({
     const { data, error, isLoading } = useQuery(
         "getPostComments",
         () =>
-            axios
-                .get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
+            AXIOS.get(`${process.env.NEXT_PUBLIC_API_URL}comments`)
                 .then((r) => r.data)
                 .catch((r) => console.log(r)),
         {

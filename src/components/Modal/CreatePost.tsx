@@ -3,12 +3,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import TextArea from "@components/Jodit/TextArea";
 import { RootState } from "@redux/reducers";
-import axios from "axios";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import AXIOS from "src/utils/AXIOS";
 import style from "../../styles/TailwindClasses";
 
 interface Props {
@@ -29,7 +29,7 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
     const notify = () => toast("Post créé avec succès !");
 
     const { mutate: createPost } = useMutation(
-        (newPost: FormData) => axios.post("/api/posts", newPost),
+        (newPost: FormData) => AXIOS.post("/api/posts", newPost),
         {
             onSuccess: () => {
                 notify();
