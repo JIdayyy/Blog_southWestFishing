@@ -59,6 +59,7 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (data: FormData) => {
+        console.log(data, pictures);
         createPost({ ...data, userId: user.id, pictures, content: joditArea });
     };
 
@@ -67,7 +68,10 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
             className={`bg-realBlack z-9999 bg-opacity-70 flex flex-col items-center align-middle justify-center p-10 w-full h-full absolute top-0 left-0}`}
         >
             <h1 className="font-bold text-2xl">Créer un Post</h1>
-            <form className={style.modal} onSubmit={handleSubmit(onSubmit)}>
+            <form
+                className="flex flex-col items-center align-middle justify-center bg-black rounded-4 p-10 relative"
+                onSubmit={handleSubmit(onSubmit)}
+            >
                 <button
                     type="button"
                     onClick={() => setIsOpen(false)}
@@ -96,27 +100,32 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                         type="text"
                         placeholder="Url de l'image de votre post"
                     />
-                    <button
-                        type="button"
-                        className={style.button("green")}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setPictures([...pictures, pictureInput]);
-                        }}
-                    >
-                        ADD
-                    </button>
+                    <div className="w-full flex justify-between">
+                        <button
+                            type="button"
+                            className={style.button("green")}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setPictures([...pictures, pictureInput]);
+                            }}
+                        >
+                            ADD
+                        </button>
+                        <button
+                            type="submit"
+                            className="bg-blue-400  px-4 py-2 text-white font-bold rounded-2 my-4"
+                        >
+                            AJOUTER
+                        </button>
+                    </div>
 
                     <ReactQuill
+                        className="h-288 mb-24"
                         modules={modules}
-                        className="h-320"
                         onChange={setJoditArea}
                         value={joditArea}
                     />
                 </div>
-                <button type="submit" className={style.button("blue")}>
-                    AJOUTER
-                </button>
             </form>
             <div className="flex flex-wrap">
                 {pictures &&
