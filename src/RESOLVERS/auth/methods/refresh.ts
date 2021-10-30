@@ -25,7 +25,7 @@ export default async function refresh(
         }
         const user = jwt.verify(token, process.env.TOKEN_SECRET as string);
 
-        if (!user.id) {
+        if (typeof user === "string") {
             return res.status(401).json({ message: "You need to login" });
         }
         return res.status(200).json(user as UserPayload);

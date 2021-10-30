@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import TextArea from "@components/Jodit/TextArea";
+
 import { RootState } from "@redux/reducers";
 import { Dispatch, SetStateAction, useState } from "react";
+import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AXIOS from "src/utils/AXIOS";
 import style from "../../styles/TailwindClasses";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css";
 
 interface Props {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -20,9 +23,24 @@ interface FormData {
     content: string | undefined;
 }
 
+const modules = {
+    toolbar: [
+        [{ header: [1, 2, false] }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" },
+        ],
+        ["link", "image"],
+        ["clean"],
+    ],
+};
+
 export default function CreatePost({ setIsOpen }: Props): JSX.Element {
     const queryClient = useQueryClient();
-    const [joditArea, setJoditArea] = useState<string>();
+    const [joditArea, setJoditArea] = useState("");
     const [pictures, setPictures] = useState<any>([]);
     const [pictureInput, setPictureInput] = useState<string | null>(null);
     const user = useSelector((state: RootState) => state.app.user);
@@ -34,6 +52,7 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
             onSuccess: () => {
                 notify();
                 queryClient.refetchQueries(["getPosts"]);
+                setIsOpen(false);
             },
         },
     );
@@ -44,7 +63,9 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
     };
 
     return (
-        <div className={`bg-black bg-opacity-70 ${style.flexContainer("col")}`}>
+        <div
+            className={`bg-realBlack z-9999 bg-opacity-70 flex flex-col items-center align-middle justify-center p-10 w-full h-full absolute top-0 left-0}`}
+        >
             <h1 className="font-bold text-2xl">Créer un Post</h1>
             <form className={style.modal} onSubmit={handleSubmit(onSubmit)}>
                 <button
@@ -86,11 +107,16 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                         ADD
                     </button>
 
-                    <TextArea setJoditArea={setJoditArea} />
-                    <button type="submit" className={style.button("blue")}>
-                        AJOUTER
-                    </button>
+                    <ReactQuill
+                        modules={modules}
+                        className="h-320"
+                        onChange={setJoditArea}
+                        value={joditArea}
+                    />
                 </div>
+                <button type="submit" className={style.button("blue")}>
+                    AJOUTER
+                </button>
             </form>
             <div className="flex flex-wrap">
                 {pictures &&
