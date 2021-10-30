@@ -16,7 +16,7 @@ export default function Preview(): ReactElement {
             enabled: !!query.id,
         },
     );
-    console.log(data);
+
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error</div>;
     if (!data) return <div>No data</div>;

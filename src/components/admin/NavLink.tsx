@@ -7,7 +7,7 @@ interface IProps {
 }
 export default function NavLink({ link }: IProps): JSX.Element {
     return (
-        <Link href={`${link.link}`}>
+        <Link passHref href={`${link.link}`}>
             <motion.div
                 whileHover={{ backgroundColor: "#2F4F4F" }}
                 className="cursor-pointer"

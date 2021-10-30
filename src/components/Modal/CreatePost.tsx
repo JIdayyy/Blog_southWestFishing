@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -11,8 +12,8 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AXIOS from "src/utils/AXIOS";
 import style from "../../styles/TailwindClasses";
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
 
 interface Props {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -25,18 +26,47 @@ interface FormData {
 
 const modules = {
     toolbar: [
-        [{ header: [1, 2, false] }],
+        [{ header: "1" }, { header: "2" }, { font: [] }],
+        [{ size: [] }],
+        [{ color: [] }, { background: [] }],
+
         ["bold", "italic", "underline", "strike", "blockquote"],
+        [{ align: [] }],
         [
             { list: "ordered" },
             { list: "bullet" },
             { indent: "-1" },
             { indent: "+1" },
         ],
-        ["link", "image"],
-        ["clean"],
+        ["link", "image", "video"],
+        ["code-block"],
     ],
+    clipboard: {
+        // toggle to add extra line breaks when pasting HTML:
+        matchVisual: false,
+    },
 };
+
+const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "color",
+    "background",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+    "align",
+    "code-block",
+];
 
 export default function CreatePost({ setIsOpen }: Props): JSX.Element {
     const queryClient = useQueryClient();
@@ -59,14 +89,11 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (data: FormData) => {
-        console.log(data, pictures);
         createPost({ ...data, userId: user.id, pictures, content: joditArea });
     };
 
     return (
-        <div
-            className={`bg-realBlack z-9999 bg-opacity-70 flex flex-col items-center align-middle justify-center p-10 w-full h-full absolute top-0 left-0}`}
-        >
+        <div className="bg-realBlack z-9999 bg-opacity-70 flex flex-col items-center align-middle justify-center p-10 w-full h-full absolute top-0 left-0">
             <h1 className="font-bold text-2xl">Créer un Post</h1>
             <form
                 className="flex flex-col items-center align-middle justify-center bg-black rounded-4 p-10 relative"
@@ -120,10 +147,12 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                     </div>
 
                     <ReactQuill
-                        className="h-288 mb-24"
-                        modules={modules}
-                        onChange={setJoditArea}
                         value={joditArea}
+                        onChange={setJoditArea}
+                        className="h-360 mb-28 text-white"
+                        modules={modules}
+                        formats={formats}
+                        placeholder="Votre texte ici ..."
                     />
                 </div>
             </form>
@@ -132,7 +161,7 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                     pictures.map((picture: any) => (
                         <img
                             alt="post_picture"
-                            className="w-60 h-60"
+                            className="w-60 h-60 m-4"
                             src={picture}
                         />
                     ))}
