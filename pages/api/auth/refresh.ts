@@ -6,7 +6,7 @@ interface Data {
     password: string;
 }
 
-const refreshHandler = (
+const RefreshHandler = (
     req: NextApiRequest,
     res: NextApiResponse<Data | Data[] | Error | null>,
 ): Promise<void> | void => {
@@ -15,4 +15,4 @@ const refreshHandler = (
     }
     throw new Error("Method not allowed");
 };
-export default refreshHandler;
+export default RefreshHandler;

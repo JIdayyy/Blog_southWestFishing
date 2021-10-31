@@ -130,7 +130,7 @@ export default function CreatePost({ setIsOpen }: Props): JSX.Element {
                     <div className="w-full flex justify-between">
                         <button
                             type="button"
-                            className={style.button("green")}
+                            className="bg-green-400 px-4 py-2 text-white font-bold rounded-2 my-4"
                             onClick={(e) => {
                                 e.preventDefault();
                                 setPictures([...pictures, pictureInput]);

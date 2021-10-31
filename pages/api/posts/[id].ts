@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { Post } from ".prisma/client";
 import post from "../../../src/RESOLVERS/posts/posts";
 
-const userHandler = (
+const SinglePostHandler = (
     req: NextApiRequest,
     res: NextApiResponse<Post | Post[] | Error | null>,
 ): Promise<void> => {
@@ -16,4 +16,4 @@ const userHandler = (
     }
     throw new Error("Method not allowed");
 };
-export default userHandler;
+export default SinglePostHandler;

@@ -7,6 +7,7 @@ import PostList from "@components/Post";
 interface IProps {
     posts: PostWithAuthorAndPictures[];
 }
+
 export default function Main({ posts }: IProps): JSX.Element {
     return (
         <div className="md:w-6/12 w-full p-8 flex mb-200 shadow-10 rounded-2 scrollbar scrollbar-thumb-gray-900 bg-white scrollbar-track-gray-800 flex-col lg:items-start items-center align-middle justify-center">

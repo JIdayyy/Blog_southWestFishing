@@ -6,7 +6,7 @@ interface Data {
     password: string;
 }
 
-const registerHandler = (
+const RegisterHandler = (
     req: NextApiRequest,
     res: NextApiResponse<Data | Data[] | Error | null>,
 ): Promise<void> | void => {
@@ -15,4 +15,4 @@ const registerHandler = (
     }
     throw new Error("Method not allowed");
 };
-export default registerHandler;
+export default RegisterHandler;
