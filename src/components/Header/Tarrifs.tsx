@@ -39,7 +39,7 @@ const tarifs = [
         sejour: "Sur demande",
     },
 ];
-export default function Tarrifs(): JSX.Element {
+export default function Tarifs(): JSX.Element {
     const [selected, setSelected] = useState<string>("1p");
     const [displayed, setDisplayed] = useState<typeof tarifs[0]>();
 

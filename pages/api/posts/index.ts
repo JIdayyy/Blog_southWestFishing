@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { Post } from ".prisma/client";
 import post from "../../../src/RESOLVERS/posts/posts";
 
-export default async function postHandler(
+export default async function PostHandler(
     req: NextApiRequest,
     res: NextApiResponse<Post | Post[] | Error>,
 ): Promise<void> {

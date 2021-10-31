@@ -9,7 +9,7 @@ interface Data {
     email: string;
 }
 
-export default async function userHandler(
+export default async function UserHandler(
     req: NextApiRequest,
     res: NextApiResponse<Data | Data[] | Error | null>,
 ): Promise<void> {

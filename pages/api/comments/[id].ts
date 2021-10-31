@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { Comment } from ".prisma/client";
 import comment from "../../../src/RESOLVERS/comments/comment";
 
-export default async function commentHandler(
+export default async function SingleCommentHandler(
     req: NextApiRequest,
     res: NextApiResponse<Comment | Comment[] | Error | null>,
 ): Promise<void> {

@@ -28,19 +28,11 @@ module.exports = withPlugins([], {
                     },
                     {
                         key: "Access-Control-Allow-Methods",
-                        value: "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-                    },
-                    {
-                        key: "Access-Control-Allow-Headers",
-                        value: "Content-Type, Authorization, X-Requested-With",
-                    },
-                    {
-                        key: "Access-Control-Allow-Methods",
                         value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
                     },
                     {
                         key: "Access-Control-Allow-Headers",
-                        value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+                        value: "X-CSRF-Token, Authorization, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
                     },
                 ],
             },

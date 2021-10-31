@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@brainhubeu/react-carousel": "^2.0.4",
+        "@heroicons/react": "^1.0.5",
         "@hookform/error-message": "^2.0.0",
         "@prisma/client": "^2.30.3",
         "@reduxjs/toolkit": "^1.6.0",
