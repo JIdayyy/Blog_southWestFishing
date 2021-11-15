@@ -54,6 +54,7 @@ model Picture {
   updatedAt DateTime @default(now())
   main      Boolean  @default(false)
   postId    String?
+  placeholder String?
 }
 
 model Category {

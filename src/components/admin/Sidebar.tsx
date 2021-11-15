@@ -2,7 +2,15 @@ import Image from "next/image";
 import NavLink from "./NavLink";
 
 export default function Sidebar(): JSX.Element {
-    const navLinks = [{ name: "Home", link: "/", image: "/icons/home.png" }];
+    const navLinks = [
+        { name: "Home", link: "/", image: "/icons/home.png" },
+        { name: "Posts", link: "/myadmin/posts", image: "/icons/home.png" },
+        {
+            name: "Comments",
+            link: "/myadmin/comments",
+            image: "/icons/home.png",
+        },
+    ];
 
     return (
         <div className="w-208 z-30 h-full bg-black">
@@ -15,7 +23,7 @@ export default function Sidebar(): JSX.Element {
                 />
             </div>
 
-            <NavLink link={navLinks[0]} />
+            <NavLink link={navLinks} />
         </div>
     );
 }
