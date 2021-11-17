@@ -26,10 +26,7 @@ interface FormData {
 
 const modules = {
     toolbar: [
-        [{ header: "1" }, { header: "2" }, { font: [] }],
-        [{ size: [] }],
         [{ color: [] }, { background: [] }],
-
         ["bold", "italic", "underline", "strike", "blockquote"],
         [{ align: [] }],
         [
@@ -39,7 +36,6 @@ const modules = {
             { indent: "+1" },
         ],
         ["link", "image", "video"],
-        ["code-block"],
     ],
     clipboard: {
         // toggle to add extra line breaks when pasting HTML:

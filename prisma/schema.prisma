@@ -65,6 +65,9 @@ model Category {
   updatedAt DateTime @default(now())
 }
 
+
+
+
 enum Role {
   ADMIN
   USER
