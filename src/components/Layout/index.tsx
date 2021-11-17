@@ -15,10 +15,10 @@ export default function Layout({ children, page }: IProps): JSX.Element {
                 <title>{page}</title>
             </Head>
             <Navbar />
-            <div className="w-screen  overflow-x-hidden h-full flex flex-col items-center align-middle justify-between">
+            <div className="w-screen overflow-x-hidden h-full flex flex-col align-middle ">
                 <Header />
 
-                <div className="flex   flex-col  w-full items-center h-full  min-h-400 justify-around">
+                <div className="flex flex-col  w-full  h-full  min-h-400 ">
                     {children}
                 </div>
                 <Footer />

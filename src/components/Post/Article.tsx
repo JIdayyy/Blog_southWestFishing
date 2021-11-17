@@ -38,23 +38,29 @@ export default function Article({
         data.reverse();
     }
     return (
-        <div className="w-full lg:w-6/12 mt-40 h-full mb-88 flex flex-col shadow-10 md:p-10 item-center align-middle justify-center text-black">
-            {article.picture.length !== 0 && (
-                <MyCarousel pictures={article.picture} />
-            )}
-            <div className="w-full flex flex-col">
-                <div className="text-xl font-700">{article.title}</div>
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: article.content.toString(),
-                    }}
-                    className="text-10 font-200"
-                />
+        <div className="w-full h-full flex flex-col justify-center items-center align-middle">
+            <div className="w-full lg:w-6/12 mt-40 h-full mb-88 flex flex-col shadow-10 md:p-10 item-center align-middle justify-center text-black">
+                {article.picture.length !== 0 && (
+                    <MyCarousel pictures={article.picture} />
+                )}
+                <div className="w-400 flex flex-col">
+                    <div className="text-xl font-700">{article.title}</div>
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: article.content.toString(),
+                        }}
+                        className="text-10 font-200 w-full whitespace-pre-line"
+                    />
+                </div>
+                {!preview && (
+                    <CommentList
+                        data={data}
+                        error={error}
+                        isLoading={isLoading}
+                    />
+                )}
+                {!preview && <CommentForm postId={article.id} />}
             </div>
-            {!preview && (
-                <CommentList data={data} error={error} isLoading={isLoading} />
-            )}
-            {!preview && <CommentForm postId={article.id} />}
         </div>
     );
 }

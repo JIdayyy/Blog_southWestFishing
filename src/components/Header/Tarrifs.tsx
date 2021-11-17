@@ -40,95 +40,80 @@ const tarifs = [
     },
 ];
 export default function Tarifs(): JSX.Element {
-    const [selected, setSelected] = useState<string>("1p");
-    const [displayed, setDisplayed] = useState<typeof tarifs[0]>();
-
-    useEffect(() => {
-        if (selected === "1p") {
-            setDisplayed(tarifs[0]);
-        }
-        if (selected === "2p") {
-            setDisplayed(tarifs[1]);
-        }
-        if (selected === "3p & Groupes") {
-            setDisplayed(tarifs[2]);
-        }
-        if (selected === "Stage découverte (-12 ans)") {
-            setDisplayed(tarifs[3]);
-        }
-    }, [selected]);
-
-    const handleSelect = (e: ChangeEvent<HTMLSelectElement>) =>
-        setSelected(e.target.value);
-
     return (
-        <motion.div
-            animate={{ opacity: 1, x: 0 }}
-            initial={{ opacity: 0, x: -1000 }}
-            className="  text-white bg-realBlack  rounded-4 z-9999 w-full md:w-3/5  md:flex flex-col border-4 border-gray-700"
-        >
-            <div className="w-full  bg-gray-600 flex items-center align-middle justify-between p-10 shadow-8 ">
-                <span className="font-semibold">Tarrifs</span>
-                <select
-                    onChange={handleSelect}
-                    className="bg-gray-600 border-white border rounded-2 focus:outline-none outline-none"
-                >
-                    {tarifs.map((choice) => (
-                        <option
-                            className="my-1 rounded-4 "
-                            value={choice.number}
-                        >
-                            {choice.number}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div className="w-full h-full flex items-center align-middle justify-between p-10 shadow-inner">
-                <ul>
-                    <h1 className="text-10 font-bold my-4">
-                        Compris dans les prestations :
-                    </h1>
-                    {prestations.map((prestation) => (
-                        <li className="text-10 my-2 w-full">{prestation}</li>
-                    ))}
+        <div className="w-full p-16 flex justify-start flex-col ">
+            <h1 className="font-extrabold text-12 mb-28">
+                Programme et Tarifs 2021 / 2021
+            </h1>
+            <div className="w-full">
+                <span className="font-bold  text-14 text-grey-900">
+                    1 - Prestations :
+                </span>
+                <ul className="list-decimal font-400 mx-20">
+                    <li className="">Enseignement et guidage</li>
+                    <li className="">Prêt du matériel spécifique</li>
+                    <li className="">Consomable leurre</li>
+                    <li className="">Fil</li>
+                    <li className="">Plombs</li>
+                    <li className="">Appâts</li>
+                    <li className="">...</li>
                 </ul>
-                <ul>
-                    <li>
-                        Journée :
-                        <span className="text-xl">
-                            {displayed && displayed.journee}
-                        </span>
-                    </li>
-                    <li>
-                        Demi Journée :
-                        <span className="text-xl">
-                            {displayed && displayed.demiJournee}
-                        </span>
-                    </li>
-                    <li>
-                        Séjour :
-                        <span className="text-xl">
-                            {displayed && displayed.sejour}
-                        </span>
-                    </li>
-                </ul>
-                <Link passHref href="/">
-                    <motion.button
-                        className=" outline-none"
-                        whileHover={{ scale: 1.005 }}
-                        whileTap={{ scale: 1 }}
-                    >
-                        <FadeIn delay={0.2}>
-                            <Image
-                                className="animate-pulse"
-                                src="/images/logo_southwestfishing.png"
-                                width={150}
-                                height={150}
-                            />
-                        </FadeIn>
-                    </motion.button>
-                </Link>
             </div>
-        </motion.div>
+
+            <div className="my-10">
+                <span className="font-bold  text-14 text-grey-900 ">
+                    2 - Tarifs :
+                </span>
+                <div className="my-5">A - Personne seule :</div>
+                <ul className="list-decimal font-400 mx-20">
+                    <li>1/2 Journée : 130</li>
+                    <li>1 Jour : 190</li>
+                    <li>2 Jours : 390</li>
+                    <li>3 Jours : 390</li>
+                    <li>Coup du soir/matin : 65</li>
+                </ul>
+            </div>
+            <div className="my-10">
+                <div className="my-5 ">B - Duo :</div>
+                <ul className="list-decimal font-400 mx-20">
+                    <li>1/2 Journée : 100</li>
+                    <li>1 Jour : 150</li>
+                    <li>2 Jours : 280</li>
+                    <li>3 Jours : 370</li>
+                    <li>Coup du soir/matin : 45</li>
+                </ul>
+            </div>
+            <div className="my-10">
+                <div className="my-5 ">C - Stages Enfants / Initiation :</div>
+                <ul className="list-decimal font-400 mx-20">
+                    <li>Journée de Stage : 45</li>
+                    <li>Journée d&apos;initiation : 30</li>
+                </ul>
+            </div>
+
+            <div className="my-10">
+                <span className="font-bold  text-14 text-grey-900 ">
+                    3 - Horaires
+                </span>
+                <ul className="list-decimal font-400 mx-20">
+                    <li className="">Coup du matin : 6h - 9h</li>
+                    <li className="">Journée : 9h - 17h</li>
+                    <li className="">1/2 Journée : 9h - 13H / 14h - 18h</li>
+                    <li className="">Cours du soir : 18h - 21h</li>
+                    <li className="">Initiation enfants : 2H</li>
+                </ul>
+            </div>
+            <div className="my-10">
+                <span className="font-bold text-14  text-grey-900">
+                    4 - Divers
+                </span>
+                <ul className="list-decimal font-400 mx-20">
+                    <li className="">Sortie Bateau + 20e</li>
+                </ul>
+            </div>
+            <span className="text-10">
+                ( Tarifs en Euro, plus de renseignement par téléphone.)
+            </span>
+        </div>
     );
 }
