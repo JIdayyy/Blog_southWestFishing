@@ -26,6 +26,7 @@ export function Home(props: IProps): JSX.Element {
         </div>
     );
 }
+
 export async function getStaticProps(): Promise<GetStaticPropsResult<IProps>> {
     const posts = await prisma.post.findMany({
         include: {

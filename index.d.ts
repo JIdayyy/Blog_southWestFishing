@@ -41,5 +41,12 @@ interface IUser {
     updatedAt: Date;
 }
 
+interface ITarif {
+    id: string;
+    name: string;
+    value: string;
+    category: string;
+}
+
 type Role = "ADMIN" | "USER";
 declare module "react-dynamics";

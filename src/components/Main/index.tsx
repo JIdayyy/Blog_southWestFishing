@@ -13,7 +13,7 @@ export default function Main({ posts }: IProps): JSX.Element {
         <div className="md:w-6/12 w-full p-8 flex mb-200 shadow-10 rounded-2 scrollbar scrollbar-thumb-gray-900 bg-white scrollbar-track-gray-800 flex-col lg:items-start items-center align-middle justify-center">
             <FadeIn delay={0.4} className="w-full relative ">
                 <Image
-                    className="rounded-4 "
+                    className="rounded-4 z-99"
                     src="/images/main.jpg"
                     priority
                     width={250}

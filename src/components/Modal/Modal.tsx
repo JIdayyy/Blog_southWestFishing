@@ -30,7 +30,7 @@ function Modal({ setIsAdminLogin }: IProps): JSX.Element {
                 notify();
                 dispatch(login(data));
                 setIsAdminLogin(false);
-                router.push("/myadmin");
+                router.push("/myadmin/");
             },
             onError: (error) => {
                 setInvalid(true);
