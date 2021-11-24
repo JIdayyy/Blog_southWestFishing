@@ -26,6 +26,7 @@ export default function Column(): JSX.Element {
                     height={150}
                 />
                 <Image src="/images/st_croix.png" width={180} height={100} />
+                <Image src="/images/peche64.jpeg" width={180} height={100} />
             </div>
         </FadeIn>
     );
