@@ -40,31 +40,31 @@ const fakeTarifsDuo = [
     {
         id: "1",
         name: "1/2 Journée",
-        value: "130€",
+        value: "100€",
         category: "Duo",
     },
     {
         id: "2",
         name: "1 Journée",
-        value: "190€",
+        value: "150€",
         category: "Duo",
     },
     {
         id: "3",
         name: "2 Jours",
-        value: "390€",
+        value: "280€",
         category: "Duo",
     },
     {
         id: "3",
         name: "3 Jours",
-        value: "570€",
+        value: "370€",
         category: "Duo",
     },
     {
         id: "3",
         name: "Coup du soir / matin",
-        value: "065€",
+        value: "045€",
         category: "Duo",
     },
 ];
@@ -73,13 +73,13 @@ const fakeTarifsKids = [
     {
         id: "1",
         name: "Journée de Stage",
-        value: "130€",
+        value: "60€",
         category: "Stage / Initiation",
     },
     {
         id: "2",
         name: "Journée d'Initiation",
-        value: "190€",
+        value: "30€",
         category: "Stage / Initiation",
     },
 ];
