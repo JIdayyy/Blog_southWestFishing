@@ -25,7 +25,7 @@ export default function Main({ posts }: IProps): JSX.Element {
                 <Title className="text-black text-18 font-400 mt-24">
                     Bienvenue sur South West Fishing
                 </Title>
-                <div className="text-black text-justify text-8 font-200  border-b border-grey-A700 py-28">
+                <div className="text-black text-justify text-8 font-400  border-b border-grey-A700 py-28">
                     Découvrez la pêche dans le sud ouest avec un guide diplômé
                     expérimenté.
                     <br />
@@ -44,8 +44,8 @@ export default function Main({ posts }: IProps): JSX.Element {
                     des <strong>poissons</strong> joueurs.
                     <br />
                     <br />
-                    Plutot <strong>carnassiers</strong> ?
-                    <strong>L’étang blanc</strong> et ses 183 Hectares abrite
+                    Plutot <strong> carnassiers</strong> ?
+                    <strong> L’étang blanc</strong> et ses 183 Hectares abrite
                     Black-Bass Brochet Perches et plus encore ...
                 </div>
             </div>

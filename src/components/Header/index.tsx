@@ -7,7 +7,13 @@ import { motion } from "framer-motion";
 export default function Header(): JSX.Element {
     return (
         <div className="w-full sm:h-320 h-full relative flex flex-col items-center align-middle justify-center">
-            <Image src="/images/bg_southwestfishing.jpg" layout="fill" />
+            <Image
+                src="/images/bg_southwestfishing.jpg"
+                priority
+                placeholder="blur"
+                blurDataURL="/images/bg_southwestfishing.jpg"
+                layout="fill"
+            />
             <motion.div
                 animate={{ y: 0 }}
                 initial={{ y: -10 }}

@@ -96,7 +96,7 @@ export default function TarifsModal({ setIsModal }: IProps): ReactElement {
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
             exit={{ opacity: 0 }}
-            className="w-full h-full absolute z-9999 bg-opacity-75 border-black top-0 left-0 bg-black flex items-center align-middle justify-center"
+            className="w-full h-screen absolute z-9999 bg-opacity-75 border-black top-0 left-0 bg-black flex items-center align-middle justify-center"
         >
             <div className="  bg-white relative p-8 rounded-8 flex flex-col items-center align-middle justify-around">
                 <button
@@ -106,6 +106,8 @@ export default function TarifsModal({ setIsModal }: IProps): ReactElement {
                 >
                     <Image
                         priority
+                        placeholder="blur"
+                        blurDataURL="/icons/cross.png"
                         src="/icons/cross.png"
                         width={15}
                         height={15}
@@ -115,6 +117,8 @@ export default function TarifsModal({ setIsModal }: IProps): ReactElement {
                     Programme et Tarifs 2021 / 2022{" "}
                     <Image
                         priority
+                        placeholder="blur"
+                        blurDataURL="/images/hook.png"
                         src="/images/hook.png"
                         width={20}
                         height={30}

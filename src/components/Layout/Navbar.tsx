@@ -1,20 +1,18 @@
-import React, { ReactElement, useState } from "react";
+import React, { Dispatch, ReactElement, SetStateAction } from "react";
 import Link from "next/link";
-import TarifsModal from "@components/Modal/TarifsModal";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function Navbar(): ReactElement {
-    const [isModal, setIsModal] = useState<boolean>(false);
+interface IProps {
+    setIsModal: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function Navbar({ setIsModal }: IProps): ReactElement {
     return (
-        <motion.div className="w-full h-36 hidden md:flex bg-white z-999   items-start justify-start align-middle shadow-10">
+        <motion.div className="w-full h-36 hidden md:flex bg-white z-999  fixed top-0 items-start justify-start align-middle shadow-10">
             <div className="whitespace-nowrap h-full font-bold flex items-center mx-20 justify-center align-middle">
                 South West Fishing
             </div>
-            {isModal && (
-                <AnimatePresence>
-                    <TarifsModal setIsModal={setIsModal} />
-                </AnimatePresence>
-            )}
+
             <div className=" h-full text-black flex items-center align-middle justify-end  w-full px-32">
                 <Link passHref href="/">
                     <button
