@@ -1,11 +1,11 @@
 {
   "root": true,
   "project": {
-    "name": "Next.js Blog with Comments"
+    "name": "southwestfishing"
   },
   "api": {
-    "projectId": "tan4j66r",
-    "dataset": "southwestfishing"
+    "projectId": "hjbcv9e5",
+    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",

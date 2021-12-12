@@ -21,6 +21,9 @@ export default function Header(): JSX.Element {
                     >
                         <FadeIn delay={0.2}>
                             <Image
+                                priority
+                                placeholder="blur"
+                                blurDataURL="/images/logo_southwestfishing.png"
                                 className="animate-pulse"
                                 src="/images/logo_southwestfishing.png"
                                 width={300}

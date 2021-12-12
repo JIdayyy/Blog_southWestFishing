@@ -1,11 +1,11 @@
 import FadeIn from "@components/AnimatedComponents/FadeIn";
 import Title from "@components/Assets/Title/Title";
 import Image from "next/image";
-import { PostWithAuthorAndPictures } from "pages";
 import PostList from "@components/Post";
+import { Post } from "schema";
 
 interface IProps {
-    posts: PostWithAuthorAndPictures[];
+    posts: Post[];
 }
 export default function Main({ posts }: IProps): JSX.Element {
     return (

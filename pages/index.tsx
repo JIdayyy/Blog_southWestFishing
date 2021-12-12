@@ -2,17 +2,10 @@ import Main from "@components/Main";
 import { GetStaticPropsResult } from "next";
 import React from "react";
 import Column from "@components/Main/Column";
-import { Comment, Picture, Post, User } from ".prisma/client";
-import prisma from "../prisma/client";
-
-export type PostWithAuthorAndPictures = Post & {
-    picture: Picture[];
-    author: User;
-    comments: Comment[];
-};
+import { Post } from "schema";
 
 type IProps = {
-    posts: PostWithAuthorAndPictures[];
+    posts: Post[];
 };
 
 export function Home(props: IProps): JSX.Element {
@@ -26,18 +19,29 @@ export function Home(props: IProps): JSX.Element {
         </div>
     );
 }
-export async function getStaticProps(): Promise<GetStaticPropsResult<IProps>> {
-    const posts = await prisma.post.findMany({
-        include: {
-            picture: true,
-            author: true,
-            comments: true,
-        },
-    });
-    await prisma.$disconnect();
+
+export const getStaticProps = async (): Promise<
+    GetStaticPropsResult<IProps>
+> => {
+    const query = encodeURIComponent(
+        `*[ _type == "post"]{ _id, slug, body, title, mainImage , publishedAt ,  author-> } `,
+    );
+
+    const url = `https://hjbcv9e5.api.sanity.io/v1/data/query/production/?query=${query}`;
+    const result = await fetch(url).then((r) => r.json());
+    const posts = result.result;
+
+    if (!posts) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
-        props: { posts },
-        revalidate: 60,
+        props: {
+            posts,
+        },
     };
-}
+};
+
 export default Home;

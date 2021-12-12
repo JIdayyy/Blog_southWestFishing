@@ -10,6 +10,7 @@ module.exports = withPlugins([], {
             "localhost",
             "www.slate.fr",
             "adventures.everybodyshops.com",
+            "cdn.sanity.io",
         ],
     },
     async headers() {
