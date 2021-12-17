@@ -23,6 +23,12 @@ export default {
             type: "string",
         },
         {
+            name: "tarifCategory",
+            title: "Tarif Category",
+            type: "reference",
+            to: [{ type: "tarifCategory" }],
+        },
+        {
             name: "tarifCategories",
             title: "tarifCategories",
             type: "array",
@@ -50,7 +56,6 @@ export default {
     preview: {
         select: {
             title: "name",
-            media: "image",
         },
     },
 };
